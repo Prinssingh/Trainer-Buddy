@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+
+    <item
+        android:id="@+id/Trainer_AddNewTrainee"
+        android:icon="@drawable/new_trainee_add_24"
+        android:title="@string/new_trainee" />
+
+    <item
+        android:id="@+id/Trainer_TraineeList"
+        android:icon="@drawable/all_trainee_list_24"
+        android:title="@string/trainee_list" />
+
+    <item
+        android:id="@+id/Trainee_Home"
+        android:icon="@drawable/home_white_24"
+        android:title="@string/title_home" />
+
+    <item
+        android:id="@+id/Trainer_Profile"
+        android:icon="@drawable/profile_white_24"
+        android:title="@string/profile" />
+
+    <item
+        android:id="@+id/Trainer_Earnings"
+        android:icon="@drawable/earning_white_24"
+        android:title="@string/earnings" />
+
+</menu>

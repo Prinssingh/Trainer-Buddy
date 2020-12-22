@@ -1,0 +1,546 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/blue_color"
+    android:focusableInTouchMode="true"
+    android:gravity="center"
+    android:layout_gravity="center">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp"
+            android:layout_marginTop="10dp">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentLeft="true"
+                    style="@style/viewParent.headerText.NoMode"
+                    android:textColor="@color/white_color"
+                    android:text="Here’s\nyour first\nstep with \nus! "/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_login_hero"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentRight="true"/>
+            </RelativeLayout>
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                app:cardCornerRadius="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/Name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Name"
+                        style="@style/textSize"
+                        android:textColor="@color/blue_color"
+                        android:textStyle="bold" />
+                    <EditText
+                        android:id="@+id/traineeName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/blue_color" />
+                    <View style="@style/proifleDetailsView" />
+
+                    <TextView
+                        android:id="@+id/gender"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Gender"
+                        style="@style/textSize"
+                        android:layout_marginTop="10dp"
+                        android:textColor="@color/blue_color"
+                        android:textStyle="bold" />
+
+                    <RadioGroup
+                        android:id="@+id/traineeGenderRadioGroup"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="10dp">
+
+                        <RadioButton
+                            android:id="@+id/traineeMale"
+                            android:layout_weight="1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/blue_color"
+                            android:textStyle="bold"
+                            android:text="Male" />
+
+                        <RadioButton
+                            android:id="@+id/traineeFemale"
+                            android:layout_weight="1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/blue_color"
+                            android:textStyle="bold"
+                            android:text="Female" />
+
+                        <RadioButton
+                            android:id="@+id/traineeOther"
+                            android:layout_weight="1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/blue_color"
+                            android:textStyle="bold"
+                            android:text="Other" />
+                    </RadioGroup>
+                    <View style="@style/proifleDetailsView" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/Age"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Age"
+                            style="@style/textSize"
+                            android:layout_marginTop="10dp"
+                            android:textColor="@color/blue_color"
+                            android:textStyle="bold" />
+                        <Spinner
+                            android:id="@+id/spinnerAge"
+                            android:layout_width="100dp"
+                            android:layout_height="40dp"
+                            android:layout_marginLeft="20dp"
+                            android:background="@android:drawable/btn_dropdown"
+                            android:spinnerMode="dropdown"/>
+
+
+                    </LinearLayout>
+                    <View style="@style/proifleDetailsView" />
+
+                    <TextView
+                        android:id="@+id/MobileNumber"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Mobile Number"
+                        style="@style/textSize"
+                        android:layout_marginTop="10dp"
+                        android:textColor="@color/blue_color"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/traineeMobileNumber"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:inputType="phone" />
+                    <View style="@style/proifleDetailsView" />
+
+                    <TextView
+                        android:id="@+id/EmailId"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Email id"
+                        style="@style/textSize"
+                        android:layout_marginTop="10dp"
+                        android:textColor="@color/blue_color"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/traineeEmailId"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:inputType="textEmailAddress" />
+                    <View style="@style/proifleDetailsView" />
+
+                    <TextView
+                        android:id="@+id/Weight"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Weight"
+                        style="@style/textSize"
+                        android:layout_marginTop="10dp"
+                        android:textColor="@color/blue_color"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/traineeWeight"
+                            android:layout_width="200dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:ems="10"
+                            android:inputType="number" />
+
+                        <RadioGroup
+                            android:id="@+id/traineeWeightRadioGroup"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:layout_marginLeft="10dp"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:id="@+id/traineeInKg"
+                                android:layout_weight="1"
+                                android:textColor="@color/blue_color"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="In KG" />
+
+                            <RadioButton
+                                android:id="@+id/traineeInLbs"
+                                android:layout_weight="1"
+                                android:textColor="@color/blue_color"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentBottom="true"
+                                android:text="In lbs" />
+                        </RadioGroup>
+
+                    </LinearLayout>
+                    <View style="@style/proifleDetailsView" />
+
+                    <TextView
+                        android:id="@+id/Height"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Height"
+                        style="@style/textSize"
+                        android:layout_marginTop="10dp"
+                        android:textColor="@color/blue_color"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal">
+
+                        <EditText
+                            android:id="@+id/traineeHeight"
+                            android:layout_width="200dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            android:ems="10"
+                            android:inputType="number" />
+
+                        <RadioGroup
+                            android:id="@+id/traineeHeightRadioGroup"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:layout_marginLeft="10dp"
+                            android:orientation="horizontal">
+
+                            <RadioButton
+                                android:id="@+id/traineeInInches"
+                                android:layout_weight="1"
+                                android:textColor="@color/blue_color"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="In Inches" />
+
+                            <RadioButton
+                                android:id="@+id/traineeInMeter"
+                                android:layout_weight="1"
+                                android:textColor="@color/blue_color"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentBottom="true"
+                                android:text="In Meter" />
+                        </RadioGroup>
+
+                    </LinearLayout>
+
+                    <View style="@style/proifleDetailsView" />
+
+                    <TextView
+                        android:id="@+id/Occupation"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Occupation"
+                        style="@style/textSize"
+                        android:layout_marginTop="10dp"
+                        android:textColor="@color/blue_color"
+                        android:textStyle="bold" />
+
+                    <RadioGroup
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:layout_marginLeft="40dp"
+                        android:layout_marginTop="10dp">
+
+                        <RadioButton
+                            android:id="@+id/traineeStudent"
+                            android:layout_weight="1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/blue_color"
+                            android:textStyle="bold"
+                            android:text="Student" />
+
+                        <RadioButton
+                            android:id="@+id/traineeOfficeJob"
+                            android:layout_weight="1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/blue_color"
+                            android:textStyle="bold"
+                            android:text="Office Job" />
+
+                        <RadioButton
+                            android:id="@+id/traineeTravellingJob"
+                            android:layout_weight="1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/blue_color"
+                            android:textStyle="bold"
+                            android:text="Travelling job" />
+
+                        <RadioButton
+                            android:id="@+id/traineePhysicalJob"
+                            android:layout_weight="1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/blue_color"
+                            android:textStyle="bold"
+                            android:text="Physical Job" />
+
+                        <RadioButton
+                            android:id="@+id/traineeLabourJob"
+                            android:layout_weight="1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/blue_color"
+                            android:textStyle="bold"
+                            android:text="Labour Job" />
+                    </RadioGroup>
+
+                    <View style="@style/proifleDetailsView" />
+                    <TextView
+                        android:id="@+id/WeightGain"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Weight Gain"
+                        style="@style/textSize"
+                        android:layout_marginTop="10dp"
+                        android:textColor="@color/blue_color"
+                        android:textStyle="bold" />
+
+                    <RadioGroup
+                        android:id="@+id/traineeWeightGainRadiogroup"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="10dp">
+
+                        <RadioButton
+                            android:id="@+id/traineeGain"
+                            android:layout_weight="1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/blue_color"
+                            android:textStyle="bold"
+                            android:text="Gain" />
+
+                        <RadioButton
+                            android:id="@+id/traineeLoss"
+                            android:layout_weight="1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/blue_color"
+                            android:textStyle="bold"
+                            android:text="Loss" />
+
+                        <RadioButton
+                            android:id="@+id/traineeMaintain"
+                            android:layout_weight="1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/blue_color"
+                            android:textStyle="bold"
+                            android:text="Maintain" />
+                    </RadioGroup>
+
+
+                    <View style="@style/proifleDetailsView" />
+                    <TextView
+                        android:id="@+id/MusselsGain"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Mussels Gain"
+                        style="@style/textSize"
+                        android:layout_marginTop="10dp"
+                        android:textColor="@color/blue_color"
+                        android:textStyle="bold" />
+
+                    <RadioGroup
+                        android:id="@+id/traineeMusselsGainRadioGroup"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="10dp">
+
+                        <RadioButton
+                            android:id="@+id/traineeMusselsGain"
+                            android:layout_weight="1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/blue_color"
+                            android:textStyle="bold"
+                            android:text="Gain" />
+
+                        <RadioButton
+                            android:id="@+id/traineeMusselsMaintain"
+                            android:layout_weight="1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/blue_color"
+                            android:textStyle="bold"
+                            android:text="Maintain" />
+
+                    </RadioGroup>
+
+                    <View style="@style/proifleDetailsView" />
+                    <TextView
+                        android:id="@+id/Food"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Food"
+                        style="@style/textSize"
+                        android:layout_marginTop="10dp"
+                        android:textColor="@color/blue_color"
+                        android:textStyle="bold" />
+
+                    <RadioGroup
+                        android:id="@+id/traineeFoodradioGroup"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal"
+                        android:layout_marginTop="10dp">
+
+                        <RadioButton
+                            android:id="@+id/traineeVegiterian"
+                            android:layout_weight="1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/blue_color"
+                            android:textStyle="bold"
+                            android:text="Vegiterian" />
+
+                        <RadioButton
+                            android:id="@+id/traineeNonVegiterian"
+                            android:layout_weight="1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/blue_color"
+                            android:textStyle="bold"
+                            android:text="Non vegiterian" />
+                    </RadioGroup>
+
+                    <View style="@style/proifleDetailsView" />
+                    <LinearLayout
+                        android:id="@+id/SubscriptionMonth"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Subscription Month"
+                            style="@style/textSize"
+                            android:textColor="@color/blue_color"
+                            android:textStyle="bold" />
+
+                        <EditText
+                            android:id="@+id/editTextDate"
+                            android:layout_marginLeft="10dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:ems="10"
+                            android:inputType="date" />
+
+                    </LinearLayout>
+
+
+                    <View style="@style/proifleDetailsView" />
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Subscription Fee"
+                            style="@style/textSize"
+                            android:textColor="@color/blue_color"
+                            android:textStyle="bold" />
+
+                        <EditText
+                            android:id="@+id/TtraineeSubscriptionFee"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_alignParentBottom="true"
+                            android:ems="10"
+                            android:inputType="number" />
+
+                    </LinearLayout>
+
+                    <Button
+                        android:id="@+id/continuebutton"
+                        style="@style/blueButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:layout_marginTop="10dp"
+                        android:text="Continue" />
+
+
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <View
+        android:layout_marginTop="20dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_width="11dp"
+        android:layout_height="match_parent"
+        android:background="@drawable/ic_side_bg1"/>
+
+
+</RelativeLayout>

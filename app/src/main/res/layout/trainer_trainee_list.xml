@@ -1,0 +1,656 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
+    android:background="@color/white_color"
+    android:focusableInTouchMode="true"
+    android:gravity="center">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginBottom="5dp"
+            android:layout_weight="1">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/MonthFilter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:clickable="true"
+                android:focusable="true"
+                app:cardCornerRadius="20dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/shape_cardview" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="7dp"
+                    android:background="@drawable/shape_left_panel"
+                    android:minHeight="100dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginRight="10dp"
+                        android:text=" Month "
+                        android:textStyle="bold" />
+
+
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="30dp"
+            android:layout_marginBottom="5dp">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/CategoriesFilter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:clickable="true"
+                android:focusable="true"
+                app:cardCornerRadius="20dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/shape_cardview" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="7dp"
+                    android:background="@drawable/shape_left_panel"
+                    android:minHeight="100dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=" Categories "
+                        android:textStyle="bold" />
+
+
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="50dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/TraineeDetail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:clickable="true"
+                android:focusable="true"
+                app:cardBackgroundColor="@color/blue_color"
+                app:cardCornerRadius="10dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="7dp"
+                    android:minHeight="100dp"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:id="@+id/TraineeName"
+                        style="@style/viewParent.headerText.HomeCardTitle1"
+                        android:text="Shubham Singh" />
+
+                    <TextView
+                        android:id="@+id/subscriptionDetail"
+                        style="@style/viewParent.headerText.homeCardContent1"
+                        android:layout_below="@id/TraineeName"
+                        android:text="Subscription Left - 10/365 days" />
+
+                    <Button
+                        android:id="@+id/suggestButton"
+                        style="@style/whiteButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/subscriptionDetail"
+                        android:text="Suggest"
+                        android:textColor="@color/blue_color" />
+
+                    <Button
+                        android:id="@+id/NewDietChart"
+                        style="@style/whiteButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/subscriptionDetail"
+                        android:layout_marginLeft="120dp"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:text="New Chart"
+                        android:textColor="@color/blue_color" />
+
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/profileImage"
+                        android:layout_width="90dp"
+                        android:layout_height="90dp"
+                        android:layout_alignParentRight="true" android:layout_centerInParent="true"
+                        app:cardCornerRadius="45dp">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/profilepic"/>
+
+                    </androidx.cardview.widget.CardView>
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:id="@+id/TraineeDetail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:clickable="true"
+                android:focusable="true"
+                app:cardBackgroundColor="@color/blue_color"
+                app:cardCornerRadius="10dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="7dp"
+                    android:minHeight="100dp"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:id="@+id/TraineeName"
+                        style="@style/viewParent.headerText.HomeCardTitle1"
+                        android:text="Shubham Singh" />
+
+                    <TextView
+                        android:id="@+id/subscriptionDetail"
+                        style="@style/viewParent.headerText.homeCardContent1"
+                        android:layout_below="@id/TraineeName"
+                        android:text="Subscription Left - 10/365 days" />
+
+                    <Button
+                        android:id="@+id/suggestButton"
+                        style="@style/whiteButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/subscriptionDetail"
+                        android:text="Suggest"
+                        android:textColor="@color/blue_color" />
+
+                    <Button
+                        android:id="@+id/NewDietChart"
+                        style="@style/whiteButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/subscriptionDetail"
+                        android:layout_marginLeft="120dp"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:text="New Chart"
+                        android:textColor="@color/blue_color" />
+
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/profileImage"
+                        android:layout_width="90dp"
+                        android:layout_height="90dp"
+                        android:layout_alignParentRight="true" android:layout_centerInParent="true"
+                        app:cardCornerRadius="45dp">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/profilepic"/>
+
+                    </androidx.cardview.widget.CardView>
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:id="@+id/TraineeDetail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:clickable="true"
+                android:focusable="true"
+                app:cardBackgroundColor="@color/blue_color"
+                app:cardCornerRadius="10dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="7dp"
+                    android:minHeight="100dp"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:id="@+id/TraineeName"
+                        style="@style/viewParent.headerText.HomeCardTitle1"
+                        android:text="Shubham Singh" />
+
+                    <TextView
+                        android:id="@+id/subscriptionDetail"
+                        style="@style/viewParent.headerText.homeCardContent1"
+                        android:layout_below="@id/TraineeName"
+                        android:text="Subscription Left - 10/365 days" />
+
+                    <Button
+                        android:id="@+id/suggestButton"
+                        style="@style/whiteButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/subscriptionDetail"
+                        android:text="Suggest"
+                        android:textColor="@color/blue_color" />
+
+                    <Button
+                        android:id="@+id/NewDietChart"
+                        style="@style/whiteButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/subscriptionDetail"
+                        android:layout_marginLeft="120dp"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:text="New Chart"
+                        android:textColor="@color/blue_color" />
+
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/profileImage"
+                        android:layout_width="90dp"
+                        android:layout_height="90dp"
+                        android:layout_alignParentRight="true" android:layout_centerInParent="true"
+                        app:cardCornerRadius="45dp">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/profilepic"/>
+
+                    </androidx.cardview.widget.CardView>
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:id="@+id/TraineeDetail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:clickable="true"
+                android:focusable="true"
+                app:cardBackgroundColor="@color/blue_color"
+                app:cardCornerRadius="10dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="7dp"
+                    android:minHeight="100dp"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:id="@+id/TraineeName"
+                        style="@style/viewParent.headerText.HomeCardTitle1"
+                        android:text="Shubham Singh" />
+
+                    <TextView
+                        android:id="@+id/subscriptionDetail"
+                        style="@style/viewParent.headerText.homeCardContent1"
+                        android:layout_below="@id/TraineeName"
+                        android:text="Subscription Left - 10/365 days" />
+
+                    <Button
+                        android:id="@+id/suggestButton"
+                        style="@style/whiteButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/subscriptionDetail"
+                        android:text="Suggest"
+                        android:textColor="@color/blue_color" />
+
+                    <Button
+                        android:id="@+id/NewDietChart"
+                        style="@style/whiteButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/subscriptionDetail"
+                        android:layout_marginLeft="120dp"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:text="New Chart"
+                        android:textColor="@color/blue_color" />
+
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/profileImage"
+                        android:layout_width="90dp"
+                        android:layout_height="90dp"
+                        android:layout_alignParentRight="true" android:layout_centerInParent="true"
+                        app:cardCornerRadius="45dp">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/profilepic"/>
+
+                    </androidx.cardview.widget.CardView>
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:id="@+id/TraineeDetail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:clickable="true"
+                android:focusable="true"
+                app:cardBackgroundColor="@color/blue_color"
+                app:cardCornerRadius="10dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="7dp"
+                    android:minHeight="100dp"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:id="@+id/TraineeName"
+                        style="@style/viewParent.headerText.HomeCardTitle1"
+                        android:text="Shubham Singh" />
+
+                    <TextView
+                        android:id="@+id/subscriptionDetail"
+                        style="@style/viewParent.headerText.homeCardContent1"
+                        android:layout_below="@id/TraineeName"
+                        android:text="Subscription Left - 10/365 days" />
+
+                    <Button
+                        android:id="@+id/suggestButton"
+                        style="@style/whiteButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/subscriptionDetail"
+                        android:text="Suggest"
+                        android:textColor="@color/blue_color" />
+
+                    <Button
+                        android:id="@+id/NewDietChart"
+                        style="@style/whiteButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/subscriptionDetail"
+                        android:layout_marginLeft="120dp"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:text="New Chart"
+                        android:textColor="@color/blue_color" />
+
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/profileImage"
+                        android:layout_width="90dp"
+                        android:layout_height="90dp"
+                        android:layout_alignParentRight="true" android:layout_centerInParent="true"
+                        app:cardCornerRadius="45dp">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/profilepic"/>
+
+                    </androidx.cardview.widget.CardView>
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:id="@+id/TraineeDetail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:clickable="true"
+                android:focusable="true"
+                app:cardBackgroundColor="@color/blue_color"
+                app:cardCornerRadius="10dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="7dp"
+                    android:minHeight="100dp"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:id="@+id/TraineeName"
+                        style="@style/viewParent.headerText.HomeCardTitle1"
+                        android:text="Shubham Singh" />
+
+                    <TextView
+                        android:id="@+id/subscriptionDetail"
+                        style="@style/viewParent.headerText.homeCardContent1"
+                        android:layout_below="@id/TraineeName"
+                        android:text="Subscription Left - 10/365 days" />
+
+                    <Button
+                        android:id="@+id/suggestButton"
+                        style="@style/whiteButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/subscriptionDetail"
+                        android:text="Suggest"
+                        android:textColor="@color/blue_color" />
+
+                    <Button
+                        android:id="@+id/NewDietChart"
+                        style="@style/whiteButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/subscriptionDetail"
+                        android:layout_marginLeft="120dp"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:text="New Chart"
+                        android:textColor="@color/blue_color" />
+
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/profileImage"
+                        android:layout_width="90dp"
+                        android:layout_height="90dp"
+                        android:layout_alignParentRight="true" android:layout_centerInParent="true"
+                        app:cardCornerRadius="45dp">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/profilepic"/>
+
+                    </androidx.cardview.widget.CardView>
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+                android:id="@+id/TraineeDetail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:clickable="true"
+                android:focusable="true"
+                app:cardBackgroundColor="@color/blue_color"
+                app:cardCornerRadius="10dp">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="7dp"
+                    android:minHeight="100dp"
+                    android:padding="5dp">
+
+                    <TextView
+                        android:id="@+id/TraineeName"
+                        style="@style/viewParent.headerText.HomeCardTitle1"
+                        android:text="Shubham Singh" />
+
+                    <TextView
+                        android:id="@+id/subscriptionDetail"
+                        style="@style/viewParent.headerText.homeCardContent1"
+                        android:layout_below="@id/TraineeName"
+                        android:text="Subscription Left - 10/365 days" />
+
+                    <Button
+                        android:id="@+id/suggestButton"
+                        style="@style/whiteButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/subscriptionDetail"
+                        android:text="Suggest"
+                        android:textColor="@color/blue_color" />
+
+                    <Button
+                        android:id="@+id/NewDietChart"
+                        style="@style/whiteButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/subscriptionDetail"
+                        android:layout_marginLeft="120dp"
+                        android:paddingLeft="10dp"
+                        android:paddingRight="10dp"
+                        android:text="New Chart"
+                        android:textColor="@color/blue_color" />
+
+
+                    <androidx.cardview.widget.CardView
+                        android:id="@+id/profileImage"
+                        android:layout_width="90dp"
+                        android:layout_height="90dp"
+                        android:layout_alignParentRight="true" android:layout_centerInParent="true"
+                        app:cardCornerRadius="45dp">
+
+                        <ImageView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/profilepic"/>
+
+                    </androidx.cardview.widget.CardView>
+                </RelativeLayout>
+            </androidx.cardview.widget.CardView>
+            <androidx.cardview.widget.CardView
+            android:id="@+id/TraineeDetail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:clickable="true"
+            android:focusable="true"
+            app:cardBackgroundColor="@color/blue_color"
+            app:cardCornerRadius="10dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="7dp"
+                android:minHeight="100dp"
+                android:padding="5dp">
+
+                <TextView
+                    android:id="@+id/TraineeName"
+                    style="@style/viewParent.headerText.HomeCardTitle1"
+                    android:text="Shubham Singh" />
+
+                <TextView
+                    android:id="@+id/subscriptionDetail"
+                    style="@style/viewParent.headerText.homeCardContent1"
+                    android:layout_below="@id/TraineeName"
+                    android:text="Subscription Left - 10/365 days" />
+
+                <Button
+                    android:id="@+id/suggestButton"
+                    style="@style/whiteButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/subscriptionDetail"
+                    android:text="Suggest"
+                    android:textColor="@color/blue_color" />
+
+                <Button
+                    android:id="@+id/NewDietChart"
+                    style="@style/whiteButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/subscriptionDetail"
+                    android:layout_marginLeft="120dp"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp"
+                    android:text="New Chart"
+                    android:textColor="@color/blue_color" />
+
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/profileImage"
+                    android:layout_width="90dp"
+                    android:layout_height="90dp"
+                    android:layout_alignParentRight="true" android:layout_centerInParent="true"
+                    app:cardCornerRadius="45dp">
+
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/profilepic"/>
+
+                </androidx.cardview.widget.CardView>
+            </RelativeLayout>
+        </androidx.cardview.widget.CardView>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+    <View
+        android:layout_width="11dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/ic_side_bg" />
+
+</RelativeLayout>

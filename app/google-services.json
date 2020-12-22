@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "234769230103",
+    "firebase_url": "https://trainer-budy-default-rtdb.firebaseio.com",
+    "project_id": "trainer-budy",
+    "storage_bucket": "trainer-budy.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:234769230103:android:8e6e18a742d0255ecbaf52",
+        "android_client_info": {
+          "package_name": "gym.exercise.workout.trainerbudy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "234769230103-uokuj6nmu56obu8d7ctavh4tc6c4nneh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "gym.exercise.workout.trainerbudy",
+            "certificate_hash": "f060681d2fca81fe7c0d8f5f0ad8f2c75675bedd"
+          }
+        },
+        {
+          "client_id": "234769230103-f1bpu14j45eu1jm4mqsmjn3npgpp62mg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDwJyTwC9WPXY004xV4qXbu5ZsQSmFsdp8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "234769230103-f1bpu14j45eu1jm4mqsmjn3npgpp62mg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
