@@ -55,7 +55,7 @@ public class LocalDataBaseHandler extends SQLiteOpenHelper {
     public static final String CREATE_TRAINER_TABLE = "CREATE TABLE " + TRAINER_TABLE_NAME + "(" +
             COLUMN_ID + "INTEGER PRIMARY KEY AUTOINCREMENT,"+
             NAME + "VARCHAR NOT NULL," + EMAIL +"VARCHAR NOT NULL,"+MOBILE +"VARCHAR," +
-            PHOTO +"TEXT,"+ PASSWORD  + "VARCHAR NOT NULL," + WEIGHT +"FLOAT," + HEIGHT + "FLOAT," +
+            PHOTO +"BLOB,"+ PASSWORD  + "VARCHAR NOT NULL," + WEIGHT +"FLOAT," + HEIGHT + "FLOAT," +
             AGE + "INTEGER," + GENDER + "VARCHAR," + ALTERNATE_MOBILE + "VARCHAR," +
             GYM_NAME + "VARCHAR," + GYM_ADDRESS + "VARCHAR," + DEVICE_ID +"VARCHAR,"+
             CERTIFICATES +"TEXT," + ABOUT +"TEXT" +");";
@@ -63,7 +63,7 @@ public class LocalDataBaseHandler extends SQLiteOpenHelper {
     public static final String CREATE_TRAINEE_TABLE = "CREATE TABLE " + TRAINEE_TABLE_NAME + "(" +
             COLUMN_ID + "INTEGER PRIMARY KEY AUTOINCREMENT,"+
             NAME + "VARCHAR NOT NULL," + EMAIL +"VARCHAR NOT NULL,"+MOBILE +"VARCHAR," +
-            PHOTO +"TEXT,"+ PASSWORD  + "VARCHAR NOT NULL," + WEIGHT +"FLOAT," + HEIGHT + "FLOAT," +
+            PHOTO +"BLOB,"+ PASSWORD  + "VARCHAR NOT NULL," + WEIGHT +"FLOAT," + HEIGHT + "FLOAT," +
             AGE + "INTEGER," + GENDER + "VARCHAR," + ALTERNATE_MOBILE + "VARCHAR," +
             GYM_NAME + "VARCHAR," + GYM_ADDRESS + "VARCHAR," + DEVICE_ID +"VARCHAR,"+
             THE_TRAINER +"INTEGER,"+" FOREIGN KEY ("+THE_TRAINER+") REFERENCES "+TRAINER_TABLE_NAME+"("+COLUMN_ID+")"
@@ -103,8 +103,7 @@ public class LocalDataBaseHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(NAME,trainer.getName());
-        //TODO
-        //values.put(PHOTO,trainer.getPhoto());
+        values.put(PHOTO,trainer.bitmapToByte(trainer.getPhoto()));
         values.put(EMAIL,trainer.getEmail());
         values.put(MOBILE,trainer.getMobile());
         values.put(PASSWORD,trainer.getPassword());
@@ -137,8 +136,8 @@ public class LocalDataBaseHandler extends SQLiteOpenHelper {
         Trainer trainer =new Trainer();
         trainer.setName(c.getString(c.getColumnIndex(NAME)));
         trainer.setEmail(c.getString(c.getColumnIndex(EMAIL)));
-        //TODO
-        //trainer.setPhoto(c.get(c.getColumnIndex(NAME)));
+
+        trainer.setPhoto(trainer.byteToBitmap(c.getBlob(c.getColumnIndex(NAME))));
 
         trainer.setMobile(c.getString(c.getColumnIndex(MOBILE)));
         trainer.setPassword(c.getString(c.getColumnIndex(PASSWORD)));
@@ -149,6 +148,7 @@ public class LocalDataBaseHandler extends SQLiteOpenHelper {
         trainer.setGender(c.getString(c.getColumnIndex(GENDER)));
         trainer.setGymName(c.getString(c.getColumnIndex(GYM_NAME)));
         trainer.setGymAddress(c.getString(c.getColumnIndex(GYM_ADDRESS)));
+        trainer.setDeviceID(c.getString(c.getColumnIndex(DEVICE_ID)));
 
         trainer.setCertificates(c.getString(c.getColumnIndex(CERTIFICATES)));
         trainer.setAbout(c.getString(c.getColumnIndex(ABOUT)));
@@ -163,8 +163,7 @@ public class LocalDataBaseHandler extends SQLiteOpenHelper {
 
         ContentValues values = new ContentValues();
         values.put(NAME,trainee.getName());
-        //TODO
-        //values.put(PHOTO,trainer.getPhoto());
+        values.put(PHOTO,trainee.bitmapToByte(trainee.getPhoto()));
         values.put(EMAIL,trainee.getEmail());
         values.put(MOBILE,trainee.getMobile());
         values.put(PASSWORD,trainee.getPassword());
@@ -208,6 +207,7 @@ public class LocalDataBaseHandler extends SQLiteOpenHelper {
         trainee.setGender(c.getString(c.getColumnIndex(GENDER)));
         trainee.setGymName(c.getString(c.getColumnIndex(GYM_NAME)));
         trainee.setGymAddress(c.getString(c.getColumnIndex(GYM_ADDRESS)));
+        trainee.setDeviceID(c.getString(c.getColumnIndex(DEVICE_ID)));
 
 
         return trainee;
