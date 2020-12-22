@@ -2,11 +2,11 @@ package gym.exercise.workout.trainerbuddy.Entities;
 
 
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 
 import com.google.firebase.database.Exclude;
 
-
-
+import java.io.ByteArrayOutputStream;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -119,6 +119,15 @@ public class Trainer  {
 
     public void setPhotoPath(String photoPath) {
         PhotoPath = photoPath;
+    }
+
+    public byte[] bitmapToByte(Bitmap bitmap){
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 0, baos);
+        return baos.toByteArray();
+    }
+    public Bitmap byteToBitmap(byte[] bitmapdata ){
+        return BitmapFactory.decodeByteArray(bitmapdata, 0, bitmapdata.length);
     }
 }
 
