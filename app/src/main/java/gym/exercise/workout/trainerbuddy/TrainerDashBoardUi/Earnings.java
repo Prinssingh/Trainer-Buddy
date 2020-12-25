@@ -24,8 +24,6 @@ public class Earnings extends Fragment {
         View Root=inflater.inflate(R.layout.trainer_earnings, container, false);
 
 
-
-
         return Root;
     }
 

@@ -57,11 +57,18 @@
                         style="@style/textSize"
                         android:textColor="@color/blue_color"
                         android:textStyle="bold" />
-                    <EditText
-                        android:id="@+id/traineeName"
+
+                    <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/blue_color" />
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_height="wrap_content">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="This is Hint"/>
+
+                    </com.google.android.material.textfield.TextInputLayout>
                     <View style="@style/proifleDetailsView" />
 
                     <TextView

@@ -130,14 +130,14 @@
                     android:padding="5dp">
 
                     <TextView
-                        android:id="@+id/TraineeName"
+                        android:id="@+id/TraineeName1"
                         style="@style/viewParent.headerText.HomeCardTitle1"
                         android:text="Shubham Singh" />
 
                     <TextView
                         android:id="@+id/subscriptionDetail"
                         style="@style/viewParent.headerText.homeCardContent1"
-                        android:layout_below="@id/TraineeName"
+                        android:layout_below="@id/TraineeName1"
                         android:text="Subscription Left - 10/365 days" />
 
                     <Button
@@ -196,14 +196,14 @@
                     android:padding="5dp">
 
                     <TextView
-                        android:id="@+id/TraineeName"
+                        android:id="@+id/TraineeName1"
                         style="@style/viewParent.headerText.HomeCardTitle1"
                         android:text="Shubham Singh" />
 
                     <TextView
                         android:id="@+id/subscriptionDetail"
                         style="@style/viewParent.headerText.homeCardContent1"
-                        android:layout_below="@id/TraineeName"
+                        android:layout_below="@id/TraineeName1"
                         android:text="Subscription Left - 10/365 days" />
 
                     <Button
@@ -262,14 +262,14 @@
                     android:padding="5dp">
 
                     <TextView
-                        android:id="@+id/TraineeName"
+                        android:id="@+id/TraineeName1"
                         style="@style/viewParent.headerText.HomeCardTitle1"
                         android:text="Shubham Singh" />
 
                     <TextView
                         android:id="@+id/subscriptionDetail"
                         style="@style/viewParent.headerText.homeCardContent1"
-                        android:layout_below="@id/TraineeName"
+                        android:layout_below="@id/TraineeName1"
                         android:text="Subscription Left - 10/365 days" />
 
                     <Button
@@ -328,14 +328,14 @@
                     android:padding="5dp">
 
                     <TextView
-                        android:id="@+id/TraineeName"
+                        android:id="@+id/TraineeName1"
                         style="@style/viewParent.headerText.HomeCardTitle1"
                         android:text="Shubham Singh" />
 
                     <TextView
                         android:id="@+id/subscriptionDetail"
                         style="@style/viewParent.headerText.homeCardContent1"
-                        android:layout_below="@id/TraineeName"
+                        android:layout_below="@id/TraineeName1"
                         android:text="Subscription Left - 10/365 days" />
 
                     <Button
@@ -394,14 +394,14 @@
                     android:padding="5dp">
 
                     <TextView
-                        android:id="@+id/TraineeName"
+                        android:id="@+id/TraineeName1"
                         style="@style/viewParent.headerText.HomeCardTitle1"
                         android:text="Shubham Singh" />
 
                     <TextView
                         android:id="@+id/subscriptionDetail"
                         style="@style/viewParent.headerText.homeCardContent1"
-                        android:layout_below="@id/TraineeName"
+                        android:layout_below="@id/TraineeName1"
                         android:text="Subscription Left - 10/365 days" />
 
                     <Button
@@ -460,14 +460,14 @@
                     android:padding="5dp">
 
                     <TextView
-                        android:id="@+id/TraineeName"
+                        android:id="@+id/TraineeName1"
                         style="@style/viewParent.headerText.HomeCardTitle1"
                         android:text="Shubham Singh" />
 
                     <TextView
                         android:id="@+id/subscriptionDetail"
                         style="@style/viewParent.headerText.homeCardContent1"
-                        android:layout_below="@id/TraineeName"
+                        android:layout_below="@id/TraineeName1"
                         android:text="Subscription Left - 10/365 days" />
 
                     <Button
@@ -526,14 +526,14 @@
                     android:padding="5dp">
 
                     <TextView
-                        android:id="@+id/TraineeName"
+                        android:id="@+id/TraineeName1"
                         style="@style/viewParent.headerText.HomeCardTitle1"
                         android:text="Shubham Singh" />
 
                     <TextView
                         android:id="@+id/subscriptionDetail"
                         style="@style/viewParent.headerText.homeCardContent1"
-                        android:layout_below="@id/TraineeName"
+                        android:layout_below="@id/TraineeName1"
                         android:text="Subscription Left - 10/365 days" />
 
                     <Button
@@ -592,14 +592,14 @@
                 android:padding="5dp">
 
                 <TextView
-                    android:id="@+id/TraineeName"
+                    android:id="@+id/TraineeName1"
                     style="@style/viewParent.headerText.HomeCardTitle1"
                     android:text="Shubham Singh" />
 
                 <TextView
                     android:id="@+id/subscriptionDetail"
                     style="@style/viewParent.headerText.homeCardContent1"
-                    android:layout_below="@id/TraineeName"
+                    android:layout_below="@id/TraineeName1"
                     android:text="Subscription Left - 10/365 days" />
 
                 <Button

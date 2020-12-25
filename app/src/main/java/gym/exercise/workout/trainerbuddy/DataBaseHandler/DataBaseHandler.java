@@ -69,7 +69,7 @@ public class DataBaseHandler {
         FirebaseStorage storage = FirebaseStorage.getInstance();
         StorageReference imageRef = storage.getReference().child(UserType+"/"+UID+".png");
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
         byte[] data = baos.toByteArray();
 
         UploadTask uploadTask = imageRef.putBytes(data);

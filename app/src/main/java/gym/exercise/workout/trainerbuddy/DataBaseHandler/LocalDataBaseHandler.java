@@ -137,7 +137,7 @@ public class LocalDataBaseHandler extends SQLiteOpenHelper {
         trainer.setName(c.getString(c.getColumnIndex(NAME)));
         trainer.setEmail(c.getString(c.getColumnIndex(EMAIL)));
 
-        trainer.setPhoto(trainer.byteToBitmap(c.getBlob(c.getColumnIndex(NAME))));
+        trainer.setPhoto(trainer.byteToBitmap(c.getBlob(c.getColumnIndex(PHOTO))));
 
         trainer.setMobile(c.getString(c.getColumnIndex(MOBILE)));
         trainer.setPassword(c.getString(c.getColumnIndex(PASSWORD)));
@@ -195,8 +195,8 @@ public class LocalDataBaseHandler extends SQLiteOpenHelper {
         Trainee trainee =new Trainee();
         trainee.setName(c.getString(c.getColumnIndex(NAME)));
         trainee.setEmail(c.getString(c.getColumnIndex(EMAIL)));
-        //TODO
-        //trainer.setPhoto(c.get(c.getColumnIndex(NAME)));
+
+        trainee.setPhoto(trainee.byteToBitmap(c.getBlob(c.getColumnIndex(PHOTO))));
 
         trainee.setMobile(c.getString(c.getColumnIndex(MOBILE)));
         trainee.setPassword(c.getString(c.getColumnIndex(PASSWORD)));
@@ -208,7 +208,6 @@ public class LocalDataBaseHandler extends SQLiteOpenHelper {
         trainee.setGymName(c.getString(c.getColumnIndex(GYM_NAME)));
         trainee.setGymAddress(c.getString(c.getColumnIndex(GYM_ADDRESS)));
         trainee.setDeviceID(c.getString(c.getColumnIndex(DEVICE_ID)));
-
 
         return trainee;
     }
