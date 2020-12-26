@@ -4,6 +4,11 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
+import android.net.Network;
+import android.net.NetworkCapabilities;
+import android.net.NetworkRequest;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.LayoutInflater;
@@ -73,7 +78,6 @@ public class LoginPage extends Fragment implements View.OnClickListener {
         loginButton.setOnClickListener(this);
         loginEmail =Root.findViewById(R.id.loginEmail);
         loginPassword=Root.findViewById(R.id.loginPassword);
-
 
 
         return Root;

@@ -1,11 +1,7 @@
 <resources>
     <string name="app_name">Trainer Buddy</string>
-    <string name="title_activity_trainer_dash_board">here </string>
     <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="profile">Profile</string>
     <string name="new_trainee">Add Trainee</string>
     <string name="trainee_list">Trainee list</string>

@@ -10,8 +10,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import gym.exercise.workout.trainerbuddy.R;
-
 public class EarningsListAdapter extends  RecyclerView.Adapter<EarningsListAdapter.ViewHolder> {
 
 
@@ -38,11 +36,11 @@ public class EarningsListAdapter extends  RecyclerView.Adapter<EarningsListAdapt
         public RelativeLayout relativeLayout;
         public ViewHolder(View itemView) {
             super(itemView);
-            this.ProfilePic = (ImageView) itemView.findViewById(R.id.ProfilePic);
-            this.Name = (TextView) itemView.findViewById(R.id.TraineeName);
-            this.PavementDate = (TextView) itemView.findViewById(R.id.TraineePlaymentDate);
-            this.PaymentAmount = (TextView) itemView.findViewById(R.id.PaymentAmount);
-            relativeLayout = (RelativeLayout)itemView.findViewById(R.id.Trainer_Earnings_Item_Holder);
-        }
+//            this.ProfilePic = (ImageView) itemView.findViewById(R.id.ProfilePic);
+//            this.Name = (TextView) itemView.findViewById(R.id.TraineeName);
+//            this.PavementDate = (TextView) itemView.findViewById(R.id.TraineePlaymentDate);
+//            this.PaymentAmount = (TextView) itemView.findViewById(R.id.PaymentAmount);
+//            relativeLayout = (RelativeLayout)itemView.findViewById(R.id.Trainer_Earnings_Item_Holder);
+      }
     }
 }
