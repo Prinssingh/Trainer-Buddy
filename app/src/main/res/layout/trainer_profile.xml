@@ -7,6 +7,7 @@
     android:layout_gravity="center"
     android:background="@color/white_color"
     android:focusableInTouchMode="true"
+    tools:ignore="HardcodedText"
     android:gravity="center">
 
     <ScrollView
@@ -17,19 +18,18 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="vertical">
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/TraineeDetail"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                android:layout_marginTop="15dp"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
                 android:clickable="true"
                 android:focusable="true"
-                app:cardBackgroundColor="@color/blue_color"
+                app:cardBackgroundColor="@color/grey_color"
                 app:cardCornerRadius="10dp">
 
                 <RelativeLayout
@@ -42,17 +42,18 @@
                         android:layout_width="120dp"
                         android:layout_height="120dp"
                         android:layout_centerInParent="true"
-                        app:cardCornerRadius="60dp">
+                        app:cardCornerRadius="120dp">
 
                         <ImageView
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:src="@drawable/ic_login_hero"/>
+                            android:src="@drawable/shubham"
+                            android:contentDescription="profilepic" />
 
                     </androidx.cardview.widget.CardView>
 
                     <TextView
-                        android:id="@+id/TraineeName1"
+                        android:id="@+id/TraineeName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Hi, Shubham"
@@ -60,7 +61,7 @@
                         android:layout_centerHorizontal="true"
                         android:layout_below="@+id/profileImage"
                         android:textColor="@color/white_color"
-                        android:textSize="20dp" />
+                        android:textSize="20sp" />
 
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
@@ -71,14 +72,16 @@
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
                 android:layout_marginTop="5dp"
+                app:cardBackgroundColor="@color/grey_color"
                 android:layout_marginBottom="30dp"
                 app:cardCornerRadius="15dp">
 
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/shape_cardview" />
+                <!--               <ImageView-->
+                <!--                   android:layout_width="match_parent"-->
+                <!--                   android:layout_height="match_parent"-->
+                <!--                   android:scaleType="fitXY"-->
+                <!--                   android:background="@color/grey_color"-->
+                <!--                   android:src="@drawable/shape_cardview" />-->
 
 
                 <LinearLayout
@@ -90,27 +93,27 @@
                     <RelativeLayout style="@style/profileDetailsLayout">
                         <ImageView
                             android:id="@+id/nameImageView"
-                            android:src="@drawable/ic_name"
+                            android:src="@drawable/name"
                             style="@style/profileDetailsImage" />
 
                         <TextView
                             android:id="@+id/nameTextView"
                             android:text="Name"
-                            android:layout_toRightOf="@id/nameImageView"
+                            android:layout_toEndOf="@id/nameImageView"
                             style="@style/profileDetailsTextMain" />
 
                         <TextView
                             android:text="developer"
-                            android:layout_toRightOf="@id/nameImageView"
+                            android:layout_toEndOf="@id/nameImageView"
                             style="@style/profileDetailsMiniText" />
 
                     </RelativeLayout>
 
-                    <View style="@style/proifleDetailsView" />
+                    <!--                   <View style="@style/proifleDetailsView" />-->
                     <RelativeLayout style="@style/profileDetailsLayout">
                         <ImageView
                             android:id="@+id/mobileImageView"
-                            android:src="@drawable/ic_mobile"
+                            android:src="@drawable/phone"
                             style="@style/profileDetailsImage" />
 
                         <TextView
@@ -125,11 +128,11 @@
 
                     </RelativeLayout>
 
-                    <View style="@style/proifleDetailsView" />
+                    <!--                   <View style="@style/proifleDetailsView" />-->
                     <RelativeLayout style="@style/profileDetailsLayout">
                         <ImageView
                             android:id="@+id/emailImageView"
-                            android:src="@drawable/ic_email"
+                            android:src="@drawable/mail"
                             style="@style/profileDetailsImage" />
 
                         <TextView
@@ -144,11 +147,11 @@
 
                     </RelativeLayout>
 
-                    <View style="@style/proifleDetailsView" />
+                    <!--                   <View style="@style/proifleDetailsView" />-->
                     <RelativeLayout style="@style/profileDetailsLayout">
                         <ImageView
                             android:id="@+id/addressImageView"
-                            android:src="@drawable/ic_address"
+                            android:src="@drawable/address"
                             style="@style/profileDetailsImage" />
 
                         <TextView
@@ -163,11 +166,11 @@
 
                     </RelativeLayout>
 
-                    <View style="@style/proifleDetailsView" />
+                    <!--                   <View style="@style/proifleDetailsView" />-->
                     <RelativeLayout style="@style/profileDetailsLayout">
                         <ImageView
                             android:id="@+id/dobImageView"
-                            android:src="@drawable/ic_dob"
+                            android:src="@drawable/dob"
                             style="@style/profileDetailsImage" />
 
                         <TextView
@@ -182,7 +185,84 @@
 
                     </RelativeLayout>
 
-                    <View style="@style/proifleDetailsView" />
+                    <!--                   <View style="@style/proifleDetailsView" />-->
+                    <RelativeLayout style="@style/profileDetailsLayout">
+                        <ImageView
+                            android:id="@+id/ageImageView"
+                            android:src="@drawable/age"
+                            style="@style/profileDetailsImage" />
+
+                        <TextView
+                            android:text="Age"
+                            android:layout_toRightOf="@id/ageImageView"
+                            style="@style/profileDetailsTextMain" />
+
+                        <TextView
+                            android:text="30 Years"
+                            android:layout_toRightOf="@id/ageImageView"
+                            style="@style/profileDetailsMiniText" />
+
+                    </RelativeLayout>
+
+                    <!--                   <View style="@style/proifleDetailsView" />-->
+                    <RelativeLayout style="@style/profileDetailsLayout">
+                        <ImageView
+                            android:id="@+id/heightImageView"
+                            android:src="@drawable/height"
+                            style="@style/profileDetailsImage" />
+
+                        <TextView
+                            android:text="Height"
+                            android:layout_toRightOf="@id/heightImageView"
+                            style="@style/profileDetailsTextMain" />
+
+                        <TextView
+                            android:text="5'5"
+                            android:layout_toRightOf="@id/heightImageView"
+                            style="@style/profileDetailsMiniText" />
+
+                    </RelativeLayout>
+
+                    <!--                   <View style="@style/proifleDetailsView" />-->
+                    <RelativeLayout style="@style/profileDetailsLayout">
+                        <ImageView
+                            android:id="@+id/weightImageView"
+                            android:src="@drawable/weight"
+                            style="@style/profileDetailsImage" />
+
+                        <TextView
+                            android:text="Weight"
+                            android:layout_toRightOf="@id/weightImageView"
+                            style="@style/profileDetailsTextMain" />
+
+                        <TextView
+                            android:text="65 KG"
+                            android:layout_toRightOf="@id/weightImageView"
+                            style="@style/profileDetailsMiniText" />
+
+                    </RelativeLayout>
+
+                    <!--                   <View style="@style/proifleDetailsView" />-->
+                    <RelativeLayout style="@style/profileDetailsLayout">
+                        <ImageView
+                            android:id="@+id/foodImageView"
+                            android:src="@drawable/food"
+                            style="@style/profileDetailsImage" />
+
+                        <TextView
+                            android:text="Food"
+                            android:layout_toRightOf="@id/foodImageView"
+                            style="@style/profileDetailsTextMain"
+                             />
+
+                        <TextView
+                            android:text="Non Vegiteian"
+                            android:layout_toRightOf="@id/foodImageView"
+                            style="@style/profileDetailsMiniText" />
+
+                    </RelativeLayout>
+
+                    <!--                   <View style="@style/proifleDetailsView" />-->
 
                     <androidx.cardview.widget.CardView
                         android:id="@+id/profileImage1f"
