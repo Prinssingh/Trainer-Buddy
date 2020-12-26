@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
@@ -23,11 +24,11 @@
             <androidx.cardview.widget.CardView
                 android:id="@+id/TrainerSubscriptionDaysleft"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="180dp"
                 android:layout_marginTop="15dp"
                 android:clickable="true"
                 android:focusable="true"
-                app:cardBackgroundColor="@color/blue_color"
+                app:cardBackgroundColor="@color/grey_color"
                 app:cardCornerRadius="10dp">
 
                 <RelativeLayout
@@ -42,7 +43,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Hi, Shubham Singh"
-                        android:textColor="@color/white_color" />
+                        android:textColor="@color/light_green" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -78,7 +79,7 @@
                                 android:gravity="center"
                                 android:text="29\nDays"
                                 android:textAlignment="center"
-                                android:textColor="@color/white_color"
+                                android:textColor="@color/light_green"
                                 android:textSize="20dp"
                                 android:textStyle="bold" />
 
@@ -88,7 +89,7 @@
                                 android:layout_below="@id/progress_bar"
                                 android:gravity="center"
                                 android:text="Validity"
-                                android:textColor="@color/white_color" />
+                                android:textColor="@color/light_green" />
 
                         </RelativeLayout>
 
@@ -120,7 +121,7 @@
                                 android:gravity="center"
                                 android:text="25"
                                 android:textAlignment="center"
-                                android:textColor="@color/white_color"
+                                android:textColor="@color/light_green"
                                 android:textSize="20dp"
                                 android:textStyle="bold" />
 
@@ -130,7 +131,7 @@
                                 android:layout_below="@id/progress_bar1"
                                 android:gravity="center"
                                 android:text="Active Trainee"
-                                android:textColor="@color/white_color" />
+                                android:textColor="@color/light_green" />
 
                         </RelativeLayout>
 
@@ -163,7 +164,7 @@
                                 android:gravity="center"
                                 android:text="2400"
                                 android:textAlignment="center"
-                                android:textColor="@color/white_color"
+                                android:textColor="@color/light_green"
                                 android:textSize="20dp"
                                 android:textStyle="bold" />
 
@@ -173,7 +174,7 @@
                                 android:layout_below="@id/progress_bar2"
                                 android:gravity="center"
                                 android:text="Month Earning"
-                                android:textColor="@color/white_color" />
+                                android:textColor="@color/light_green" />
 
                         </RelativeLayout>
 
@@ -184,10 +185,11 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/addPayment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
-                app:cardBackgroundColor="@color/blue_color"
+                app:cardBackgroundColor="@color/grey_color"
                 app:cardCornerRadius="10dp">
 
                 <RelativeLayout
@@ -203,7 +205,7 @@
 
                     <Button
                         android:id="@+id/getPlaymentButton"
-                       style="@style/whiteButton"
+                        style="@style/whiteButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
@@ -216,11 +218,11 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/addPayment"
+                android:id="@+id/AnnualIncome"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="15dp"
-                app:cardBackgroundColor="@color/blue_color"
+                app:cardBackgroundColor="@color/grey_color"
                 app:cardCornerRadius="10dp">
 
                 <RelativeLayout
@@ -266,7 +268,7 @@
                 android:layout_marginTop="15dp"
                 android:clickable="true"
                 android:focusable="true"
-                app:cardBackgroundColor="@color/blue_color"
+                app:cardBackgroundColor="@color/grey_color"
                 app:cardCornerRadius="10dp">
 
                 <RelativeLayout
@@ -276,13 +278,12 @@
                     android:padding="5dp">
 
                     <TextView
-                        android:id="@+id/TraineeName1"
+                        android:id="@+id/TraineeName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Explore Now"
-                        android:textColor="@color/white_color"
-                        android:textSize="20dp" />
-
+                        android:textColor="@color/light_green"
+                        android:textSize="20sp" />
 
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
@@ -294,7 +295,7 @@
         android:layout_width="11dp"
         android:layout_height="match_parent"
         android:layout_alignParentTop="true"
-        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
         android:layout_marginTop="20dp"
         android:background="@drawable/ic_side_bg" />
 
