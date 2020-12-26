@@ -132,12 +132,12 @@ public class TrainerDashBoard extends AppCompatActivity implements View.OnClickL
                 break;
 
             case R.id.TrainerNotification:
-                Intent notifications= new Intent(this,TrainerDashBoard.class);// TODO TrainerNotificationActivity.class
+                Intent notifications= new Intent(this,TrainerNotificationsActivity.class);
                 startActivity(notifications);
                 break;
 
             case R.id.TrainerSettings:
-                Intent settings = new Intent(this,TrainerDashBoard.class); // TODO settings.class
+                Intent settings = new Intent(this,TrainerSettingsActivity.class);
                 startActivity(settings);
                 break;
         }
