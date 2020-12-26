@@ -4,6 +4,7 @@
 
         <EditTextPreference
             app:key="signature"
+            app:icon="@drawable/profilepic"
             app:title="@string/signature_title"
             app:useSimpleSummaryProvider="true" />
 
