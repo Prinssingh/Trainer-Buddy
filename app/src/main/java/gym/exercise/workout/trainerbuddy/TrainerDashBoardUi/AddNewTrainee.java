@@ -3,6 +3,7 @@ package gym.exercise.workout.trainerbuddy.TrainerDashBoardUi;
 import android.app.DatePickerDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -256,7 +257,6 @@ public class AddNewTrainee extends Fragment implements View.OnClickListener {
         EditText text1 = (EditText)Root.findViewById(R.id.height);
         String height = text.getText().toString();
 
-
         //String fee = subscriptionFee.getSelectedItem().toString();
 
         trainee.setName(name.toString());
@@ -276,5 +276,107 @@ public class AddNewTrainee extends Fragment implements View.OnClickListener {
 //        trainee.setMussels(Mussels);
 //        trainee.setFood(food);
         return trainee;
+    }
+
+    public boolean isValidInput(){
+        boolean valid=true;
+        if(name.getText().toString().isEmpty()){
+            name.setError("Your can't left name field empty");
+            name.requestFocus();
+            valid=false;
+        }
+        else if( email.getText().toString().isEmpty()){
+            email.setError("You can't left email field empty!!");
+            email.requestFocus();
+            valid=false;
+        }
+        else if(mobile.getText().toString().isEmpty()){
+            mobile.setError("Your can't left mobile field empty");
+            mobile.requestFocus();
+            valid=false;
+        }
+        else if (!name.getText().toString().matches("^[A-Z a-z]+$")){
+            name.setError("Enter Character's and space only !!");
+            name.requestFocus();
+            valid=false;
+        }
+
+        else if (!Patterns.EMAIL_ADDRESS.matcher(email.getText().toString()).matches()){
+            email.setError("Please Fill Correct email address!!");
+            email.requestFocus();
+            valid=false;
+        }
+        else if(!mobile.getText().toString().matches("^(\\+?\\d{1,4}[\\s-])?(?!0+\\s+,?$)\\d{10}\\s*,?$")){
+            mobile.setError("Wrong mobile number formatting");
+            mobile.requestFocus();
+            valid=false;
+        }
+        else if(!alternateMobile.getText().toString().matches("^(\\+?\\d{1,4}[\\s-])?(?!0+\\s+,?$)\\d{10}\\s*,?$")){
+            alternateMobile.setError("Wrong mobile number formatting");
+            alternateMobile.requestFocus();
+            valid=false;
+        }
+
+        return valid;
+    }
+
+    public void setAllDisable(){
+        name.setEnabled(false);
+        male.setEnabled(false);
+        female.setEnabled(false);
+        other.setEnabled(false);
+        ageSpinner.setEnabled(false);
+        mobile.setEnabled(false);
+        email.setEnabled(false);
+        weight.setEnabled(false);
+        inKg.setEnabled(false);
+        inLbs.setEnabled(false);
+        height.setEnabled(false);
+        inInches.setEnabled(false);
+        inMeter.setEnabled(false);
+        student.setEnabled(false);
+        officeJob.setEnabled(false);
+        travellingJob.setEnabled(false);
+        physicalJob.setEnabled(false);
+        labourJob.setEnabled(false);
+        gain.setEnabled(false);
+        loss.setEnabled(false);
+        maintain.setEnabled(false);
+        musselsGain.setEnabled(false);
+        musselsMaintain.setEnabled(false);
+        vegiterian.setEnabled(false);
+        nonVegiterian.setEnabled(false);
+        subscriptionFee.setEnabled(false);
+        etDate.setEnabled(false);
+    }
+
+    public void setAllEnable(){
+        name.setEnabled(true);
+        male.setEnabled(true);
+        female.setEnabled(true);
+        other.setEnabled(true);
+        ageSpinner.setEnabled(true);
+        mobile.setEnabled(true);
+        email.setEnabled(true);
+        weight.setEnabled(true);
+        inKg.setEnabled(true);
+        inLbs.setEnabled(true);
+        height.setEnabled(true);
+        inInches.setEnabled(true);
+        inMeter.setEnabled(true);
+        student.setEnabled(true);
+        officeJob.setEnabled(true);
+        travellingJob.setEnabled(true);
+        physicalJob.setEnabled(true);
+        labourJob.setEnabled(true);
+        gain.setEnabled(true);
+        loss.setEnabled(true);
+        maintain.setEnabled(true);
+        musselsGain.setEnabled(true);
+        musselsMaintain.setEnabled(true);
+        vegiterian.setEnabled(true);
+        nonVegiterian.setEnabled(true);
+        subscriptionFee.setEnabled(true);
+        etDate.setEnabled(true);
     }
 }
