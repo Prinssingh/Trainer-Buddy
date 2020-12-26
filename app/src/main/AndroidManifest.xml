@@ -19,9 +19,13 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        tools:targetApi="q"
-        android:windowSoftInputMode="stateHidden|adjustResize">
-        <activity android:name=".TrainerDashBoard"/>
+        android:windowSoftInputMode="stateHidden|adjustResize"
+        tools:targetApi="q">
+        <activity android:name=".TrainerNotificationsActivity"></activity>
+        <activity
+            android:name=".TrainerSettingsActivity"
+            android:label="@string/title_activity_trainer_settings" />
+        <activity android:name=".TrainerDashBoard" />
         <activity
             android:name=".DashBoard"
             android:theme="@style/AppThemeWithNoActionBar" />

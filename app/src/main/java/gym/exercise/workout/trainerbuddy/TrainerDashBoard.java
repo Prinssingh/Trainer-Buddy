@@ -3,8 +3,10 @@ package gym.exercise.workout.trainerbuddy;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -21,15 +23,22 @@ import gym.exercise.workout.trainerbuddy.TrainerDashBoardUi.Home;
 import gym.exercise.workout.trainerbuddy.TrainerDashBoardUi.Profile;
 import gym.exercise.workout.trainerbuddy.TrainerDashBoardUi.TraineeList;
 
-public class TrainerDashBoard extends AppCompatActivity {
-
+public class TrainerDashBoard extends AppCompatActivity implements View.OnClickListener {
+    Toolbar toolbar;
+    BottomNavigationView navigation;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trainer_dash_board);
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.findViewById(R.id.TrainerToolBarProfile).setOnClickListener(this);
+        toolbar.findViewById(R.id.TrainerNotification).setOnClickListener(this);
+        toolbar.findViewById(R.id.TrainerSettings).setOnClickListener(this);
+
+
         //TextView mTitle = (TextView) toolbar.findViewById(R.id.toolbar_title);
+
 
         setSupportActionBar(toolbar);
         //mTitle.setText(toolbar.getTitle());
@@ -38,10 +47,10 @@ public class TrainerDashBoard extends AppCompatActivity {
 
 
         // Bottom Navigation Control
-        BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.BottomNav);
+        navigation = (BottomNavigationView) findViewById(R.id.BottomNav);
         if (savedInstanceState == null) {
             navigation.setSelectedItemId(R.id.Trainee_Home); // change to whichever id should be default
-             ChangeFragment(Home.newInstance());
+            ChangeFragment(Home.newInstance());
         }
         navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @SuppressLint("NonConstantResourceId")
@@ -69,7 +78,6 @@ public class TrainerDashBoard extends AppCompatActivity {
 
             }
         });
-
 
 
     }
@@ -114,5 +122,25 @@ public class TrainerDashBoard extends AppCompatActivity {
     }
 
 
+    @SuppressLint("NonConstantResourceId")
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()){
+            case R.id.TrainerToolBarProfile:
+                navigation.setSelectedItemId(R.id.Trainer_Profile);
+                ChangeFragment(Profile.newInstance());
+                break;
 
+            case R.id.TrainerNotification:
+                Intent notifications= new Intent(this,TrainerNotificationsActivity.class);
+                startActivity(notifications);
+                break;
+
+            case R.id.TrainerSettings:
+                Intent settings = new Intent(this,TrainerSettingsActivity.class);
+                startActivity(settings);
+                break;
+        }
+
+    }
 }
