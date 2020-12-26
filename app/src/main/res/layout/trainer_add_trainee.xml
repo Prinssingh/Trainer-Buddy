@@ -74,7 +74,7 @@
                         android:textSize="20sp"
                         android:layout_marginLeft="3dp"
                         android:layout_marginTop="10dp"
-                        android:textColor="@color/light_green"/>
+                        android:textColor="@color/primary_sky_blue"/>
 
                     <RadioGroup
                         android:id="@+id/genderRadioGroup"
@@ -122,7 +122,7 @@
                             android:textSize="20sp"
                             android:layout_marginLeft="3dp"
                             android:layout_marginTop="10dp"
-                            android:textColor="@color/light_green"/>
+                            android:textColor="@color/primary_sky_blue"/>
 
                         <Spinner
                             android:id="@+id/ageSnipper"
@@ -179,7 +179,7 @@
                         android:layout_marginLeft="3dp"
                         android:textSize="20sp"
                         android:layout_marginTop="10dp"
-                        android:textColor="@color/light_green"/>
+                        android:textColor="@color/primary_sky_blue"/>
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -231,7 +231,7 @@
                         android:layout_marginLeft="3dp"
                         style="@style/textSize"
                         android:layout_marginTop="10dp"
-                        android:textColor="@color/light_green"/>
+                        android:textColor="@color/primary_sky_blue"/>
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -285,7 +285,7 @@
                         android:layout_marginLeft="3dp"
                         android:textSize="20sp"
                         android:layout_marginTop="10dp"
-                        android:textColor="@color/light_green" />
+                        android:textColor="@color/primary_sky_blue" />
 
                     <RadioGroup
                         android:id="@+id/occupationRadioGroup"
@@ -344,7 +344,7 @@
                         android:layout_marginLeft="3dp"
                         android:textSize="20sp"
                         android:layout_marginTop="10dp"
-                        android:textColor="@color/light_green"/>
+                        android:textColor="@color/primary_sky_blue"/>
 
                     <RadioGroup
                         android:id="@+id/weightGainRadiogroup"
@@ -387,7 +387,7 @@
                         android:layout_marginLeft="3dp"
                         android:textSize="20sp"
                         android:layout_marginTop="10dp"
-                        android:textColor="@color/light_green"/>
+                        android:textColor="@color/primary_sky_blue"/>
 
                     <RadioGroup
                         android:id="@+id/musselsGainRadioGroup"
@@ -422,7 +422,7 @@
                         android:textSize="20sp"
                         android:layout_marginLeft="3dp"
                         android:layout_marginTop="10dp"
-                        android:textColor="@color/light_green" />
+                        android:textColor="@color/primary_sky_blue" />
 
                     <RadioGroup
                         android:id="@+id/foodRadioGroup"
@@ -482,7 +482,7 @@
                             android:focusable="true"
                             android:focusableInTouchMode="true"
                             android:clickable="true"
-                            android:textColor="@color/light_green"/>
+                            android:textColor="@color/primary_sky_blue"/>
 
                         <EditText
                             android:layout_width="200dp"

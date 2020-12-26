@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
-    android:background="@color/blue_color"
+    android:background="@color/black_color"
     android:focusableInTouchMode="true"
     android:gravity="center">
 
@@ -55,20 +55,20 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Name"
-                        android:textColor="@color/blue_color"
+                        android:textColor="@color/black_color"
                         android:textStyle="bold" />
 
                     <EditText
                         android:id="@+id/nameRegister"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/blue_color" />
+                        android:textColor="@color/black_color" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Email"
-                        android:textColor="@color/blue_color"
+                        android:textColor="@color/black_color"
                         android:textStyle="bold" />
 
                     <EditText
@@ -77,13 +77,13 @@
                         android:layout_height="wrap_content"
                         android:ems="10"
                         android:inputType="textEmailAddress"
-                        android:textColor="@color/blue_color" />
+                        android:textColor="@color/black_color" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Mobile Number"
-                        android:textColor="@color/blue_color"
+                        android:textColor="@color/black_color"
                         android:textStyle="bold" />
 
                     <EditText
@@ -92,13 +92,13 @@
                         android:layout_height="wrap_content"
                         android:ems="10"
                         android:inputType="phone"
-                        android:textColor="@color/blue_color" />
+                        android:textColor="@color/black_color" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Password"
-                        android:textColor="@color/blue_color"
+                        android:textColor="@color/black_color"
                         android:textStyle="bold" />
 
                     <EditText
@@ -107,13 +107,13 @@
                         android:layout_height="wrap_content"
                         android:ems="10"
                         android:inputType="textPassword"
-                        android:textColor="@color/blue_color" />
+                        android:textColor="@color/black_color" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Confirm Password"
-                        android:textColor="@color/blue_color"
+                        android:textColor="@color/black_color"
                         android:textStyle="bold" />
 
                     <EditText
@@ -121,7 +121,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:inputType="textPassword"
-                        android:textColor="@color/blue_color" />
+                        android:textColor="@color/black_color" />
 
                     <Button
                         android:id="@+id/registerButton"
@@ -141,7 +141,7 @@
                         android:clickable="true"
                         android:focusable="true"
                         android:text="Already have an account?"
-                        android:textColor="@color/blue_color"
+                        android:textColor="@color/black_color"
                         android:textSize="17sp"
                         android:textStyle="bold" />
 

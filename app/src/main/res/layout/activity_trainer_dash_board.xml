@@ -9,7 +9,7 @@
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:background="@color/blue_color"
+        android:background="@color/grey_color"
         android:layout_height="wrap_content">
 
         <RelativeLayout
@@ -105,7 +105,7 @@
         android:id="@+id/BottomNav"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/blue_color"
+        android:background="@color/grey_color"
         android:layout_alignParentBottom="true"
         app:menu="@menu/bottom_nav_menu"
         app:itemIconTint="@color/white_color"

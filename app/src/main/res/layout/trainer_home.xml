@@ -43,7 +43,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Hi, Shubham Singh"
-                        android:textColor="@color/light_green" />
+                        android:textColor="@color/primary_sky_blue" />
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -79,7 +79,7 @@
                                 android:gravity="center"
                                 android:text="29\nDays"
                                 android:textAlignment="center"
-                                android:textColor="@color/light_green"
+                                android:textColor="@color/primary_sky_blue"
                                 android:textSize="20dp"
                                 android:textStyle="bold" />
 
@@ -89,7 +89,7 @@
                                 android:layout_below="@id/progress_bar"
                                 android:gravity="center"
                                 android:text="Validity"
-                                android:textColor="@color/light_green" />
+                                android:textColor="@color/primary_sky_blue" />
 
                         </RelativeLayout>
 
@@ -121,7 +121,7 @@
                                 android:gravity="center"
                                 android:text="25"
                                 android:textAlignment="center"
-                                android:textColor="@color/light_green"
+                                android:textColor="@color/primary_sky_blue"
                                 android:textSize="20dp"
                                 android:textStyle="bold" />
 
@@ -131,7 +131,7 @@
                                 android:layout_below="@id/progress_bar1"
                                 android:gravity="center"
                                 android:text="Active Trainee"
-                                android:textColor="@color/light_green" />
+                                android:textColor="@color/primary_sky_blue" />
 
                         </RelativeLayout>
 
@@ -164,7 +164,7 @@
                                 android:gravity="center"
                                 android:text="2400"
                                 android:textAlignment="center"
-                                android:textColor="@color/light_green"
+                                android:textColor="@color/primary_sky_blue"
                                 android:textSize="20dp"
                                 android:textStyle="bold" />
 
@@ -174,7 +174,7 @@
                                 android:layout_below="@id/progress_bar2"
                                 android:gravity="center"
                                 android:text="Month Earning"
-                                android:textColor="@color/light_green" />
+                                android:textColor="@color/primary_sky_blue" />
 
                         </RelativeLayout>
 
@@ -211,7 +211,7 @@
                         android:layout_alignParentRight="true"
                         android:layout_marginLeft="20dp"
                         android:text="Add"
-                        android:textColor="@color/blue_color" />
+                        android:textColor="@color/black_color" />
 
 
                 </RelativeLayout>
@@ -282,7 +282,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Explore Now"
-                        android:textColor="@color/light_green"
+                        android:textColor="@color/primary_sky_blue"
                         android:textSize="20sp" />
 
                 </RelativeLayout>

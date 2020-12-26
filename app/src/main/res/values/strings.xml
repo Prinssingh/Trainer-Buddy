@@ -3,8 +3,8 @@
     <string name="title_home">Home</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="profile">Profile</string>
-    <string name="new_trainee">Add Trainee</string>
-    <string name="trainee_list">Trainee list</string>
+    <string name="new_trainee">Add</string>
+    <string name="trainee_list">List</string>
     <string name="earnings">Earnings</string>
 
 </resources>
