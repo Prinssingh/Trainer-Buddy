@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/blue_color"
+    android:background="@color/grey_color"
     android:focusableInTouchMode="true"
     android:gravity="center"
     android:layout_gravity="center">
@@ -31,11 +31,11 @@
                     android:text="Here’s\nyour first\nstep with \nus! "/>
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_login_hero"
+                    android:layout_width="240dp"
+                    android:layout_height="200dp"
                     android:layout_alignParentTop="true"
-                    android:layout_alignParentRight="true"/>
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/smalllogo" />
             </RelativeLayout>
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
@@ -49,26 +49,21 @@
                     android:layout_margin="10dp"
                     android:orientation="vertical">
 
-                    <TextView
-                        android:id="@+id/Name"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Name"
-                        style="@style/textSize"
-                        android:textColor="@color/blue_color"
-                        android:textStyle="bold" />
-
                     <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                        android:layout_height="wrap_content">
+                        android:layout_height="wrap_content"
+                        android:hint="Name"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
                         <com.google.android.material.textfield.TextInputEditText
                             android:layout_width="match_parent"
+                            android:id="@+id/name"
+                            android:textColor="@color/grey_color"
                             android:layout_height="wrap_content"
-                            android:hint="This is Hint"/>
+                            />
 
                     </com.google.android.material.textfield.TextInputLayout>
+
                     <View style="@style/proifleDetailsView" />
 
                     <TextView
@@ -76,43 +71,39 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Gender"
-                        style="@style/textSize"
+                        android:textSize="20sp"
+                        android:layout_marginLeft="3dp"
                         android:layout_marginTop="10dp"
-                        android:textColor="@color/blue_color"
-                        android:textStyle="bold" />
+                        android:textColor="@color/light_green"/>
 
                     <RadioGroup
-                        android:id="@+id/traineeGenderRadioGroup"
+                        android:id="@+id/genderRadioGroup"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:orientation="horizontal"
-                        android:layout_marginTop="10dp">
+                        android:orientation="horizontal">
 
                         <RadioButton
-                            android:id="@+id/traineeMale"
+                            android:id="@+id/male"
                             android:layout_weight="1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textColor="@color/blue_color"
-                            android:textStyle="bold"
+                            android:textColor="@color/grey_color"
                             android:text="Male" />
 
                         <RadioButton
-                            android:id="@+id/traineeFemale"
+                            android:id="@+id/female"
                             android:layout_weight="1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textColor="@color/blue_color"
-                            android:textStyle="bold"
+                            android:textColor="@color/grey_color"
                             android:text="Female" />
 
                         <RadioButton
-                            android:id="@+id/traineeOther"
+                            android:id="@+id/other"
                             android:layout_weight="1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textColor="@color/blue_color"
-                            android:textStyle="bold"
+                            android:textColor="@color/grey_color"
                             android:text="Other" />
                     </RadioGroup>
                     <View style="@style/proifleDetailsView" />
@@ -128,14 +119,16 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Age"
-                            style="@style/textSize"
+                            android:textSize="20sp"
+                            android:layout_marginLeft="3dp"
                             android:layout_marginTop="10dp"
-                            android:textColor="@color/blue_color"
-                            android:textStyle="bold" />
+                            android:textColor="@color/light_green"/>
+
                         <Spinner
-                            android:id="@+id/spinnerAge"
+                            android:id="@+id/ageSnipper"
                             android:layout_width="100dp"
                             android:layout_height="40dp"
+                            android:gravity="center"
                             android:layout_marginLeft="20dp"
                             android:background="@android:drawable/btn_dropdown"
                             android:spinnerMode="dropdown"/>
@@ -144,68 +137,66 @@
                     </LinearLayout>
                     <View style="@style/proifleDetailsView" />
 
-                    <TextView
-                        android:id="@+id/MobileNumber"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Mobile Number"
-                        style="@style/textSize"
-                        android:layout_marginTop="10dp"
-                        android:textColor="@color/blue_color"
-                        android:textStyle="bold" />
-
-                    <EditText
-                        android:id="@+id/traineeMobileNumber"
+                    <com.google.android.material.textfield.TextInputLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:ems="10"
-                        android:inputType="phone" />
+                        android:hint="Mobile Number"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/mobile"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="number"
+                            android:textColor="@color/grey_color"
+                            />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+                    <View style="@style/proifleDetailsView" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/outlinedTextField2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Email ID"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/email"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="textWebEmailAddress"
+                            android:textColor="@color/grey_color"
+                            />
+
+                    </com.google.android.material.textfield.TextInputLayout>
                     <View style="@style/proifleDetailsView" />
 
                     <TextView
-                        android:id="@+id/EmailId"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Email id"
-                        style="@style/textSize"
-                        android:layout_marginTop="10dp"
-                        android:textColor="@color/blue_color"
-                        android:textStyle="bold" />
-
-                    <EditText
-                        android:id="@+id/traineeEmailId"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:ems="10"
-                        android:inputType="textEmailAddress" />
-                    <View style="@style/proifleDetailsView" />
-
-                    <TextView
-                        android:id="@+id/Weight"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Weight"
-                        style="@style/textSize"
+                        android:layout_marginLeft="3dp"
+                        android:textSize="20sp"
                         android:layout_marginTop="10dp"
-                        android:textColor="@color/blue_color"
-                        android:textStyle="bold" />
+                        android:textColor="@color/light_green"/>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
                         android:orientation="horizontal">
 
                         <EditText
-                            android:id="@+id/traineeWeight"
+                            android:id="@+id/weight"
                             android:layout_width="200dp"
+                            android:textColor="@color/grey_color"
                             android:layout_weight="1"
                             android:layout_height="wrap_content"
                             android:ems="10"
                             android:inputType="number" />
 
                         <RadioGroup
-                            android:id="@+id/traineeWeightRadioGroup"
+                            android:id="@+id/weightRadioGroup"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
@@ -213,17 +204,17 @@
                             android:orientation="horizontal">
 
                             <RadioButton
-                                android:id="@+id/traineeInKg"
+                                android:id="@+id/inKg"
                                 android:layout_weight="1"
-                                android:textColor="@color/blue_color"
+                                android:textColor="@color/grey_color"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="In KG" />
 
                             <RadioButton
-                                android:id="@+id/traineeInLbs"
+                                android:id="@+id/inLbs"
                                 android:layout_weight="1"
-                                android:textColor="@color/blue_color"
+                                android:textColor="@color/grey_color"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentBottom="true"
@@ -234,31 +225,30 @@
                     <View style="@style/proifleDetailsView" />
 
                     <TextView
-                        android:id="@+id/Height"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Height"
+                        android:layout_marginLeft="3dp"
                         style="@style/textSize"
                         android:layout_marginTop="10dp"
-                        android:textColor="@color/blue_color"
-                        android:textStyle="bold" />
+                        android:textColor="@color/light_green"/>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
                         android:orientation="horizontal">
 
                         <EditText
-                            android:id="@+id/traineeHeight"
+                            android:id="@+id/height"
                             android:layout_width="200dp"
                             android:layout_weight="1"
+                            android:textColor="@color/grey_color"
                             android:layout_height="wrap_content"
                             android:ems="10"
                             android:inputType="number" />
 
                         <RadioGroup
-                            android:id="@+id/traineeHeightRadioGroup"
+                            android:id="@+id/heightRadioGroup"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
@@ -266,17 +256,17 @@
                             android:orientation="horizontal">
 
                             <RadioButton
-                                android:id="@+id/traineeInInches"
+                                android:id="@+id/inInches"
                                 android:layout_weight="1"
-                                android:textColor="@color/blue_color"
+                                android:textColor="@color/grey_color"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="In Inches" />
 
                             <RadioButton
-                                android:id="@+id/traineeInMeter"
+                                android:id="@+id/inMeter"
                                 android:layout_weight="1"
-                                android:textColor="@color/blue_color"
+                                android:textColor="@color/grey_color"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentBottom="true"
@@ -288,238 +278,222 @@
                     <View style="@style/proifleDetailsView" />
 
                     <TextView
-                        android:id="@+id/Occupation"
+                        android:id="@+id/occupation"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Occupation"
-                        style="@style/textSize"
+                        android:layout_marginLeft="3dp"
+                        android:textSize="20sp"
                         android:layout_marginTop="10dp"
-                        android:textColor="@color/blue_color"
-                        android:textStyle="bold" />
+                        android:textColor="@color/light_green" />
 
                     <RadioGroup
+                        android:id="@+id/occupationRadioGroup"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="vertical"
-                        android:layout_marginLeft="40dp"
-                        android:layout_marginTop="10dp">
+                        android:layout_marginTop="10dp"
+                        android:layout_marginLeft="40dp">
 
                         <RadioButton
-                            android:id="@+id/traineeStudent"
+                            android:id="@+id/student"
                             android:layout_weight="1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textColor="@color/blue_color"
-                            android:textStyle="bold"
+                            android:textColor="@color/grey_color"
                             android:text="Student" />
 
                         <RadioButton
-                            android:id="@+id/traineeOfficeJob"
+                            android:id="@+id/officeJob"
                             android:layout_weight="1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textColor="@color/blue_color"
-                            android:textStyle="bold"
+                            android:textColor="@color/grey_color"
                             android:text="Office Job" />
 
                         <RadioButton
-                            android:id="@+id/traineeTravellingJob"
+                            android:id="@+id/travellingJob"
                             android:layout_weight="1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textColor="@color/blue_color"
-                            android:textStyle="bold"
+                            android:textColor="@color/grey_color"
                             android:text="Travelling job" />
 
                         <RadioButton
-                            android:id="@+id/traineePhysicalJob"
+                            android:id="@+id/physicalJob"
                             android:layout_weight="1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textColor="@color/blue_color"
-                            android:textStyle="bold"
+                            android:textColor="@color/grey_color"
                             android:text="Physical Job" />
 
                         <RadioButton
-                            android:id="@+id/traineeLabourJob"
+                            android:id="@+id/labourJob"
                             android:layout_weight="1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textColor="@color/blue_color"
-                            android:textStyle="bold"
+                            android:textColor="@color/grey_color"
                             android:text="Labour Job" />
                     </RadioGroup>
 
                     <View style="@style/proifleDetailsView" />
                     <TextView
-                        android:id="@+id/WeightGain"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Weight Gain"
-                        style="@style/textSize"
+                        android:layout_marginLeft="3dp"
+                        android:textSize="20sp"
                         android:layout_marginTop="10dp"
-                        android:textColor="@color/blue_color"
-                        android:textStyle="bold" />
+                        android:textColor="@color/light_green"/>
 
                     <RadioGroup
-                        android:id="@+id/traineeWeightGainRadiogroup"
+                        android:id="@+id/weightGainRadiogroup"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="horizontal"
                         android:layout_marginTop="10dp">
 
                         <RadioButton
-                            android:id="@+id/traineeGain"
+                            android:id="@+id/gain"
                             android:layout_weight="1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textColor="@color/blue_color"
-                            android:textStyle="bold"
+                            android:textColor="@color/grey_color"
                             android:text="Gain" />
 
                         <RadioButton
-                            android:id="@+id/traineeLoss"
+                            android:id="@+id/loss"
                             android:layout_weight="1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textColor="@color/blue_color"
-                            android:textStyle="bold"
+                            android:textColor="@color/grey_color"
                             android:text="Loss" />
 
                         <RadioButton
-                            android:id="@+id/traineeMaintain"
+                            android:id="@+id/maintain"
                             android:layout_weight="1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textColor="@color/blue_color"
-                            android:textStyle="bold"
+                            android:textColor="@color/grey_color"
                             android:text="Maintain" />
                     </RadioGroup>
 
 
                     <View style="@style/proifleDetailsView" />
                     <TextView
-                        android:id="@+id/MusselsGain"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Mussels Gain"
-                        style="@style/textSize"
+                        android:layout_marginLeft="3dp"
+                        android:textSize="20sp"
                         android:layout_marginTop="10dp"
-                        android:textColor="@color/blue_color"
-                        android:textStyle="bold" />
+                        android:textColor="@color/light_green"/>
 
                     <RadioGroup
-                        android:id="@+id/traineeMusselsGainRadioGroup"
+                        android:id="@+id/musselsGainRadioGroup"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="horizontal"
                         android:layout_marginTop="10dp">
 
                         <RadioButton
-                            android:id="@+id/traineeMusselsGain"
+                            android:id="@+id/musselsGain"
                             android:layout_weight="1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textColor="@color/blue_color"
-                            android:textStyle="bold"
+                            android:textColor="@color/grey_color"
                             android:text="Gain" />
 
                         <RadioButton
-                            android:id="@+id/traineeMusselsMaintain"
+                            android:id="@+id/musselsMaintain"
                             android:layout_weight="1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textColor="@color/blue_color"
-                            android:textStyle="bold"
+                            android:textColor="@color/grey_color"
                             android:text="Maintain" />
 
                     </RadioGroup>
 
                     <View style="@style/proifleDetailsView" />
                     <TextView
-                        android:id="@+id/Food"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Food"
-                        style="@style/textSize"
+                        android:textSize="20sp"
+                        android:layout_marginLeft="3dp"
                         android:layout_marginTop="10dp"
-                        android:textColor="@color/blue_color"
-                        android:textStyle="bold" />
+                        android:textColor="@color/light_green" />
 
                     <RadioGroup
-                        android:id="@+id/traineeFoodradioGroup"
+                        android:id="@+id/foodRadioGroup"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="horizontal"
                         android:layout_marginTop="10dp">
 
                         <RadioButton
-                            android:id="@+id/traineeVegiterian"
+                            android:id="@+id/vegiterian"
                             android:layout_weight="1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textColor="@color/blue_color"
-                            android:textStyle="bold"
+                            android:textColor="@color/grey_color"
                             android:text="Vegiterian" />
 
                         <RadioButton
-                            android:id="@+id/traineeNonVegiterian"
+                            android:id="@+id/nonVegiterian"
                             android:layout_weight="1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textColor="@color/blue_color"
-                            android:textStyle="bold"
+                            android:textColor="@color/grey_color"
                             android:text="Non vegiterian" />
+
                     </RadioGroup>
 
                     <View style="@style/proifleDetailsView" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/outlinedTextField56"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Subscription Fee"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/subscriptionFee"
+                            android:layout_width="match_parent"
+                            android:inputType="number"
+                            android:layout_height="wrap_content"/>
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
                     <LinearLayout
-                        android:id="@+id/SubscriptionMonth"
+                        android:id="@+id/SubscriptionMonthasadfd"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
 
                         <TextView
+                            android:id="@+id/tvDate"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Subscription Month"
-                            style="@style/textSize"
-                            android:textColor="@color/blue_color"
-                            android:textStyle="bold" />
+                            android:layout_marginLeft="3dp"
+                            android:textSize="20sp"
+                            android:focusable="true"
+                            android:focusableInTouchMode="true"
+                            android:clickable="true"
+                            android:textColor="@color/light_green"/>
 
                         <EditText
-                            android:id="@+id/editTextDate"
-                            android:layout_marginLeft="10dp"
-                            android:layout_width="match_parent"
+                            android:layout_width="200dp"
                             android:layout_height="wrap_content"
-                            android:ems="10"
-                            android:inputType="date" />
-
-                    </LinearLayout>
-
-
-                    <View style="@style/proifleDetailsView" />
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Subscription Fee"
-                            style="@style/textSize"
-                            android:textColor="@color/blue_color"
-                            android:textStyle="bold" />
-
-                        <EditText
-                            android:id="@+id/TtraineeSubscriptionFee"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="10dp"
-                            android:layout_alignParentBottom="true"
-                            android:ems="10"
-                            android:inputType="number" />
+                            android:id="@+id/etDate"
+                            android:hint="Select Date"
+                            android:textSize="20sp"
+                            android:textColor="@color/grey_color"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:textAlignment="center"/>
 
                     </LinearLayout>
 
@@ -531,8 +505,6 @@
                         android:layout_gravity="center"
                         android:layout_marginTop="10dp"
                         android:text="Continue" />
-
-
 
                 </LinearLayout>
 
