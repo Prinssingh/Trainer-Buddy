@@ -84,11 +84,12 @@
 
                         <RadioButton
                             android:id="@+id/male"
-                            android:layout_weight="1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textColor="@color/grey_color"
-                            android:text="Male" />
+                            android:layout_weight="1"
+                            android:checked="true"
+                            android:text="Male"
+                            android:textColor="@color/grey_color" />
 
                         <RadioButton
                             android:id="@+id/female"
@@ -241,11 +242,12 @@
 
                             <RadioButton
                                 android:id="@+id/inKg"
-                                android:layout_weight="1"
-                                android:textColor="@color/grey_color"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="In KG" />
+                                android:layout_weight="1"
+                                android:checked="true"
+                                android:text="In KG"
+                                android:textColor="@color/grey_color" />
 
                             <RadioButton
                                 android:id="@+id/inLbs"
@@ -293,11 +295,12 @@
 
                             <RadioButton
                                 android:id="@+id/inInches"
-                                android:layout_weight="1"
-                                android:textColor="@color/grey_color"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="In Inches" />
+                                android:layout_weight="1"
+                                android:checked="true"
+                                android:text="In Inches"
+                                android:textColor="@color/grey_color" />
 
                             <RadioButton
                                 android:id="@+id/inMeter"
@@ -333,11 +336,12 @@
 
                         <RadioButton
                             android:id="@+id/student"
-                            android:layout_weight="1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textColor="@color/grey_color"
-                            android:text="Student" />
+                            android:layout_weight="1"
+                            android:checked="true"
+                            android:text="Student"
+                            android:textColor="@color/grey_color" />
 
                         <RadioButton
                             android:id="@+id/officeJob"
@@ -365,11 +369,12 @@
 
                         <RadioButton
                             android:id="@+id/labourJob"
-                            android:layout_weight="1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textColor="@color/grey_color"
-                            android:text="Labour Job" />
+                            android:layout_weight="1"
+                            android:checked="false"
+                            android:text="Labour Job"
+                            android:textColor="@color/grey_color" />
                     </RadioGroup>
 
                     <View style="@style/proifleDetailsView" />
@@ -391,11 +396,12 @@
 
                         <RadioButton
                             android:id="@+id/gain"
-                            android:layout_weight="1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textColor="@color/grey_color"
-                            android:text="Gain" />
+                            android:layout_weight="1"
+                            android:checked="true"
+                            android:text="Gain"
+                            android:textColor="@color/grey_color" />
 
                         <RadioButton
                             android:id="@+id/loss"
@@ -434,11 +440,12 @@
 
                         <RadioButton
                             android:id="@+id/musselsGain"
-                            android:layout_weight="1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textColor="@color/grey_color"
-                            android:text="Gain" />
+                            android:layout_weight="1"
+                            android:checked="true"
+                            android:text="Gain"
+                            android:textColor="@color/grey_color" />
 
                         <RadioButton
                             android:id="@+id/musselsMaintain"
@@ -468,20 +475,21 @@
                         android:layout_marginTop="10dp">
 
                         <RadioButton
-                            android:id="@+id/vegiterian"
-                            android:layout_weight="1"
+                            android:id="@+id/vegetarian"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textColor="@color/grey_color"
-                            android:text="Vegiterian" />
+                            android:layout_weight="1"
+                            android:checked="true"
+                            android:text="Vegetarian"
+                            android:textColor="@color/grey_color" />
 
                         <RadioButton
-                            android:id="@+id/nonVegiterian"
-                            android:layout_weight="1"
+                            android:id="@+id/nonvegetarian"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textColor="@color/grey_color"
-                            android:text="Non vegiterian" />
+                            android:layout_weight="1"
+                            android:text="Non vegetarian"
+                            android:textColor="@color/grey_color" />
 
                     </RadioGroup>
 

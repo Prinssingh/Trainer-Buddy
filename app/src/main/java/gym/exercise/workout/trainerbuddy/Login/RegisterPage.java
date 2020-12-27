@@ -60,7 +60,9 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.Objects;
 
+import gym.exercise.workout.trainerbuddy.DataBaseHandler.DataBaseHandler;
 import gym.exercise.workout.trainerbuddy.Entities.ImportantFunctions;
+import gym.exercise.workout.trainerbuddy.Entities.Trainer;
 import gym.exercise.workout.trainerbuddy.R;
 
 import static android.Manifest.permission.ACCESS_FINE_LOCATION;
@@ -72,7 +74,7 @@ import static androidx.core.content.FileProvider.getUriForFile;
 import static gym.exercise.workout.trainerbuddy.R.id.registerButton;
 
 public class RegisterPage extends Fragment implements View.OnClickListener {
-   TextView login;
+    TextView login;
     Button register;
     EditText Name,Email,Password,Mobile,confirmPass;
     SharedPreferences sp;
@@ -99,8 +101,6 @@ public class RegisterPage extends Fragment implements View.OnClickListener {
     private int ASPECT_RATIO_X = 1, ASPECT_RATIO_Y = 1, bitmapMaxWidth = 10000, bitmapMaxHeight = 10000;
     private int IMAGE_COMPRESSION = 80;
     private static final String TAG = "Image Croping";
-
-
 
 
     public static RegisterPage newInstance() {
@@ -258,7 +258,6 @@ public class RegisterPage extends Fragment implements View.OnClickListener {
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
                                     // Sign in success
-
                                     FirebaseUser user = mAuth.getCurrentUser();
 
 //                                    //  set an Display name to  User.
@@ -277,13 +276,20 @@ public class RegisterPage extends Fragment implements View.OnClickListener {
 //                                            });
                                     //Setup Data
                                     assert user != null;
+
                                     editor.putBoolean("Register",true).commit();
-                                    editor.putString("User_Name",Name.getText().toString()).commit();
                                     editor.putString("User_Email",email).commit();
                                     editor.putString("User_UID",user.getUid()).commit();
-                                    editor.putString("User_Mobile",Mobile.getText().toString()).commit();
                                     editor.putString("User_Password",password).commit();
                                     Toast.makeText(getContext(),"Register Success!!",Toast.LENGTH_LONG).show();
+
+                                    Trainer trainer =new Trainer();
+                                    trainer.setName(Name.getText().toString());
+                                    trainer.setEmail(email);
+                                    trainer.setMobile(Mobile.getText().toString());
+                                    trainer.setPassword(password);
+                                    DataBaseHandler db =new DataBaseHandler(requireContext());
+                                    db.RegisterTrainer(trainer,user.getUid());
 
                                     //send Verification Email
                                     sendVerificationEmail();

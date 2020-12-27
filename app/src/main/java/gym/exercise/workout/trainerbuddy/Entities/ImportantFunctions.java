@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.provider.Settings;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -56,6 +57,13 @@ public class ImportantFunctions {
         toast.setView(ToastView);
         toast.show();
     }
+
+    @SuppressLint("HardwareIds")
+    public String getDeviceId(){
+        return Settings.Secure.getString(context.getContentResolver(),
+                Settings.Secure.ANDROID_ID);
+    }
+
 //
 //    public void showProgressingView(LayoutInflater layoutInflater) {
 //

@@ -7,9 +7,9 @@ import android.graphics.BitmapFactory;
 import com.google.firebase.database.Exclude;
 
 import java.io.ByteArrayOutputStream;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
+
 
 public class Trainer  {
     private String Name;
@@ -23,30 +23,24 @@ public class Trainer  {
     private int Age;
     private String Gender;
     private String AlternateMobile;
-    private Date Subscription;
-    private int SubscriptionDay;
     private String Certificates;
     private String About;
     private String GymName;
     private String GymAddress;
     private String DeviceID;
+    private String Occupation;
+    private SubscriptionPlan[] offeringPlan;
+    private String FoodPref;
+    private String WeightPref;
+    private String MusclePref;
 
 
-
+    //Constructors
     public Trainer(){}
 
-    public Trainer(String Name, String Email, String Mobile, String Password ,
-                   float Weight, float Height, int Age){
-        this.Name =Name;
-        this.Email =Email;
-        this.Mobile =Mobile;
-        this.Password =Password;
-        this.Weight =Weight;
-        this.Height =Height;
-        this.Age=Age;
-    }
 
 
+    //MapperObject
     @Exclude
     public Map<String, Object> toMap() {
         HashMap<String, Object> result = new HashMap<>();
@@ -57,12 +51,31 @@ public class Trainer  {
         result.put("Weight",this.Weight);
         result.put("Height",this.Height);
         result.put("Age",this.Age);
+        result.put("Gender",this.Gender);
+        result.put("AlternateMobile", this.AlternateMobile);
+        result.put("GymName", this.GymName);
+        result.put("GymAddress", this.GymAddress);
+        result.put("DeviceID",this.DeviceID);
+        result.put("Occupation",this.Occupation);
+        result.put("FoodPref",this.FoodPref);
+        result.put("WeightPref",this.WeightPref);
+        result.put("MusclePref",this.MusclePref);
+        result.put("OfferingPlans",toMapSubscriptionPlans());
         return result;
     }
 
-    public Date getSubscription() {
-        return Subscription;
+    @Exclude
+    public Map<String, Object> toMapSubscriptionPlans() {
+        HashMap<String, Object> result = new HashMap<>();
+
+        for (SubscriptionPlan plan: offeringPlan ) {
+            String key = String.valueOf(plan.getDays()) + "DaysPlanIn" + String.valueOf(plan.getPrize());
+            result.put(key,plan.toMap());
+        }
+
+        return result;
     }
+
 
 
     /*Getter And Setters*/

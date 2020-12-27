@@ -31,6 +31,7 @@ public class Trainee {
     private String FoodPref;
     private String WeightPref;
     private String MusclePref;
+    private String TrainerUID;
 
     //Constructors
     public Trainee(){}
@@ -58,6 +59,8 @@ public class Trainee {
         result.put("WeightPref",this.WeightPref);
         result.put("MusclePref",this.MusclePref);
         result.put("MySubscriptionPlan",MySubscriptionPlan.toMap());
+        result.put("TrainerUID",this.TrainerUID);
+
         return result;
     }
 
@@ -122,6 +125,10 @@ public class Trainee {
     public String getMusclePref() { return MusclePref; }
 
     public void setMusclePref(String musclePref) { MusclePref = musclePref;}
+
+    public String getTrainerUID() { return TrainerUID; }
+
+    public void setTrainerUID(String trainerUID) { TrainerUID = trainerUID; }
 
 
 

@@ -2,7 +2,6 @@ package gym.exercise.workout.trainerbuddy.Entities;
 
 import com.google.firebase.database.Exclude;
 
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -11,9 +10,10 @@ public class SubscriptionPlan {
     private String About;
     private int Prize;
     private  int Days;
-    private Date StartingDate=null;
-    private Date ExpiryDate=null;
+    private String StartingDate=null;
+    private String ExpiryDate=null;
 
+    //Constructors
     public SubscriptionPlan(String name, String about, int prize, int days) {
         Name = name;
         About = about;
@@ -21,7 +21,7 @@ public class SubscriptionPlan {
         Days = days;
     }
 
-    public SubscriptionPlan(String name, String about, int prize, int days, Date startingDate, Date expiryDate) {
+    public SubscriptionPlan(String name, String about, int prize, int days, String startingDate, String expiryDate) {
         Name = name;
         About = about;
         Prize = prize;
@@ -31,6 +31,7 @@ public class SubscriptionPlan {
     }
 
 
+    //MapperObject
     @Exclude
     public Map<String, Object> toMap() {
         HashMap<String, Object> result = new HashMap<>();
@@ -47,6 +48,8 @@ public class SubscriptionPlan {
         return result;
     }
 
+
+    /*Getter And Setters*/
     public String getName() {
         return Name;
     }
@@ -71,13 +74,13 @@ public class SubscriptionPlan {
 
     public void setDays(int days) { Days = days; }
 
-    public Date getStartingDate() { return StartingDate;}
+    public String getStartingDate() { return StartingDate;}
 
-    public void setStartingDate(Date startingDate) { StartingDate = startingDate; }
+    public void setStartingDate(String startingDate) { StartingDate = startingDate; }
 
-    public Date getExpiryDate() { return ExpiryDate; }
+    public String getExpiryDate() { return ExpiryDate; }
 
-    public SubscriptionPlan setExpiryDate(Date expiryDate) {
+    public SubscriptionPlan setExpiryDate(String expiryDate) {
         ExpiryDate = expiryDate;
         return this;
     }

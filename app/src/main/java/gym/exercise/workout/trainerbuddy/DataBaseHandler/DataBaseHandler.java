@@ -37,31 +37,36 @@ public class DataBaseHandler {
 
     }
 
-    public void RegisterTrainer(Trainer trainer){
+    public void RegisterTrainer(Trainer trainer,String Key){
 
         Map<String, Object> childUpdates = new HashMap<>();
-        String key = trainer.getMobile();
-
-        childUpdates.put("/Trainers/" + key, trainer.toMap());
+        childUpdates.put("/Trainers/" + Key, trainer.toMap());
         Root.updateChildren(childUpdates, new DatabaseReference.CompletionListener() {
             @Override
             public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
-                Log.d("DATA","Saved");
+                if (error==null){
+                    Log.d("SavingTrainer", "Saving Trainer Done!!");
+                }
+                else {throw error.toException(); }
             }
         });
 
     }
 
-    public void RegisterTrainee(Trainee trainee){
+    public void RegisterTrainee(Trainee trainee,String Key){
         Map<String, Object> childUpdates = new HashMap<>();
-        String key = trainee.getMobile();
 
-        childUpdates.put("/Trainees/" + key, trainee.toMap());
+        childUpdates.put("/Trainees/" + Key, trainee.toMap());
         Root.updateChildren(childUpdates, new DatabaseReference.CompletionListener() {
             @Override
             public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
-                Log.d("DATA","Saved");
+               if(error==null){
+                   Log.d("Adding Trainee","Success!!");
+               }
+               else throw error.toException();
             }
+
+
         });
     }
 

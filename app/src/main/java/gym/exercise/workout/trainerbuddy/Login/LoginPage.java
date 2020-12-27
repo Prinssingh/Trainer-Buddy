@@ -4,11 +4,6 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.net.ConnectivityManager;
-import android.net.Network;
-import android.net.NetworkCapabilities;
-import android.net.NetworkRequest;
-import android.os.Build;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.LayoutInflater;
@@ -118,7 +113,7 @@ public class LoginPage extends Fragment implements View.OnClickListener {
 
     public void LoginToApp(){
         final String EmailId=loginEmail.getText().toString();
-        String password =loginPassword.getText().toString();
+        final String password =loginPassword.getText().toString();
 
         if(isValidInput() && impFun.isConnectedToInternet()){
 
@@ -127,6 +122,10 @@ public class LoginPage extends Fragment implements View.OnClickListener {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
+                            FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                            editor.putString("User_UID",user.getUid()).commit();
+                            editor.putString("User_Email",EmailId).commit();
+                            editor.putString("User_Password",password).commit();
                             checkIfEmailVerified();
 
                         } else {
