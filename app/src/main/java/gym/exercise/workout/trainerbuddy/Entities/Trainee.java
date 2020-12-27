@@ -24,7 +24,7 @@ public class Trainee {
     private String AlternateMobile;
     private Date Subscription;
     private int SubscriptionDay;
-
+    private String Ocupation;
     private String GymName;
     private String GymAddress;
     private String DeviceID;

@@ -1,7 +1,7 @@
 package gym.exercise.workout.trainerbuddy.TrainerDashBoardUi;
 
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.LayoutInflater;
@@ -11,12 +11,9 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
-import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -117,6 +114,7 @@ public class AddNewTrainee extends Fragment implements View.OnClickListener {
                 // date picker dialog
                 picker = new DatePickerDialog(getContext(),
                         new DatePickerDialog.OnDateSetListener() {
+                            @SuppressLint("SetTextI18n")
                             @Override
                             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                                 etDate.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
@@ -243,6 +241,11 @@ public class AddNewTrainee extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View view) {
+        switch(view.getId()){
+            case R.id.continuebutton:
+                break;
+
+        }
 
     }
 
@@ -257,7 +260,7 @@ public class AddNewTrainee extends Fragment implements View.OnClickListener {
         EditText text1 = (EditText)Root.findViewById(R.id.height);
         String height = text.getText().toString();
 
-        //String fee = subscriptionFee.getSelectedItem().toString();
+        String fee = subscriptionFee.getSelectedItem().toString();
 
         trainee.setName(name.toString());
         trainee.setMobile(mobile.toString());
