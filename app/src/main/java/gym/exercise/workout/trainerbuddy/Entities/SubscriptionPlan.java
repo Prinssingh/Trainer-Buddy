@@ -37,8 +37,8 @@ public class SubscriptionPlan {
         HashMap<String, Object> result = new HashMap<>();
         result.put("Name", this.Name);
         result.put("About",this.About);
-        result.put("Prize",this.About);
-        result.put("Days",this.About);
+        result.put("Prize",this.Prize);
+        result.put("Days",this.Days);
 
         if(StartingDate !=null){
             result.put("StartingDate",this.StartingDate);
