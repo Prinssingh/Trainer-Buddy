@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -38,7 +39,7 @@ public class AddNewTrainee extends Fragment implements View.OnClickListener {
     RadioGroup genderRadioGroup;
 
     RadioButton male,female,other,inKg,inLbs,inInches,inMeter,student,officeJob,travellingJob,physicalJob,labourJob;
-    RadioButton gain,loss,maintain,musselsGain,musselsMaintain,vegiterian,nonVegiterian;
+    RadioButton gain,loss,maintain,musselsGain,musselsMaintain, vegetarian, nonVegetarian;
 
     TextView etDate;
 
@@ -46,7 +47,7 @@ public class AddNewTrainee extends Fragment implements View.OnClickListener {
 
     Button continuebutton;
     //extra use
-    String gender,occupation,Weight,Mussels,food;
+    String gender,occupation,Weight, Muscles,food;
 
     AppCompatSpinner ageSpinner,subscriptionFee;
     //ImageView ageSpinnerImage;
@@ -86,8 +87,8 @@ public class AddNewTrainee extends Fragment implements View.OnClickListener {
         maintain = Root.findViewById(R.id.maintain);
         musselsGain = Root.findViewById(R.id.musselsGain);
         musselsMaintain = Root.findViewById(R.id.musselsMaintain);
-        vegiterian = Root.findViewById(R.id.vegiterian);
-        nonVegiterian = Root.findViewById(R.id.nonVegiterian);
+        vegetarian = Root.findViewById(R.id.vegiterian);
+        nonVegetarian = Root.findViewById(R.id.nonVegiterian);
 
 
 
@@ -210,22 +211,22 @@ public class AddNewTrainee extends Fragment implements View.OnClickListener {
         musselsGain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Mussels="gain";
+                Muscles ="gain";
             }
         });
         musselsMaintain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Mussels="gain";
+                Muscles ="gain";
             }
         });
-        vegiterian.setOnClickListener(new View.OnClickListener() {
+        vegetarian.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 food="vegiterian";
             }
         });
-        nonVegiterian.setOnClickListener(new View.OnClickListener() {
+        nonVegetarian.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 food="nonVegiterian";
@@ -243,6 +244,7 @@ public class AddNewTrainee extends Fragment implements View.OnClickListener {
     public void onClick(View view) {
         switch(view.getId()){
             case R.id.continuebutton:
+                Toast.makeText(getContext(), ""+getData(), Toast.LENGTH_SHORT).show();
                 break;
 
         }
@@ -260,7 +262,7 @@ public class AddNewTrainee extends Fragment implements View.OnClickListener {
         EditText text1 = (EditText)Root.findViewById(R.id.height);
         String height = text.getText().toString();
 
-        String fee = subscriptionFee.getSelectedItem().toString();
+       // String fee = subscriptionFee.getSelectedItem().toString();
 
         trainee.setName(name.toString());
         trainee.setMobile(mobile.toString());
@@ -274,10 +276,10 @@ public class AddNewTrainee extends Fragment implements View.OnClickListener {
         //setter ni bna h iska
         //trainee.setSubscriptionFee(Integer.parseInt(fee));
 
-//        trainee.setOccupation(occupation);
-//        trainee.setWeightGain(Weight);
-//        trainee.setMussels(Mussels);
-//        trainee.setFood(food);
+        trainee.setOccupation(occupation);
+        trainee.setWeightPref(Weight);
+        trainee.setMusclePref(Muscles);
+        trainee.setFoodPref(food);
         return trainee;
     }
 
@@ -347,8 +349,8 @@ public class AddNewTrainee extends Fragment implements View.OnClickListener {
         maintain.setEnabled(false);
         musselsGain.setEnabled(false);
         musselsMaintain.setEnabled(false);
-        vegiterian.setEnabled(false);
-        nonVegiterian.setEnabled(false);
+        vegetarian.setEnabled(false);
+        nonVegetarian.setEnabled(false);
         subscriptionFee.setEnabled(false);
         etDate.setEnabled(false);
     }
@@ -377,8 +379,8 @@ public class AddNewTrainee extends Fragment implements View.OnClickListener {
         maintain.setEnabled(true);
         musselsGain.setEnabled(true);
         musselsMaintain.setEnabled(true);
-        vegiterian.setEnabled(true);
-        nonVegiterian.setEnabled(true);
+        vegetarian.setEnabled(true);
+        nonVegetarian.setEnabled(true);
         subscriptionFee.setEnabled(true);
         etDate.setEnabled(true);
     }

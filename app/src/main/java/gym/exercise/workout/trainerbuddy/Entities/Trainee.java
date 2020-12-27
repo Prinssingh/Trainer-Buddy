@@ -3,10 +3,11 @@ package gym.exercise.workout.trainerbuddy.Entities;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 
+import androidx.annotation.NonNull;
+
 import com.google.firebase.database.Exclude;
 
 import java.io.ByteArrayOutputStream;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -22,28 +23,21 @@ public class Trainee {
     private float Age;
     private String Gender;
     private String AlternateMobile;
-    private Date Subscription;
-    private int SubscriptionDay;
-    private String Ocupation;
     private String GymName;
     private String GymAddress;
     private String DeviceID;
-    private Trainer MyTrainer;
+    private String Occupation;
+    private SubscriptionPlan MySubscriptionPlan;
+    private String FoodPref;
+    private String WeightPref;
+    private String MusclePref;
 
+    //Constructors
     public Trainee(){}
 
-    public Trainee(String Name, String Email, String Mobile, String Password ,
-                   float Weight, float Height, float Age){
-        this.Name =Name;
-        this.Email =Email;
-        this.Mobile =Mobile;
-        this.Password =Password;
-        this.Weight =Weight;
-        this.Height =Height;
-        this.Age=Age;
-    }
 
 
+    //MapperObject
     @Exclude
     public Map<String, Object> toMap() {
         HashMap<String, Object> result = new HashMap<>();
@@ -54,10 +48,18 @@ public class Trainee {
         result.put("Weight",this.Weight);
         result.put("Height",this.Height);
         result.put("Age",this.Age);
+        result.put("Gender",this.Gender);
+        result.put("AlternateMobile", this.AlternateMobile);
+        result.put("GymName", this.GymName);
+        result.put("GymAddress", this.GymAddress);
+        result.put("DeviceID",this.DeviceID);
+        result.put("Occupation",this.Occupation);
+        result.put("FoodPref",this.FoodPref);
+        result.put("WeightPref",this.WeightPref);
+        result.put("MusclePref",this.MusclePref);
+        result.put("MySubscriptionPlan",MySubscriptionPlan.toMap());
         return result;
     }
-
-
 
 
 
@@ -103,10 +105,29 @@ public class Trainee {
     public void setDeviceID (String DeviceID){this.DeviceID=DeviceID;}
     public  String getDeviceID(){return this.DeviceID;}
 
-    public void setMyTrainer(Trainer myTrainer)
-    {this.MyTrainer=myTrainer;}
+    public String getOccupation() { return Occupation; }
+    public void setOccupation(String occupation) { Occupation = occupation; }
+
+    public SubscriptionPlan getMySubscriptionPlan() { return MySubscriptionPlan;}
+    public void setMySubscriptionPlan(SubscriptionPlan mySubscriptionPlan) { this.MySubscriptionPlan = mySubscriptionPlan; }
+
+    public String getFoodPref() { return FoodPref;}
+
+    public void setFoodPref(String foodPref) { FoodPref = foodPref;}
+
+    public String getWeightPref() { return WeightPref; }
+
+    public void setWeightPref(String weightPref) { WeightPref = weightPref;}
+
+    public String getMusclePref() { return MusclePref; }
+
+    public void setMusclePref(String musclePref) { MusclePref = musclePref;}
 
 
+
+
+
+    //Extra Important Functions
     public byte[] bitmapToByte(Bitmap bitmap){
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.PNG, 0, baos);
@@ -116,6 +137,11 @@ public class Trainee {
         return BitmapFactory.decodeByteArray(bitmapdata, 0, bitmapdata.length);
     }
 
+    @NonNull
+    @Override
+    public String toString() {
+        return this.Name;
+    }
 }
 
 

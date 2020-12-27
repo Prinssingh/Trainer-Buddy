@@ -51,50 +51,31 @@ public class SubscriptionPlan {
         return Name;
     }
 
-    public SubscriptionPlan setName(String name) {
-        Name = name;
-        return this;
-    }
+    public void setName(String name) { Name = name;}
 
     public String getAbout() {
         return About;
     }
 
-    public SubscriptionPlan setAbout(String about) {
-        About = about;
-        return this;
-    }
+    public void setAbout(String about) { About = about;  }
 
     public int getPrize() {
         return Prize;
     }
 
-    public SubscriptionPlan setPrize(int prize) {
-        Prize = prize;
-        return this;
-    }
+    public void setPrize(int prize) { Prize = prize;}
 
     public int getDays() {
         return Days;
     }
 
-    public SubscriptionPlan setDays(int days) {
-        Days = days;
-        return this;
-    }
+    public void setDays(int days) { Days = days; }
 
-    public Date getStartingDate() {
-        return StartingDate;
-    }
+    public Date getStartingDate() { return StartingDate;}
 
-    public SubscriptionPlan setStartingDate(Date startingDate) {
-        StartingDate = startingDate;
-        return this;
-    }
+    public void setStartingDate(Date startingDate) { StartingDate = startingDate; }
 
-    public Date getExpiryDate() {
-        return ExpiryDate;
-    }
+    public Date getExpiryDate() { return ExpiryDate; }
 
     public SubscriptionPlan setExpiryDate(Date expiryDate) {
         ExpiryDate = expiryDate;
