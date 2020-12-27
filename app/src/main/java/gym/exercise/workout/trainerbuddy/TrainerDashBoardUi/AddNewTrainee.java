@@ -423,6 +423,7 @@ public class AddNewTrainee extends Fragment implements View.OnClickListener {
          final FirebaseAuth mAuth=  FirebaseAuth.getInstance();
          setAllDisable();
          showProgressingView();
+         Log.d("TAG", "registerTrainee Before Trainer Uid : "+ FirebaseAuth.getInstance().getCurrentUser().getUid());
          Log.d("TAG", "registerTrainee: "+trainee.getEmail()+ trainee.getPassword());
             mAuth.createUserWithEmailAndPassword(trainee.getEmail(), trainee.getPassword())
                     .addOnCompleteListener(requireActivity(), new OnCompleteListener<AuthResult>() {
@@ -495,7 +496,7 @@ public class AddNewTrainee extends Fragment implements View.OnClickListener {
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
                             // email sent
-                            Log.d("TAG", "Email Send Success!!!" + task.isSuccessful());
+                            Log.d("TAG", "Email Send To trainee Success!!!" );
                             Toast.makeText(requireContext(), "Email Send Success", Toast.LENGTH_SHORT).show();
 
                         }
@@ -517,7 +518,10 @@ public class AddNewTrainee extends Fragment implements View.OnClickListener {
         FirebaseAuth mAuth=  FirebaseAuth.getInstance();
         String Email =sp.getString("User_Email","prinssingh7448@gmail.com");
         String Password =sp.getString("User_Password","1rtyrty2");
-        Log.d("Re-login", "Sp Email"+Email +"\n Pwd"+Password);
+        String UID =sp.getString("User_UID","UIDDDDDDDD");
+
+        Log.d("Re-login", "Sp Email"+Email +"Sp Pwd "+Password+"  UID  "+UID);
+
         mAuth.signInWithEmailAndPassword(Email,Password)
                 .addOnCompleteListener(requireActivity(), new OnCompleteListener<AuthResult>() {
                     @Override
