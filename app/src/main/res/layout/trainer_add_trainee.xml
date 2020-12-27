@@ -112,6 +112,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
                         android:orientation="horizontal">
 
                         <TextView
@@ -121,17 +122,36 @@
                             android:text="Age"
                             android:textSize="20sp"
                             android:layout_marginLeft="3dp"
-                            android:layout_marginTop="10dp"
+                            android:layout_gravity="center"
                             android:textColor="@color/primary_sky_blue"/>
 
-                        <Spinner
-                            android:id="@+id/ageSnipper"
-                            android:layout_width="100dp"
-                            android:layout_height="40dp"
-                            android:gravity="center"
-                            android:layout_marginLeft="20dp"
-                            android:background="@android:drawable/btn_dropdown"
-                            android:spinnerMode="dropdown"/>
+                        <RelativeLayout
+                            android:layout_width="60dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:background="@drawable/spinner_border"
+                            android:orientation="horizontal">
+
+                            <Spinner
+                                android:id="@+id/ageSpinner"
+                                android:layout_width="60dp"
+                                android:layout_height="40dp"
+                                android:layout_centerVertical="true"
+                                android:layout_gravity="center"
+                                android:background="@android:color/transparent"
+                                android:gravity="center"
+                                android:layout_marginLeft="5dp"
+                                android:spinnerMode="dropdown" />
+
+<!--                            <ImageView-->
+<!--                                android:layout_width="50dp"-->
+<!--                                android:layout_height="40dp"-->
+<!--                                android:layout_alignParentRight="true"-->
+<!--                                android:layout_centerVertical="true"-->
+<!--                                android:layout_gravity="center"-->
+<!--                                android:src="@mipmap/drop" />-->
+
+                        </RelativeLayout>
 
 
                     </LinearLayout>
@@ -147,7 +167,24 @@
                             android:id="@+id/mobile"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:inputType="number"
+                            android:inputType="phone"
+                            android:textColor="@color/grey_color"
+                            />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+                    <View style="@style/proifleDetailsView" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="Alternate Mobile Number"
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/alternateMobile"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:inputType="phone"
                             android:textColor="@color/grey_color"
                             />
 
@@ -166,8 +203,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:inputType="textWebEmailAddress"
-                            android:textColor="@color/grey_color"
-                            />
+                            android:textColor="@color/grey_color" />
 
                     </com.google.android.material.textfield.TextInputLayout>
                     <View style="@style/proifleDetailsView" />
@@ -189,11 +225,11 @@
                         <EditText
                             android:id="@+id/weight"
                             android:layout_width="200dp"
-                            android:textColor="@color/grey_color"
                             android:layout_weight="1"
+                            android:textColor="@color/grey_color"
                             android:layout_height="wrap_content"
                             android:ems="10"
-                            android:inputType="number" />
+                            android:inputType="numberDecimal" />
 
                         <RadioGroup
                             android:id="@+id/weightRadioGroup"
@@ -245,7 +281,7 @@
                             android:textColor="@color/grey_color"
                             android:layout_height="wrap_content"
                             android:ems="10"
-                            android:inputType="number" />
+                            android:inputType="numberDecimal" />
 
                         <RadioGroup
                             android:id="@+id/heightRadioGroup"
@@ -270,7 +306,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_alignParentBottom="true"
-                                android:text="In Meter" />
+                                android:text="In Centimetre" />
                         </RadioGroup>
 
                     </LinearLayout>
@@ -451,24 +487,52 @@
 
                     <View style="@style/proifleDetailsView" />
 
-                    <com.google.android.material.textfield.TextInputLayout
-                        android:id="@+id/outlinedTextField56"
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Subscription Fee"
-                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:orientation="horizontal">
 
-                        <com.google.android.material.textfield.TextInputEditText
-                            android:id="@+id/subscriptionFee"
-                            android:layout_width="match_parent"
-                            android:inputType="number"
-                            android:layout_height="wrap_content"/>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Subscription Fee"
+                            android:textSize="20sp"
+                            android:layout_marginLeft="3dp"
+                            android:layout_gravity="center"
+                            android:textColor="@color/primary_sky_blue"/>
 
-                    </com.google.android.material.textfield.TextInputLayout>
+                        <RelativeLayout
+                            android:layout_width="150dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:background="@drawable/spinner_border"
+                            android:orientation="horizontal">
+
+                            <Spinner
+                                android:id="@+id/subscriptionFee"
+                                android:layout_width="150dp"
+                                android:layout_height="40dp"
+                                android:layout_centerVertical="true"
+                                android:layout_gravity="center"
+                                android:background="@android:color/transparent"
+                                android:gravity="center"
+                                android:layout_marginLeft="5dp"
+                                android:spinnerMode="dropdown" />
+
+                        </RelativeLayout>
+
+
+                    </LinearLayout>
+
+                    <View style="@style/proifleDetailsView" />
 
                     <LinearLayout
                         android:id="@+id/SubscriptionMonthasadfd"
                         android:layout_width="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginBottom="20dp"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
 
@@ -484,11 +548,13 @@
                             android:clickable="true"
                             android:textColor="@color/primary_sky_blue"/>
 
-                        <EditText
-                            android:layout_width="200dp"
+                        <TextView
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:id="@+id/etDate"
+                            android:layout_marginLeft="20dp"
                             android:hint="Select Date"
+                            android:focusableInTouchMode="true"
                             android:textSize="20sp"
                             android:textColor="@color/grey_color"
                             android:clickable="true"
