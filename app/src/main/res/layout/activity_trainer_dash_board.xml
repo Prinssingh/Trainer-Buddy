@@ -21,6 +21,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="32dp"
                 app:cardCornerRadius="16dp"
+                android:foreground="?android:attr/selectableItemBackground"
                 android:clickable="true"
                 android:focusable="true">
 
@@ -40,7 +41,7 @@
                             android:layout_margin="2dp"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            app:cardCornerRadius="20dp">
+                            app:cardCornerRadius="16dp">
                             <ImageView
                                 android:id="@+id/ProfileImage"
                                 android:layout_width="match_parent"
@@ -83,7 +84,10 @@
                    android:layout_height="wrap_content"
                    android:background="@android:color/transparent"
                    android:src="@drawable/notification_white_24"
-                   android:layout_marginEnd="20dp"
+                   android:layout_marginEnd="24dp"
+                   android:foreground="?android:attr/selectableItemBackground"
+                   android:clickable="true"
+                   android:focusable="true"
                    />
 
                <ImageButton
@@ -93,6 +97,9 @@
                    android:background="@android:color/transparent"
                    android:src="@drawable/setting_white_24"
                    android:layout_marginEnd="15dp"
+                   android:foreground="?android:attr/selectableItemBackground"
+                   android:clickable="true"
+                   android:focusable="true"
                    />
            </LinearLayout>
 

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="120dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".TrainerDashBoardUi.SubscriptionPlanCardFragment">
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:cardCornerRadius="10dp"
+        app:cardBackgroundColor="@color/colorPrimary">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <TextView
+                android:id="@+id/PlanTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Title"
+                android:textStyle="bold"
+                android:textSize="24sp"
+                android:textColor="@color/white_color"/>
+            <TextView
+                android:id="@+id/PlanAbout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="About"
+                android:textStyle="bold"
+                android:textSize="24sp"
+                android:textColor="@color/white_color"
+                android:layout_below="@+id/PlanTitle"/>
+            <TextView
+                android:id="@+id/PlanDays"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Days"
+                android:textStyle="bold"
+                android:textSize="24sp"
+                android:textColor="@color/white_color"
+                android:layout_below="@+id/PlanAbout"/>
+            <TextView
+                android:id="@+id/PlanPrize"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/PlanAbout"
+                android:layout_marginStart="42dp"
+                android:layout_marginTop="2dp"
+                android:layout_toEndOf="@+id/PlanDays"
+                android:gravity="center"
+                android:text="Prize"
+                android:textColor="@color/white_color"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+        </RelativeLayout>
+
+
+
+
+    </com.google.android.material.card.MaterialCardView>
+
+</FrameLayout>

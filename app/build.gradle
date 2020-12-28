@@ -21,6 +21,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
@@ -44,7 +48,7 @@ dependencies {
     // Image Cropping
     //noinspection GradleDependency
     implementation 'com.github.yalantis:ucrop:2.2.6-native'
-
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
 
 }
