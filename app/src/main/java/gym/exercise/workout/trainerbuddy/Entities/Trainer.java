@@ -8,6 +8,8 @@ import com.google.firebase.database.Exclude;
 
 import java.io.ByteArrayOutputStream;
 import java.util.HashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 
 
@@ -29,7 +31,7 @@ public class Trainer  {
     private String GymAddress;
     private String DeviceID;
     private String Occupation;
-    private SubscriptionPlan[] offeringPlan;
+    private List<SubscriptionPlan> offeringPlan= new LinkedList<SubscriptionPlan>();;
     private String FoodPref;
     private String WeightPref;
     private String MusclePref;
@@ -68,9 +70,11 @@ public class Trainer  {
     public Map<String, Object> toMapSubscriptionPlans() {
         HashMap<String, Object> result = new HashMap<>();
 
-        for (SubscriptionPlan plan: offeringPlan ) {
-            String key = String.valueOf(plan.getDays()) + "DaysPlanIn" + String.valueOf(plan.getPrize());
-            result.put(key,plan.toMap());
+        if (!offeringPlan.isEmpty()){
+            for (SubscriptionPlan plan: offeringPlan ) {
+                String key = String.valueOf(plan.getDays()) + "DaysPlanIn" + String.valueOf(plan.getPrize());
+                result.put(key,plan.toMap());
+            }
         }
 
         return result;
@@ -126,14 +130,27 @@ public class Trainer  {
     public  String getDeviceID(){return this.DeviceID;}
 
 
-    public String getPhotoPath() {
-        return PhotoPath;
-    }
+    public String getPhotoPath() { return PhotoPath; }
+    public void setPhotoPath(String photoPath) { PhotoPath = photoPath; }
 
-    public void setPhotoPath(String photoPath) {
-        PhotoPath = photoPath;
-    }
+    public String getOccupation() {return Occupation; }
+    public void setOccupation(String occupation) { Occupation = occupation;}
 
+    public List<SubscriptionPlan> getOfferingPlan() {return offeringPlan;}
+    public void setOfferingPlan(List<SubscriptionPlan> offeringPlan) {this.offeringPlan = offeringPlan; }
+
+    public String getFoodPref() {return FoodPref;}
+    public void setFoodPref(String foodPref) {FoodPref = foodPref; }
+
+    public String getWeightPref() { return WeightPref;}
+    public void setWeightPref(String weightPref) {WeightPref = weightPref;}
+
+    public String getMusclePref() {return MusclePref;}
+    public void setMusclePref(String musclePref) {MusclePref = musclePref;}
+
+
+
+    // Special Functions
     public byte[] bitmapToByte(Bitmap bitmap){
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         bitmap.compress(Bitmap.CompressFormat.PNG, 0, baos);

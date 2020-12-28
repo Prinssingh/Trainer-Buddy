@@ -1,6 +1,7 @@
 package gym.exercise.workout.trainerbuddy.Entities;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -16,11 +17,24 @@ import gym.exercise.workout.trainerbuddy.R;
 
 public class ImportantFunctions {
     private  Context context;
+    Activity activity;
     ViewGroup progressView;
+    private LayoutInflater layoutInflater;
     protected boolean isProgressShowing = false;
 
     public ImportantFunctions(Context context){
-        this.context =context;}
+        this.context =context;
+        activity=(Activity)context;}
+
+    public ImportantFunctions(Context context,LayoutInflater layoutInflater){
+        this.context =context;
+        this.layoutInflater=layoutInflater;
+        activity=(Activity)context;
+
+    }
+
+
+
 
     public Boolean isConnectedToInternet() {
         ConnectivityManager cm =
@@ -64,22 +78,21 @@ public class ImportantFunctions {
                 Settings.Secure.ANDROID_ID);
     }
 
-//
-//    public void showProgressingView(LayoutInflater layoutInflater) {
-//
-//        if (!isProgressShowing) {
-//            isProgressShowing = true;
-//            progressView = (ViewGroup) layoutInflater.inflate(R.layout.mprogressbar, null);
-//            View v = context.getWindow().findViewById(android.R.id.content).getRootView();
-//            ViewGroup viewGroup = (ViewGroup) v;
-//            viewGroup.addView(progressView);
-//        }
-//    }
-//
-//    public void hideProgressingView() {
-//        View v = requireActivity().findViewById(android.R.id.content).getRootView();
-//        ViewGroup viewGroup = (ViewGroup) v;
-//        viewGroup.removeView(progressView);
-//        isProgressShowing = false;
-//    }
+    public void showProgressingView() {
+
+        if (!isProgressShowing) {
+            isProgressShowing = true;
+            progressView = (ViewGroup) layoutInflater.inflate(R.layout.mprogressbar, null);
+            View v = activity.findViewById(android.R.id.content).getRootView();
+            ViewGroup viewGroup = (ViewGroup) v;
+            viewGroup.addView(progressView);
+        }
+    }
+
+    public void hideProgressingView() {
+        View v = activity.findViewById(android.R.id.content).getRootView();
+        ViewGroup viewGroup = (ViewGroup) v;
+        viewGroup.removeView(progressView);
+        isProgressShowing = false;
+    }
 }

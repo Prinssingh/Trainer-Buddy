@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.format.DateFormat;
 import android.util.Log;
@@ -27,6 +28,7 @@ import androidx.fragment.app.Fragment;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -40,14 +42,17 @@ import java.util.List;
 import java.util.Objects;
 
 import gym.exercise.workout.trainerbuddy.DataBaseHandler.DataBaseHandler;
+import gym.exercise.workout.trainerbuddy.Entities.ImportantFunctions;
 import gym.exercise.workout.trainerbuddy.Entities.SubscriptionPlan;
 import gym.exercise.workout.trainerbuddy.Entities.Trainee;
 import gym.exercise.workout.trainerbuddy.R;
 
 public class AddNewTrainee extends Fragment implements View.OnClickListener {
+
     FirebaseUser Cself =  FirebaseAuth.getInstance().getCurrentUser();
     SharedPreferences sp;
     SharedPreferences.Editor editor;
+    ImportantFunctions impFun;
 
     View Root;
     TextInputEditText name,mobile,alternateMobile,email;
@@ -84,6 +89,7 @@ public class AddNewTrainee extends Fragment implements View.OnClickListener {
 
         sp=requireContext().getSharedPreferences("TrainerBuddyPref", Context.MODE_PRIVATE);
         editor=sp.edit();
+        impFun =new ImportantFunctions(requireContext(),getLayoutInflater());
 
         Root=inflater.inflate(R.layout.trainer_add_trainee, container, false);
 
@@ -180,7 +186,7 @@ public class AddNewTrainee extends Fragment implements View.OnClickListener {
     public void onClick(View view) {
         switch(view.getId()){
             case R.id.continuebutton:
-                registerTrainee();
+                AddTrainee();
                 break;
             case R.id.etDate:
                 {
@@ -277,10 +283,23 @@ public class AddNewTrainee extends Fragment implements View.OnClickListener {
     }
 
     private void AddTrainee(){
+        if (impFun.isConnectedToInternet()){
+            if(isValidInput()){
+                registerTrainee();
+            }
+        }else{
+            Snackbar snackbar = Snackbar
+                    .make(Root, "No internet connection!", Snackbar.LENGTH_LONG)
+                    .setAction("RETRY", new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                        }
+                    });
 
-        if (isValidInput()){
-            registerTrainee();
-        }else{}
+            // Changing message text color
+            snackbar.setActionTextColor(Color.RED);
+            snackbar.show();
+        }
     }
 
     public Trainee getTraineeData(){
@@ -422,7 +441,7 @@ public class AddNewTrainee extends Fragment implements View.OnClickListener {
          final Trainee trainee =getTraineeData();
          final FirebaseAuth mAuth=  FirebaseAuth.getInstance();
          setAllDisable();
-         showProgressingView();
+         impFun.showProgressingView();
          Log.d("TAG", "registerTrainee Before Trainer Uid : "+ FirebaseAuth.getInstance().getCurrentUser().getUid());
          Log.d("TAG", "registerTrainee: "+trainee.getEmail()+ trainee.getPassword());
             mAuth.createUserWithEmailAndPassword(trainee.getEmail(), trainee.getPassword())
@@ -449,14 +468,14 @@ public class AddNewTrainee extends Fragment implements View.OnClickListener {
                                 // Todo updateUI
 
 
-                                hideProgressingView();
+                                impFun.hideProgressingView();
                                 setAllEnable();
                             }
                             else {
                                 // If sign in fails, display a message to the user.
                                 Log.d("Adding Trainee Failed", "Trainee Registration failed", task.getException());
                                 Toast.makeText(getContext(), "Trainee Registration Failed!!", Toast.LENGTH_SHORT).show();
-                                hideProgressingView();
+                                impFun.hideProgressingView();
                                 setAllEnable();
                             }
                         }
@@ -466,25 +485,6 @@ public class AddNewTrainee extends Fragment implements View.OnClickListener {
 
     }
 
-    protected boolean isProgressShowing = false;
-    ViewGroup progressView;
-    public void showProgressingView() {
-
-        if (!isProgressShowing) {
-            isProgressShowing = true;
-            progressView = (ViewGroup) getLayoutInflater().inflate(R.layout.mprogressbar, null);
-            View v = requireActivity().findViewById(android.R.id.content).getRootView();
-            ViewGroup viewGroup = (ViewGroup) v;
-            viewGroup.addView(progressView);
-        }
-    }
-
-    public void hideProgressingView() {
-        View v = requireActivity().findViewById(android.R.id.content).getRootView();
-        ViewGroup viewGroup = (ViewGroup) v;
-        viewGroup.removeView(progressView);
-        isProgressShowing = false;
-    }
 
     private void sendVerificationEmail() {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
