@@ -15,12 +15,20 @@ import androidx.viewpager2.widget.ViewPager2;
 import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import gym.exercise.workout.trainerbuddy.DataBaseHandler.DataBaseHandler;
+import gym.exercise.workout.trainerbuddy.Entities.SubscriptionPlan;
 import gym.exercise.workout.trainerbuddy.R;
 
 public class Home extends Fragment {
     private ViewPager2 SubscriptionPlanPager;
     private FragmentStateAdapter pagerAdapter;
     private static int NUM_PAGES;
+
+    DataBaseHandler db;
+    List<SubscriptionPlan> subscriptionPlans =new ArrayList<SubscriptionPlan>();
 
     public static Home newInstance() {
         return new Home();
@@ -30,7 +38,11 @@ public class Home extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable final ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
         View Root=inflater.inflate(R.layout.trainer_home, container, false);
+
+        db=new DataBaseHandler(getContext());
+        subscriptionPlans=db.getTrainerSubscriptionPlan();
         NUM_PAGES=5;
+
         SubscriptionPlanPager =Root.findViewById(R.id.TrainerPlansPager);
         pagerAdapter= new SubscriptionPlanSlidePagerAdapter(getActivity());
         SubscriptionPlanPager.setAdapter(pagerAdapter);

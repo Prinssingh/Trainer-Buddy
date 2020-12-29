@@ -7,8 +7,8 @@ import android.graphics.BitmapFactory;
 import com.google.firebase.database.Exclude;
 
 import java.io.ByteArrayOutputStream;
+import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
@@ -31,10 +31,12 @@ public class Trainer  {
     private String GymAddress;
     private String DeviceID;
     private String Occupation;
-    private List<SubscriptionPlan> offeringPlan= new LinkedList<SubscriptionPlan>();;
+    private List<SubscriptionPlan> offeringPlan= new ArrayList<SubscriptionPlan>();;
     private String FoodPref;
     private String WeightPref;
     private String MusclePref;
+
+    private SubscriptionPlan subscriptionPlan;
 
 
     //Constructors
@@ -147,6 +149,14 @@ public class Trainer  {
 
     public String getMusclePref() {return MusclePref;}
     public void setMusclePref(String musclePref) {MusclePref = musclePref;}
+
+    public SubscriptionPlan getSubscriptionPlan() {
+        return subscriptionPlan;
+    }
+
+    public void setSubscriptionPlan(SubscriptionPlan subscriptionPlan) {
+        this.subscriptionPlan = subscriptionPlan;
+    } 
 
 
 

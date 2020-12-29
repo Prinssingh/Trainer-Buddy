@@ -6,23 +6,29 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class SubscriptionPlan {
-    private String Name;
+
+
+    private String ID;
+    private String Title;
     private String About;
     private int Prize;
     private  int Days;
     private String StartingDate=null;
     private String ExpiryDate=null;
 
+    public SubscriptionPlan() {
+    }
+
     //Constructors
-    public SubscriptionPlan(String name, String about, int prize, int days) {
-        Name = name;
+    public SubscriptionPlan(String title, String about, int prize, int days) {
+        Title = title;
         About = about;
         Prize = prize;
         Days = days;
     }
 
-    public SubscriptionPlan(String name, String about, int prize, int days, String startingDate, String expiryDate) {
-        Name = name;
+    public SubscriptionPlan(String title, String about, int prize, int days, String startingDate, String expiryDate) {
+        Title = title;
         About = about;
         Prize = prize;
         Days = days;
@@ -35,7 +41,7 @@ public class SubscriptionPlan {
     @Exclude
     public Map<String, Object> toMap() {
         HashMap<String, Object> result = new HashMap<>();
-        result.put("Name", this.Name);
+        result.put("Name", this.Title);
         result.put("About",this.About);
         result.put("Prize",this.Prize);
         result.put("Days",this.Days);
@@ -50,11 +56,14 @@ public class SubscriptionPlan {
 
 
     /*Getter And Setters*/
-    public String getName() {
-        return Name;
+    public String getID() { return ID; }
+
+    public void setID(String ID) { this.ID = ID; }
+    public String getTitle() {
+        return Title;
     }
 
-    public void setName(String name) { Name = name;}
+    public void setTitle(String title) { Title = title;}
 
     public String getAbout() {
         return About;

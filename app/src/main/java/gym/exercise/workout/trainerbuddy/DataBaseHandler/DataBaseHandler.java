@@ -10,17 +10,22 @@ import androidx.annotation.Nullable;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.ByteArrayOutputStream;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
+import gym.exercise.workout.trainerbuddy.Entities.SubscriptionPlan;
 import gym.exercise.workout.trainerbuddy.Entities.Trainee;
 import gym.exercise.workout.trainerbuddy.Entities.Trainer;
 
@@ -92,6 +97,29 @@ public class DataBaseHandler {
         });
 
 
+    }
+
+    private List<SubscriptionPlan> offeringPlan= new ArrayList<SubscriptionPlan>();
+
+    public List<SubscriptionPlan> getTrainerSubscriptionPlan(){
+
+        DatabaseReference myRef = Root.child("TrainerSubscriptionPlans/");
+        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                for(DataSnapshot singleSnapshot : dataSnapshot.getChildren()){
+                   offeringPlan.add(singleSnapshot.getValue(SubscriptionPlan.class));
+                    Log.d("DB CLASS", "singleSnapshot"+singleSnapshot+" value"+singleSnapshot.getValue(SubscriptionPlan.class));
+                }
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {}
+
+        });
+
+        return offeringPlan;
     }
 
 }
