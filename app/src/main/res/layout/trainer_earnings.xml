@@ -29,11 +29,7 @@
                 android:focusable="true"
                 app:cardCornerRadius="15dp">
 
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/shape_cardview" />
+
 
                 <RelativeLayout
                     android:layout_width="match_parent"
