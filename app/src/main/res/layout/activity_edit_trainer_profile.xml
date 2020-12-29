@@ -22,51 +22,6 @@
             android:orientation="vertical">
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/TraineeDetail"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_marginLeft="15dp"
-                android:layout_marginRight="15dp"
-                android:clickable="true"
-                android:focusable="true"
-                app:cardBackgroundColor="@color/grey_color"
-                app:cardCornerRadius="10dp">
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    android:padding="5dp">
-
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/profileImage"
-                        android:layout_width="120dp"
-                        android:layout_height="120dp"
-                        android:layout_centerInParent="true"
-                        app:cardCornerRadius="120dp">
-
-                        <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:src="@drawable/shubham"
-                            android:contentDescription="profilepic" />
-
-                    </androidx.cardview.widget.CardView>
-
-                    <TextView
-                        android:id="@+id/TraineeName"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Hi, Shubham"
-                        android:textStyle="bold"
-                        android:layout_centerHorizontal="true"
-                        android:layout_below="@+id/profileImage"
-                        android:textColor="@color/white_color"
-                        android:textSize="20sp" />
-
-                </RelativeLayout>
-            </androidx.cardview.widget.CardView>
-
-            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="15dp"
@@ -102,9 +57,10 @@
                             android:layout_toEndOf="@id/nameImageView"
                             style="@style/profileDetailsTextMain" />
 
-                        <TextView
-                            android:id="@+id/trainerName"
-                            android:text="developer"
+                        <EditText
+                            android:id="@+id/nameEdit"
+                            android:text=""
+                            android:layout_marginTop="15dp"
                             android:layout_toEndOf="@id/nameImageView"
                             style="@style/profileDetailsMiniText" />
 
@@ -122,9 +78,10 @@
                             android:layout_toEndOf="@id/genderImageView"
                             style="@style/profileDetailsTextMain" />
 
-                        <TextView
-                            android:id="@+id/trainerGender"
-                            android:text="Male"
+                        <EditText
+                            android:id="@+id/genderEdit"
+                            android:text=""
+                            android:layout_marginTop="15dp"
                             android:layout_toEndOf="@id/genderImageView"
                             style="@style/profileDetailsMiniText" />
 
@@ -142,9 +99,10 @@
                             android:layout_toRightOf="@id/mobileImageView"
                             style="@style/profileDetailsTextMain"/>
 
-                        <TextView
-                            android:id="@+id/trainerMobile"
-                            android:text="+91-8129999999"
+                        <EditText
+                            android:id="@+id/mobileEdit"
+                            android:text=""
+                            android:layout_marginTop="15dp"
                             android:layout_toRightOf="@id/mobileImageView"
                             style="@style/profileDetailsMiniText" />
 
@@ -161,9 +119,10 @@
                             android:layout_toRightOf="@id/alternateMobileImageView"
                             style="@style/profileDetailsTextMain"/>
 
-                        <TextView
-                            android:id="@+id/trainerAlternate"
-                            android:text="+91-8129999999"
+                        <EditText
+                            android:id="@+id/alternateEdit"
+                            android:text=""
+                            android:layout_marginTop="15dp"
                             android:layout_toRightOf="@id/alternateMobileImageView"
                             style="@style/profileDetailsMiniText" />
 
@@ -181,9 +140,10 @@
                             android:layout_toRightOf="@id/emailImageView"
                             style="@style/profileDetailsTextMain" />
 
-                        <TextView
-                            android:id="@+id/trainerEmail"
-                            android:text="developer@appsnipp.com"
+                        <EditText
+                            android:id="@+id/emailEdit"
+                            android:text=""
+                            android:layout_marginTop="15dp"
                             android:layout_toRightOf="@id/emailImageView"
                             style="@style/profileDetailsMiniText" />
 
@@ -203,9 +163,9 @@
                             android:layout_toRightOf="@id/aboutUs"
                             style="@style/profileDetailsTextMain" />
 
-                        <TextView
-                            android:id="@+id/trainerAbout"
-                            android:text="ab kya he batau apne baare me bs itna jaan lo ki tumhre bs ki baat ni h janna kyuki janne ke liye bhi to kuchh hona chahhiye jisse jaan sako aur wo hai ni ... bs bahut chutiyaap hogyi"
+                        <EditText
+                            android:id="@+id/aboutEdit"
+                            android:text=""
                             android:layout_toEndOf="@id/aboutUs"
                             android:layout_marginTop="20dp"
                             style="@style/profileDetailsMiniText" />
@@ -223,9 +183,10 @@
                             android:layout_toRightOf="@id/gymNameImageView"
                             style="@style/profileDetailsTextMain" />
 
-                        <TextView
-                            android:id="@+id/trainerGymName"
-                            android:text="Golden Fintness Club"
+                        <EditText
+                            android:id="@+id/gymNameEdit"
+                            android:text=""
+                            android:layout_marginTop="15dp"
                             android:layout_toRightOf="@id/gymNameImageView"
                             style="@style/profileDetailsMiniText" />
 
@@ -243,9 +204,10 @@
                             android:layout_toRightOf="@id/addressImageView"
                             style="@style/profileDetailsTextMain" />
 
-                        <TextView
-                            android:id="@+id/trainerAddress"
-                            android:text="Avenue 2nd Street NW SY."
+                        <EditText
+                            android:id="@+id/addressEdit"
+                            android:text=""
+                            android:layout_marginTop="15dp"
                             android:layout_toRightOf="@id/addressImageView"
                             style="@style/profileDetailsMiniText" />
 
@@ -265,9 +227,10 @@
                             android:layout_toRightOf="@id/dobImageView"
                             style="@style/profileDetailsTextMain" />
 
-                        <TextView
-                            android:id="@+id/trainerDOB"
-                            android:text="12-05-1990"
+                        <EditText
+                            android:id="@+id/dobEdit"
+                            android:text=""
+                            android:layout_marginTop="15dp"
                             android:layout_toRightOf="@id/dobImageView"
                             style="@style/profileDetailsMiniText" />
 
@@ -285,9 +248,10 @@
                             android:layout_toRightOf="@id/ageImageView"
                             style="@style/profileDetailsTextMain" />
 
-                        <TextView
-                            android:id="@+id/trainerAge"
-                            android:text="30 Years"
+                        <EditText
+                            android:id="@+id/ageEdit"
+                            android:text=""
+                            android:layout_marginTop="15dp"
                             android:layout_toRightOf="@id/ageImageView"
                             style="@style/profileDetailsMiniText" />
 
@@ -305,16 +269,19 @@
                             android:layout_toRightOf="@id/heightImageView"
                             style="@style/profileDetailsTextMain" />
 
-                        <TextView
-                            android:id="@+id/trainerHeight"
-                            android:text="5'5"
+                        <EditText
+                            android:id="@+id/heightEdit"
+                            android:text=""
+                            android:layout_marginTop="15dp"
                             android:layout_toRightOf="@id/heightImageView"
                             style="@style/profileDetailsMiniText" />
 
                     </RelativeLayout>
 
                     <!--                   <View style="@style/proifleDetailsView" />-->
+
                     <RelativeLayout style="@style/profileDetailsLayout">
+
                         <ImageView
                             android:id="@+id/weightImageView"
                             android:src="@drawable/weight"
@@ -325,9 +292,10 @@
                             android:layout_toRightOf="@id/weightImageView"
                             style="@style/profileDetailsTextMain" />
 
-                        <TextView
-                            android:id="@+id/trainerWeight"
-                            android:text="65 KG"
+                        <EditText
+                            android:id="@+id/weightEdit"
+                            android:text=""
+                            android:layout_marginTop="15dp"
                             android:layout_toRightOf="@id/weightImageView"
                             style="@style/profileDetailsMiniText" />
 
@@ -344,34 +312,33 @@
                             android:text="Food"
                             android:layout_toRightOf="@id/foodImageView"
                             style="@style/profileDetailsTextMain"
-                             />
+                            />
 
-                        <TextView
-                            android:id="@+id/trainerFood"
-                            android:text="Non Vegiteian"
+                        <EditText
+                            android:id="@+id/foodEdit"
+                            android:text=""
+                            android:layout_marginTop="15dp"
                             android:layout_toRightOf="@id/foodImageView"
                             style="@style/profileDetailsMiniText" />
 
                     </RelativeLayout>
 
-                    <!--                   <View style="@style/proifleDetailsView" />-->
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="20dp">
 
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/editImage"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:layout_gravity="end"
-                        app:cardCornerRadius="120dp">
 
-                        <ImageView
-                            android:layout_width="40dp"
-                            android:layout_height="40dp"
-                            android:layout_gravity="center"
-                            android:src="@drawable/edit_buttton_40"/>
+                        <Button
+                            android:id="@+id/update"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Save"
+                            android:layout_centerInParent="true"
+                            android:textColor="@color/white_color"
+                            android:textSize="15dp"/>
 
-                    </androidx.cardview.widget.CardView>
+                    </RelativeLayout>
 
                 </LinearLayout>
 
