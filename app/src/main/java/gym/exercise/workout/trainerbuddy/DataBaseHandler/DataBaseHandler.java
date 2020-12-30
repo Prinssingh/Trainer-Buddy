@@ -2,8 +2,8 @@ package gym.exercise.workout.trainerbuddy.DataBaseHandler;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.util.Log;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -17,9 +17,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
-import com.google.firebase.storage.UploadTask;
 
-import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -62,6 +60,24 @@ public class DataBaseHandler {
         });
 
     }
+    public void getTrainer(String UID){
+        DatabaseReference trainerRef=database.getReference("/Trainers/").child(UID);
+        trainerRef.addListenerForSingleValueEvent(new ValueEventListener(){
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                //todo Remove Log
+                Log.d("Testing Global DB", "onDataChange: "+snapshot.getKey()+" Values "+snapshot.getValue());
+                LDB.setTrainerLDB(snapshot.getValue(Trainer.class));
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
+    }
 
     public void RegisterTrainee(Trainee trainee){
         Map<String, Object> childUpdates = new HashMap<>();
@@ -86,31 +102,6 @@ public class DataBaseHandler {
 
         });
     }
-
-    public void SaveProfilePhoto(Bitmap bitmap,String UID,String UserType){
-        FirebaseStorage storage = FirebaseStorage.getInstance();
-        StorageReference imageRef = storage.getReference().child(UserType+"/"+UID+".png");
-        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos);
-        byte[] data = baos.toByteArray();
-
-        UploadTask uploadTask = imageRef.putBytes(data);
-        uploadTask.addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception exception) {
-                // Handle unsuccessful uploads
-            }
-        }).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
-            @Override
-            public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
-                Toast.makeText(context, "Profile Photo saved", Toast.LENGTH_SHORT).show();
-
-            }
-        });
-
-
-    }
-
     public List<SubscriptionPlan> getTrainerSubscriptionPlan(){
 
         DatabaseReference myRef = Root.child("TrainerSubscriptionPlans/");
@@ -134,6 +125,29 @@ public class DataBaseHandler {
         });
 
         return offeringPlan;
+    }
+
+
+
+
+    // Photo saving and retriving
+
+    public void getProfilePhoto(String UID,String UserType){
+        FirebaseStorage storage = FirebaseStorage.getInstance();
+        StorageReference imageRef = storage.getReference().child(UserType+"/"+UID+".png");
+        final long ONE_MEGABYTE = 1024 * 1024;
+        imageRef.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
+            @Override
+            public void onSuccess(byte[] bytes) {
+                // Data for "images/island.jpg" is returns, use this as needed
+                Bitmap bm = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                // Handle any errors
+            }
+        });
     }
 
 }

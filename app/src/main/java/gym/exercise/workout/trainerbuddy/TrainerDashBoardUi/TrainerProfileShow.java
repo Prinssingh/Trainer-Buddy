@@ -1,6 +1,7 @@
 package gym.exercise.workout.trainerbuddy.TrainerDashBoardUi;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,7 +23,7 @@ public class TrainerProfileShow extends Fragment {
     LocalDataBaseHandler LDB;
     Trainer self;
 
-    ImageView editImage;
+    ImageView profilePic;
     CardView editProfile;
     TextView name, mobile, alternate, adddress, gymName, age, weight, height, about, dob, food;
 
@@ -49,21 +50,22 @@ public class TrainerProfileShow extends Fragment {
         gymName = Root.findViewById(R.id.trainerGymName);
         gymName.setText(self.getGymName());
         age = Root.findViewById(R.id.trainerAge);
-        age.setText(self.getAge());
+        age.setText(String.valueOf(self.getAge()));
         weight = Root.findViewById(R.id.trainerWeight);
-        weight.setText(self.getWeight());
+        weight.setText(String.valueOf(self.getWeight()));
         height = Root.findViewById(R.id.trainerHeight);
-        height.setText(self.getHeight());
+        height.setText(String.valueOf(self.getHeight()));
         about = Root.findViewById(R.id.trainerAbout);
         //TODO
         dob = Root.findViewById(R.id.trainerDOB);
         food = Root.findViewById(R.id.trainerFood);
         food.setText(self.getFoodPref());
 
-        editImage = Root.findViewById(R.id.editImage);
-        if(self.getPhoto()!=null){
-            editImage.setImageBitmap(self.getPhoto());
-        }
+        profilePic = Root.findViewById(R.id.profilePic);
+
+        if (self.getPhoto() !=null){profilePic.setImageBitmap(self.getPhoto());}
+        Log.d("TAG", "onCreateView: "+self.getPhoto());
+        profilePic.setImageBitmap(self.getPhoto());
 
         editProfile=Root.findViewById(R.id.EditProfile);
         editProfile.setOnClickListener(new View.OnClickListener() {

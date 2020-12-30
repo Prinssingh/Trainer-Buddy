@@ -66,29 +66,29 @@ public class LocalDataBaseHandler extends SQLiteOpenHelper {
     // CREATE TABLES COMMAND
     public static final String CREATE_TRAINER_TABLE = "CREATE TABLE " + TRAINER_TABLE_NAME + "(" +
 
-            COLUMN_ID + "INTEGER PRIMARY KEY AUTOINCREMENT,"+
-            NAME + "VARCHAR NOT NULL," + EMAIL +"VARCHAR NOT NULL,"+MOBILE +"VARCHAR," +
-            PHOTO +"BLOB,"+ PASSWORD  + "VARCHAR NOT NULL," + WEIGHT +"INTEGER," + HEIGHT + "INTEGER," +
-            AGE + "INTEGER," + GENDER + "VARCHAR," + ALTERNATE_MOBILE + "VARCHAR," +
-            GYM_NAME + "VARCHAR," + GYM_ADDRESS + "VARCHAR," + DEVICE_ID +"VARCHAR,"+
-            CERTIFICATES +"TEXT," + ABOUT +"TEXT" +");";
+            COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"+
+            NAME + " VARCHAR NOT NULL," + EMAIL +" VARCHAR NOT NULL,"+MOBILE +" VARCHAR," +
+            PHOTO +" BLOB,"+ PASSWORD  + " VARCHAR NOT NULL," + WEIGHT +" INTEGER," + HEIGHT + " INTEGER," +
+            AGE + " INTEGER," + GENDER + " VARCHAR," + ALTERNATE_MOBILE + " VARCHAR," +
+            GYM_NAME + " VARCHAR," + GYM_ADDRESS + " VARCHAR," + DEVICE_ID +" VARCHAR,"+
+            CERTIFICATES +" TEXT," + ABOUT +" TEXT" +");";
 
     public static final String CREATE_TRAINEE_TABLE = "CREATE TABLE " + TRAINEE_TABLE_NAME + "(" +
 
-            COLUMN_ID + "INTEGER PRIMARY KEY AUTOINCREMENT,"+
-            NAME + "VARCHAR NOT NULL," + EMAIL +"VARCHAR NOT NULL,"+MOBILE +"VARCHAR," +
-            PHOTO +"BLOB,"+ PASSWORD  + "VARCHAR NOT NULL," + WEIGHT +"INTEGER," + HEIGHT + "INTEGER," +
-            AGE + "INTEGER," + GENDER + "VARCHAR," + ALTERNATE_MOBILE + "VARCHAR," +
-            GYM_NAME + "VARCHAR," + GYM_ADDRESS + "VARCHAR," + DEVICE_ID +"VARCHAR,"+
-            THE_TRAINER +"INTEGER,"+" FOREIGN KEY ("+THE_TRAINER+") REFERENCES "+TRAINER_TABLE_NAME+"("+COLUMN_ID+")"
+            COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"+
+            NAME + " VARCHAR NOT NULL," + EMAIL +" VARCHAR NOT NULL,"+MOBILE +" VARCHAR," +
+            PHOTO +" BLOB,"+ PASSWORD  + " VARCHAR NOT NULL," + WEIGHT +" INTEGER," + HEIGHT + " INTEGER," +
+            AGE + " INTEGER," + GENDER + " VARCHAR," + ALTERNATE_MOBILE + " VARCHAR," +
+            GYM_NAME + " VARCHAR," + GYM_ADDRESS + " VARCHAR," + DEVICE_ID +" VARCHAR,"+
+            THE_TRAINER +" INTEGER,"+" FOREIGN KEY ("+THE_TRAINER+") REFERENCES "+TRAINER_TABLE_NAME+"("+COLUMN_ID+")"
             +");";
 
     public static final String CREATE_SUBSCRIPTION_PLAN_TABLE = "CREATE TABLE " + SUBSCRIPTION_PLAN_TABLE_NAME + "(" +
 
-            COLUMN_ID + "INTEGER PRIMARY KEY AUTOINCREMENT,"+ PLAN_ID+"VARCHAR ,"+
-            TITLE + "VARCHAR NOT NULL," + ABOUT +"VARCHAR ,"+
-            DAYS +"INTEGER NOT NULL,"+ PRIZE +"INTEGER NOT NULL,"+
-            STARTING_DATE +"VARCHAR,"+EXPIRY_DATE+"VARCHAR" +");";
+            COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"+ PLAN_ID+" VARCHAR ,"+
+            TITLE + " VARCHAR NOT NULL," + ABOUT +" VARCHAR ,"+
+            DAYS +" INTEGER NOT NULL,"+ PRIZE +" INTEGER NOT NULL,"+
+            STARTING_DATE +" VARCHAR,"+EXPIRY_DATE+" VARCHAR" +");";
 
 
 
@@ -128,7 +128,8 @@ public class LocalDataBaseHandler extends SQLiteOpenHelper {
 
         ContentValues values = new ContentValues();
         values.put(NAME,trainer.getName());
-        values.put(PHOTO,trainer.bitmapToByte(trainer.getPhoto()));
+        if(trainer.getPhoto()!=null){
+            values.put(PHOTO,trainer.bitmapToByte(trainer.getPhoto()));}
         values.put(EMAIL,trainer.getEmail());
         values.put(MOBILE,trainer.getMobile());
         values.put(PASSWORD,trainer.getPassword());
@@ -162,7 +163,8 @@ public class LocalDataBaseHandler extends SQLiteOpenHelper {
         trainer.setName(c.getString(c.getColumnIndex(NAME)));
         trainer.setEmail(c.getString(c.getColumnIndex(EMAIL)));
 
-        trainer.setPhoto(trainer.byteToBitmap(c.getBlob(c.getColumnIndex(PHOTO))));
+        try{trainer.setPhoto(trainer.byteToBitmap(c.getBlob(c.getColumnIndex(PHOTO))));}
+        catch (Exception ignored){}
 
         trainer.setMobile(c.getString(c.getColumnIndex(MOBILE)));
         trainer.setPassword(c.getString(c.getColumnIndex(PASSWORD)));
@@ -182,6 +184,15 @@ public class LocalDataBaseHandler extends SQLiteOpenHelper {
 
         return trainer;
     }
+
+     public void setTrainerPhotoLDB(byte[] img,String UID){
+         SQLiteDatabase db = this.getWritableDatabase();
+         ContentValues values = new ContentValues();
+         values.put(PHOTO,img);
+         String whereClause = "id=?";
+         String whereArgs[] = {"1"};
+         db.update(TRAINER_TABLE_NAME, values,whereClause,whereArgs);
+     }
 
     public void setTraineeLDB(Trainee trainee){
         SQLiteDatabase db = this.getWritableDatabase();

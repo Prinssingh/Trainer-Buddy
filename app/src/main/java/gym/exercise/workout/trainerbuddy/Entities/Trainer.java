@@ -49,6 +49,7 @@ public class Trainer  {
     @Exclude
     public Map<String, Object> toMap() {
         HashMap<String, Object> result = new HashMap<>();
+        result.put("UID", this.UID);
         result.put("Name", this.Name);
         result.put("Email", this.Email);
         result.put("Mobile", this.Mobile);

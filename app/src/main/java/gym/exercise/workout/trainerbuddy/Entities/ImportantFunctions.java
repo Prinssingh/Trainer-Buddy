@@ -3,6 +3,7 @@ package gym.exercise.workout.trainerbuddy.Entities;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.provider.Settings;
@@ -16,24 +17,33 @@ import android.widget.Toast;
 import gym.exercise.workout.trainerbuddy.R;
 
 public class ImportantFunctions {
-    private  Context context;
+    private final Context context;
     Activity activity;
     ViewGroup progressView;
     private LayoutInflater layoutInflater;
     protected boolean isProgressShowing = false;
 
-    public ImportantFunctions(Context context){
-        this.context =context;
-        activity=(Activity)context;}
+    SharedPreferences sp;
+    SharedPreferences.Editor editor;
 
-    public ImportantFunctions(Context context,LayoutInflater layoutInflater){
+
+    @SuppressLint("CommitPrefEdits")
+    public ImportantFunctions(Context context) {
+        this.context =context;
+        activity=(Activity)context;
+        sp=context.getSharedPreferences("TrainerBuddyPref", Context.MODE_PRIVATE);
+        editor=sp.edit();
+    }
+
+    @SuppressLint("CommitPrefEdits")
+    public ImportantFunctions(Context context, LayoutInflater layoutInflater){
         this.context =context;
         this.layoutInflater=layoutInflater;
         activity=(Activity)context;
+        sp=context.getSharedPreferences("TrainerBuddyPref", Context.MODE_PRIVATE);
+        editor=sp.edit();
 
     }
-
-
 
 
     public Boolean isConnectedToInternet() {
@@ -78,6 +88,7 @@ public class ImportantFunctions {
                 Settings.Secure.ANDROID_ID);
     }
 
+    @SuppressLint("InflateParams")
     public void showProgressingView() {
 
         if (!isProgressShowing) {
@@ -95,4 +106,44 @@ public class ImportantFunctions {
         viewGroup.removeView(progressView);
         isProgressShowing = false;
     }
+
+/* Shared Preferences  */
+    public SharedPreferences mSharedPref(){
+        return sp;
+    }
+    public SharedPreferences.Editor mEditor(){
+        return editor;
+    }
+
+    public String getSharedPrefUID(){
+        return sp.getString("User_UID",null);
+    }
+    public void setSharedPrefUID(String UID){
+        editor.putString("User_UID",UID).commit();
+    }
+
+    public String getSharedPrefEmail(){
+        return sp.getString("User_Email",null);
+    }
+    public void setSharedPrefEmail(String Email){
+        editor.putString("User_Email",Email).commit();
+    }
+
+    public String getSharedPrefName(){
+        return sp.getString("User_Name",null);
+    }
+    public void setSharedPrefName(String Name){
+        editor.putString("User_Name",Name).commit();
+    }
+
+    public String getSharedPrefUserType(){
+        return sp.getString("User_Type",null);
+    }
+    public void setSharedPrefUserType(String Type){
+        editor.putString("User_Type",Type).commit();
+    }
+
+
+
+
 }

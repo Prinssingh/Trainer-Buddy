@@ -11,7 +11,7 @@ public class TrainerProfileActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         setContentView(R.layout.trainer_profile_activity);
         if (savedInstanceState == null) {

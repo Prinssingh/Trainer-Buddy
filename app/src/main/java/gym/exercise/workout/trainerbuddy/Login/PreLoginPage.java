@@ -1,8 +1,6 @@
 package gym.exercise.workout.trainerbuddy.Login;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,11 +12,11 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import gym.exercise.workout.trainerbuddy.Entities.ImportantFunctions;
 import gym.exercise.workout.trainerbuddy.R;
 
 public class PreLoginPage extends Fragment implements View.OnClickListener {
-    SharedPreferences sp;
-    SharedPreferences.Editor editor;
+    ImportantFunctions impFun;
 
 
     public static PreLoginPage newInstance() {
@@ -31,8 +29,7 @@ public class PreLoginPage extends Fragment implements View.OnClickListener {
                              @Nullable Bundle savedInstanceState) {
         View Root =inflater.inflate(R.layout.pre_login_page, container, false);
 
-        sp=requireContext().getSharedPreferences("TrainerBuddyPref", Context.MODE_PRIVATE);
-        editor=sp.edit();
+        impFun = new ImportantFunctions(requireContext());
 
         Root.findViewById(R.id.Trainer).setOnClickListener(this);
         Root.findViewById(R.id.Trainee).setOnClickListener(this);
@@ -61,15 +58,16 @@ public class PreLoginPage extends Fragment implements View.OnClickListener {
 
         switch (view.getId()){
             case R.id.Trainer:
-                editor.putString("Type","Trainer").commit();
+                impFun.setSharedPrefUserType("Trainer");
 
                 break;
             case R.id.Trainee:
-                editor.putString("Type","Trainee").commit();
+                impFun.setSharedPrefUserType("Trainee");
+
                 break;
 
             case R.id.NewUser:
-                editor.putString("Type","NewUser").apply();
+                impFun.setSharedPrefUserType("NewUser");
                 break;
         }
         ChangeFragment(LoginPage.newInstance());
