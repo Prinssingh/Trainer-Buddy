@@ -68,7 +68,7 @@ public class LocalDataBaseHandler extends SQLiteOpenHelper {
 
             COLUMN_ID + "INTEGER PRIMARY KEY AUTOINCREMENT,"+
             NAME + "VARCHAR NOT NULL," + EMAIL +"VARCHAR NOT NULL,"+MOBILE +"VARCHAR," +
-            PHOTO +"BLOB,"+ PASSWORD  + "VARCHAR NOT NULL," + WEIGHT +"FLOAT," + HEIGHT + "FLOAT," +
+            PHOTO +"BLOB,"+ PASSWORD  + "VARCHAR NOT NULL," + WEIGHT +"INTEGER," + HEIGHT + "INTEGER," +
             AGE + "INTEGER," + GENDER + "VARCHAR," + ALTERNATE_MOBILE + "VARCHAR," +
             GYM_NAME + "VARCHAR," + GYM_ADDRESS + "VARCHAR," + DEVICE_ID +"VARCHAR,"+
             CERTIFICATES +"TEXT," + ABOUT +"TEXT" +");";
@@ -77,7 +77,7 @@ public class LocalDataBaseHandler extends SQLiteOpenHelper {
 
             COLUMN_ID + "INTEGER PRIMARY KEY AUTOINCREMENT,"+
             NAME + "VARCHAR NOT NULL," + EMAIL +"VARCHAR NOT NULL,"+MOBILE +"VARCHAR," +
-            PHOTO +"BLOB,"+ PASSWORD  + "VARCHAR NOT NULL," + WEIGHT +"FLOAT," + HEIGHT + "FLOAT," +
+            PHOTO +"BLOB,"+ PASSWORD  + "VARCHAR NOT NULL," + WEIGHT +"INTEGER," + HEIGHT + "INTEGER," +
             AGE + "INTEGER," + GENDER + "VARCHAR," + ALTERNATE_MOBILE + "VARCHAR," +
             GYM_NAME + "VARCHAR," + GYM_ADDRESS + "VARCHAR," + DEVICE_ID +"VARCHAR,"+
             THE_TRAINER +"INTEGER,"+" FOREIGN KEY ("+THE_TRAINER+") REFERENCES "+TRAINER_TABLE_NAME+"("+COLUMN_ID+")"
@@ -166,8 +166,8 @@ public class LocalDataBaseHandler extends SQLiteOpenHelper {
 
         trainer.setMobile(c.getString(c.getColumnIndex(MOBILE)));
         trainer.setPassword(c.getString(c.getColumnIndex(PASSWORD)));
-        trainer.setWeight(c.getFloat(c.getColumnIndex(WEIGHT)));
-        trainer.setHeight(c.getFloat(c.getColumnIndex(HEIGHT)));
+        trainer.setWeight(c.getInt(c.getColumnIndex(WEIGHT)));
+        trainer.setHeight(c.getInt(c.getColumnIndex(HEIGHT)));
         trainer.setAge(c.getInt(c.getColumnIndex(AGE)));
         trainer.setAlternateMobile(c.getString(c.getColumnIndex(ALTERNATE_MOBILE)));
         trainer.setGender(c.getString(c.getColumnIndex(GENDER)));
@@ -225,8 +225,8 @@ public class LocalDataBaseHandler extends SQLiteOpenHelper {
                 trainee.setPhoto(trainee.byteToBitmap(c.getBlob(c.getColumnIndex(PHOTO))));
                 trainee.setMobile(c.getString(c.getColumnIndex(MOBILE)));
                 trainee.setPassword(c.getString(c.getColumnIndex(PASSWORD)));
-                trainee.setWeight(c.getFloat(c.getColumnIndex(WEIGHT)));
-                trainee.setHeight(c.getFloat(c.getColumnIndex(HEIGHT)));
+                trainee.setWeight(c.getInt(c.getColumnIndex(WEIGHT)));
+                trainee.setHeight(c.getInt(c.getColumnIndex(HEIGHT)));
                 trainee.setAge(c.getInt(c.getColumnIndex(AGE)));
                 trainee.setAlternateMobile(c.getString(c.getColumnIndex(ALTERNATE_MOBILE)));
                 trainee.setGender(c.getString(c.getColumnIndex(GENDER)));
@@ -288,5 +288,13 @@ public class LocalDataBaseHandler extends SQLiteOpenHelper {
 
         return subscriptionPlans;
 
+    }
+
+    public void ClearTables(){
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        String deleteSubscriptions = "DELETE FROM " + SUBSCRIPTION_PLAN_TABLE_NAME;
+
+        @SuppressLint("Recycle") Cursor c = db.rawQuery(deleteSubscriptions, null);
     }
 }

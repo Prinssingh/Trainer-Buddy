@@ -317,9 +317,9 @@ public class AddNewTrainee extends Fragment implements View.OnClickListener {
         trainee.setAlternateMobile(alternateMobile.getText().toString());
         trainee.setPassword(mobile.getText().toString());
         trainee.setGender(gender);
-        trainee.setAge(Float.parseFloat(age));
-        trainee.setWeight(Float.parseFloat(Weight));
-        trainee.setHeight(Float.parseFloat(Height));
+        trainee.setAge((int) Float.parseFloat(age));
+        trainee.setWeight((int) Float.parseFloat(Weight));
+        trainee.setHeight((int) Float.parseFloat(Height));
 
         // todo get subscription plan
         String start=DateFormat.format("dd/MM/yyyy hh:mm:ss", System.currentTimeMillis()).toString();
@@ -455,10 +455,10 @@ public class AddNewTrainee extends Fragment implements View.OnClickListener {
 
                                 //Saving Trainee Data
                                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                                String Key =user.getUid();
+                                trainee.setUID(user.getUid());
                                 DataBaseHandler db =new DataBaseHandler(requireContext());
                                 try{
-                                    db.RegisterTrainee(trainee,Key);
+                                    db.RegisterTrainee(trainee);
                                     sendVerificationEmail();
                                     FirebaseAuth.getInstance().signOut();
                                     ReLogin();

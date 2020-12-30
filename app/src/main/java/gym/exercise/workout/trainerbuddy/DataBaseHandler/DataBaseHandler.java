@@ -45,10 +45,10 @@ public class DataBaseHandler {
 
     }
 
-    public void RegisterTrainer(Trainer trainer,String Key){
+    public void RegisterTrainer(Trainer trainer){
 
         Map<String, Object> childUpdates = new HashMap<>();
-        childUpdates.put("/Trainers/" + Key, trainer.toMap());
+        childUpdates.put("/Trainers/" + trainer.getUID(), trainer.toMap());
         Root.updateChildren(childUpdates, new DatabaseReference.CompletionListener() {
             @Override
             public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
@@ -63,10 +63,10 @@ public class DataBaseHandler {
 
     }
 
-    public void RegisterTrainee(Trainee trainee,String Key){
+    public void RegisterTrainee(Trainee trainee){
         Map<String, Object> childUpdates = new HashMap<>();
 
-        childUpdates.put("/Trainees/" + Key, trainee.toMap());
+        childUpdates.put("/Trainees/" + trainee.getUID(), trainee.toMap());
         Root.updateChildren(childUpdates, new DatabaseReference.CompletionListener() {
             @Override
             public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {

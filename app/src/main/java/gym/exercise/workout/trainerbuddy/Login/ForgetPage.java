@@ -63,7 +63,7 @@ public class ForgetPage extends Fragment implements View.OnClickListener{
 
         FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.container,  fragment);
+        fragmentTransaction.replace(R.id.LoginContainer,  fragment);
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
 

@@ -140,7 +140,7 @@ public class RegisterPage extends Fragment implements View.OnClickListener {
 
         FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.container,  fragment);
+        fragmentTransaction.replace(R.id.LoginContainer,  fragment);
         fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
 
@@ -288,8 +288,9 @@ public class RegisterPage extends Fragment implements View.OnClickListener {
                                     trainer.setEmail(email);
                                     trainer.setMobile(Mobile.getText().toString());
                                     trainer.setPassword(password);
+                                    trainer.setUID(user.getUid());
                                     DataBaseHandler db =new DataBaseHandler(requireContext());
-                                    db.RegisterTrainer(trainer,user.getUid());
+                                    db.RegisterTrainer(trainer);
 
                                     //send Verification Email
                                     sendVerificationEmail();
@@ -680,7 +681,7 @@ public class RegisterPage extends Fragment implements View.OnClickListener {
 
         UCrop.of(sourceUri, destinationUri)
                 .withOptions(options)
-                .start(getActivity().getApplicationContext(), getFragmentManager().findFragmentById(R.id.container));
+                .start(getActivity().getApplicationContext(), getFragmentManager().findFragmentById(R.id.LoginContainer));
     }
 
     private void handleUCropResult(Intent data) {

@@ -101,11 +101,9 @@ public class TrainerDashBoard extends AppCompatActivity implements View.OnClickL
 
         builder1.setPositiveButton(
                 "Yes",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        dialog.cancel();
-                        finish();
-                    }
+                (dialog, id) -> {
+                    dialog.cancel();
+                    finish();
                 });
 
         builder1.setNegativeButton(
@@ -127,8 +125,8 @@ public class TrainerDashBoard extends AppCompatActivity implements View.OnClickL
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.TrainerToolBarProfile:
-                navigation.setSelectedItemId(R.id.Trainer_Profile);
-                ChangeFragment(Profile.newInstance());
+                Intent ProfileActivity= new Intent(this,TrainerProfileActivity.class);
+                startActivity(ProfileActivity);
                 break;
 
             case R.id.TrainerNotification:

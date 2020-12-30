@@ -12,15 +12,15 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Trainee {
-
+    private String UID;
     private String Name;
     private String Email;
     private String Mobile;
     private Bitmap Photo;
     private String Password;
-    private float Weight;
-    private float Height;
-    private float Age;
+    private int Weight;
+    private int Height;
+    private int Age;
     private String Gender;
     private String AlternateMobile;
     private String GymName;
@@ -67,6 +67,13 @@ public class Trainee {
 
 
     /*Getter And Setters*/
+    public String getUID() {
+        return UID;
+    }
+
+    public void setUID(String UID) {
+        this.UID = UID;
+    }
 
     public void setName(String Name){this.Name=Name;}
     public String getName(){return this.Name;}
@@ -83,14 +90,14 @@ public class Trainee {
     public void setPhoto(Bitmap Photo){this.Photo=Photo;}
     public Bitmap getPhoto(){return this.Photo;}
 
-    public void  setWeight(float Weight){this.Weight=Weight;}
-    public float getWeight(){return this.Weight;}
+    public void  setWeight(int Weight){this.Weight=Weight;}
+    public int getWeight(){return this.Weight;}
 
-    public void  setHeight(float Height){this.Height=Height;}
-    public float getHeight(){return this.Height;}
+    public void  setHeight(int Height){this.Height=Height;}
+    public int getHeight(){return this.Height;}
 
-    public void  setAge(float Age){this.Age=Age;}
-    public float getAge(){return this.Age;}
+    public void  setAge(int Age){this.Age=Age;}
+    public int getAge(){return this.Age;}
 
     public void setGender(String Gende){this.Gender=Gende;}
     public String getGender(){return this.Gender;}
