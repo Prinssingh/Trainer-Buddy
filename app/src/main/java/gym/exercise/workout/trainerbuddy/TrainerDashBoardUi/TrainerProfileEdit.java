@@ -184,13 +184,17 @@ public class TrainerProfileEdit extends Fragment implements View.OnClickListener
     public void UpdateTrainerProfile(){
         if(isValidInput()){
             if(impFun.isConnectedToInternet()){
+                impFun.showProgressingView();
                 Trainer trainer=getInputdata();
                 Log.d("Update Profile", "UpdateTrainerProfile: "+trainer.getAbout());
                 try {
                     DataBaseHandler db = new DataBaseHandler(mcontext);
                     db.RegisterTrainer(trainer);
+                    impFun.hideProgressingView();
+                    Toast.makeText(mcontext, "Profile Updated!!", Toast.LENGTH_LONG).show();
                 }catch(Exception e){
                     Log.d("TAG", "UpdateTrainerProfile: Error "+e);
+                    Toast.makeText(mcontext, "Profile Update Failed!!", Toast.LENGTH_LONG).show();
                 }
             }
             else{
