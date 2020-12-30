@@ -47,7 +47,7 @@ public class LocalDataBaseHandler extends SQLiteOpenHelper {
 
     //subscription Plan table
     public static final String TITLE = "title";
-    //public static final String ABOUT = "about";
+    public static final String PLAN_ID = "planid";
     public static final String DAYS = "days";
     public static final String PRIZE = "prize";
     public static final String STARTING_DATE = "startingdate";
@@ -85,7 +85,7 @@ public class LocalDataBaseHandler extends SQLiteOpenHelper {
 
     public static final String CREATE_SUBSCRIPTION_PLAN_TABLE = "CREATE TABLE " + SUBSCRIPTION_PLAN_TABLE_NAME + "(" +
 
-            COLUMN_ID + "INTEGER PRIMARY KEY AUTOINCREMENT,"+
+            COLUMN_ID + "INTEGER PRIMARY KEY AUTOINCREMENT,"+ PLAN_ID+"VARCHAR ,"+
             TITLE + "VARCHAR NOT NULL," + ABOUT +"VARCHAR ,"+
             DAYS +"INTEGER NOT NULL,"+ PRIZE +"INTEGER NOT NULL,"+
             STARTING_DATE +"VARCHAR,"+EXPIRY_DATE+"VARCHAR" +");";
@@ -122,8 +122,10 @@ public class LocalDataBaseHandler extends SQLiteOpenHelper {
         onCreate(sqLiteDatabase);
     }
 
-    public long setTrainerLDB(Trainer trainer){
+    public void setTrainerLDB(Trainer trainer){
         SQLiteDatabase db = this.getWritableDatabase();
+        db.execSQL("delete from "+ TRAINER_TABLE_NAME);
+
         ContentValues values = new ContentValues();
         values.put(NAME,trainer.getName());
         values.put(PHOTO,trainer.bitmapToByte(trainer.getPhoto()));
@@ -141,7 +143,7 @@ public class LocalDataBaseHandler extends SQLiteOpenHelper {
         values.put(CERTIFICATES,trainer.getCertificates());
         values.put(ABOUT,trainer.getAbout());
 
-        return  db.insert(TRAINER_TABLE_NAME, null, values);
+        db.insert(TRAINER_TABLE_NAME, null, values);
 
     }
 
@@ -181,7 +183,7 @@ public class LocalDataBaseHandler extends SQLiteOpenHelper {
         return trainer;
     }
 
-    public long setTraineeLDB(Trainee trainee){
+    public void setTraineeLDB(Trainee trainee){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(NAME,trainee.getName());
@@ -199,7 +201,7 @@ public class LocalDataBaseHandler extends SQLiteOpenHelper {
         values.put(DEVICE_ID,trainee.getDeviceID());
 
 
-        return  db.insert(TRAINEE_TABLE_NAME, null, values);
+        db.insert(TRAINEE_TABLE_NAME, null, values);
 
     }
 
@@ -240,9 +242,10 @@ public class LocalDataBaseHandler extends SQLiteOpenHelper {
         return trainees;
     }
 
-    public long setTrainerSubscriptionPlansLDB(SubscriptionPlan subscriptionPlan){
+    public void setTrainerSubscriptionPlansLDB(SubscriptionPlan subscriptionPlan){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
+        values.put(PLAN_ID,subscriptionPlan.getID());
         values.put(TITLE,subscriptionPlan.getTitle());
         values.put(ABOUT,subscriptionPlan.getAbout());
         values.put(DAYS,subscriptionPlan.getDays());
@@ -252,10 +255,10 @@ public class LocalDataBaseHandler extends SQLiteOpenHelper {
           values.put(EXPIRY_DATE,subscriptionPlan.getExpiryDate());
         }
 
-        return  db.insert(SUBSCRIPTION_PLAN_TABLE_NAME, null, values);
+        db.insert(SUBSCRIPTION_PLAN_TABLE_NAME, null, values);
     }
 
-    public ArrayList<SubscriptionPlan> getTrainerSubscriptionPlan(){
+    public ArrayList<SubscriptionPlan> getTrainerSubscriptionPlanLDB(){
 
         ArrayList<SubscriptionPlan> subscriptionPlans =new ArrayList<SubscriptionPlan>();
 
@@ -270,14 +273,13 @@ public class LocalDataBaseHandler extends SQLiteOpenHelper {
             c.moveToFirst();
             for(int i=0;i<c.getCount();i++){
                 SubscriptionPlan sPlan = new SubscriptionPlan();
-
+                sPlan.setID(c.getString(c.getColumnIndex(PLAN_ID)));
                 sPlan.setTitle(c.getString(c.getColumnIndex(TITLE)));
                 sPlan.setAbout(c.getString(c.getColumnIndex(ABOUT)));
                 sPlan.setPrize(c.getInt(c.getColumnIndex(PRIZE)));
                 sPlan.setDays(c.getInt(c.getColumnIndex(DAYS)));
                 sPlan.setStartingDate(c.getString(c.getColumnIndex(STARTING_DATE)));
                 sPlan.setExpiryDate(c.getString(c.getColumnIndex(EXPIRY_DATE)));
-
                 subscriptionPlans.add(sPlan);
                 c.moveToNext();
             }

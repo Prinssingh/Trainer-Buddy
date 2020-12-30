@@ -33,12 +33,15 @@ public class DataBaseHandler {
     FirebaseDatabase database;
     DatabaseReference Root;
     private  Context  context;
+    private LocalDataBaseHandler LDB;
+    private final List<SubscriptionPlan> offeringPlan= new ArrayList<SubscriptionPlan>();
 
 
     public  DataBaseHandler(Context context){
         database= FirebaseDatabase.getInstance();
         Root = database.getReference();
         this.context =context;
+        LDB=new LocalDataBaseHandler(context);
 
     }
 
@@ -51,6 +54,8 @@ public class DataBaseHandler {
             public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
                 if (error==null){
                     Log.d("SavingTrainer", "Saving Trainer Done!!");
+                    try{ LDB.setTrainerLDB(trainer);}
+                    catch (Exception ignored){}
                 }
                 else {throw error.toException(); }
             }
@@ -67,6 +72,13 @@ public class DataBaseHandler {
             public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
                if(error==null){
                    Log.d("Adding Trainee","Success!!");
+                   try{
+                       LDB.setTraineeLDB(trainee);
+                       Log.d("Adding Trainee", "LDB Success: ");
+                   }
+                   catch (Exception e){
+                       Log.d("Adding Trainee", "LDB ERROR: "+e); }
+
                }
                else throw error.toException();
             }
@@ -99,8 +111,6 @@ public class DataBaseHandler {
 
     }
 
-    private List<SubscriptionPlan> offeringPlan= new ArrayList<SubscriptionPlan>();
-
     public List<SubscriptionPlan> getTrainerSubscriptionPlan(){
 
         DatabaseReference myRef = Root.child("TrainerSubscriptionPlans/");
@@ -108,7 +118,11 @@ public class DataBaseHandler {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for(DataSnapshot singleSnapshot : dataSnapshot.getChildren()){
-                   offeringPlan.add(singleSnapshot.getValue(SubscriptionPlan.class));
+                    SubscriptionPlan plan =singleSnapshot.getValue(SubscriptionPlan.class);
+                    assert plan != null;
+                    plan.setID(singleSnapshot.getKey());
+                    LDB.setTrainerSubscriptionPlansLDB(plan);
+                    offeringPlan.add(plan);
                     Log.d("DB CLASS", "singleSnapshot"+singleSnapshot+" value"+singleSnapshot.getValue(SubscriptionPlan.class));
                 }
 
