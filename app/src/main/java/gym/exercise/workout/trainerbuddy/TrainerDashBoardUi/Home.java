@@ -16,9 +16,8 @@ import com.google.android.material.tabs.TabLayout;
 import com.google.android.material.tabs.TabLayoutMediator;
 
 import java.util.ArrayList;
-import java.util.List;
 
-import gym.exercise.workout.trainerbuddy.DataBaseHandler.DataBaseHandler;
+import gym.exercise.workout.trainerbuddy.DataBaseHandler.LocalDataBaseHandler;
 import gym.exercise.workout.trainerbuddy.Entities.SubscriptionPlan;
 import gym.exercise.workout.trainerbuddy.R;
 
@@ -26,10 +25,8 @@ public class Home extends Fragment {
     private ViewPager2 SubscriptionPlanPager;
     private FragmentStateAdapter pagerAdapter;
     private static int NUM_PAGES;
-
-    DataBaseHandler db;
-    List<SubscriptionPlan> subscriptionPlans =new ArrayList<SubscriptionPlan>();
-
+    LocalDataBaseHandler LDB;
+    static ArrayList<SubscriptionPlan> Plans = new ArrayList<SubscriptionPlan>();
     public static Home newInstance() {
         return new Home();
     }
@@ -39,9 +36,9 @@ public class Home extends Fragment {
                              @Nullable Bundle savedInstanceState) {
         View Root=inflater.inflate(R.layout.trainer_home, container, false);
 
-        db=new DataBaseHandler(getContext());
-        subscriptionPlans=db.getTrainerSubscriptionPlan();
-        NUM_PAGES=5;
+        LDB =new LocalDataBaseHandler(requireContext());
+        NUM_PAGES=LDB.getTrainerSubscriptionPlansCountLDB();
+        Plans=LDB.getTrainerSubscriptionPlansLDB();
 
         SubscriptionPlanPager =Root.findViewById(R.id.TrainerPlansPager);
         pagerAdapter= new SubscriptionPlanSlidePagerAdapter(getActivity());
@@ -68,7 +65,8 @@ public class Home extends Fragment {
         @Override
         public Fragment createFragment(int position) {
             // TODO pass SubscriptionPlan for different plans
-            return new SubscriptionPlanCardFragment();
+
+            return new SubscriptionPlanCardFragment(Plans.get(position));
         }
 
         @Override

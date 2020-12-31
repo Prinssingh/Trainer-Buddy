@@ -22,6 +22,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 
 import gym.exercise.workout.trainerbuddy.Entities.SubscriptionPlan;
 import gym.exercise.workout.trainerbuddy.Entities.Trainee;
@@ -43,6 +44,7 @@ public class DataBaseHandler {
 
     }
 
+    //Trainer Operations
     public void RegisterTrainer(Trainer trainer){
 
         Map<String, Object> childUpdates = new HashMap<>();
@@ -60,6 +62,7 @@ public class DataBaseHandler {
         });
 
     }
+
     public void getTrainer(String UID){
         DatabaseReference trainerRef=database.getReference("/Trainers/").child(UID);
         trainerRef.addListenerForSingleValueEvent(new ValueEventListener(){
@@ -67,18 +70,65 @@ public class DataBaseHandler {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 //todo Remove Log
                 Log.d("Testing Global DB", "onDataChange: "+snapshot.getKey()+" Values "+snapshot.getValue());
-                LDB.setTrainerLDB(snapshot.getValue(Trainer.class));
+                LDB.setTrainerLDB(Objects.requireNonNull(snapshot.getValue(Trainer.class)));
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
+                Log.d("Testing Global DB", "onCancelled: "+error);
             }
         });
 
 
     }
 
+    public void getTrainerSubscriptionPlan(){
+
+        DatabaseReference myRef = Root.child("TrainerSubscriptionPlans/");
+        myRef.orderByChild("Prize").addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                //ClearTrainer Subscription Plans LDB Table
+                LDB.ClearTrainerSubscriptionPlansLDB();
+
+                for(DataSnapshot singleSnapshot : dataSnapshot.getChildren()){
+                    SubscriptionPlan plan =singleSnapshot.getValue(SubscriptionPlan.class);
+                    assert plan != null;
+                    plan.setID(singleSnapshot.getKey());
+                    LDB.setTrainerSubscriptionPlansLDB(plan);
+                    offeringPlan.add(plan);
+                    Log.d("DB CLASS", "singleSnapshot"+singleSnapshot+" value"+singleSnapshot.getValue(SubscriptionPlan.class));
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                throw databaseError.toException();
+            }
+
+        });
+
+    }
+
+    public void setTrainersOfferingPlans(String UID,SubscriptionPlan mPlan){
+        Map<String, Object> childUpdates = new HashMap<>();
+        childUpdates.put("/Trainers/" +UID +"/OfferingPlans/"+mPlan.getGeneratedID(), mPlan.toMap());
+        Root.updateChildren(childUpdates, new DatabaseReference.CompletionListener() {
+            @Override
+            public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
+                if (error==null){
+                   //TODO SAVING LDB
+                }
+                else {throw error.toException(); }
+            }
+        });
+
+
+    }
+
+
+    //Trainee Operations
     public void RegisterTrainee(Trainee trainee){
         Map<String, Object> childUpdates = new HashMap<>();
 
@@ -102,30 +152,9 @@ public class DataBaseHandler {
 
         });
     }
-    public List<SubscriptionPlan> getTrainerSubscriptionPlan(){
 
-        DatabaseReference myRef = Root.child("TrainerSubscriptionPlans/");
-        myRef.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                for(DataSnapshot singleSnapshot : dataSnapshot.getChildren()){
-                    SubscriptionPlan plan =singleSnapshot.getValue(SubscriptionPlan.class);
-                    assert plan != null;
-                    plan.setID(singleSnapshot.getKey());
-                    LDB.setTrainerSubscriptionPlansLDB(plan);
-                    offeringPlan.add(plan);
-                    Log.d("DB CLASS", "singleSnapshot"+singleSnapshot+" value"+singleSnapshot.getValue(SubscriptionPlan.class));
-                }
 
-            }
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {}
-
-        });
-
-        return offeringPlan;
-    }
 
 
 

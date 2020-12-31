@@ -41,7 +41,7 @@ public class SubscriptionPlan {
     @Exclude
     public Map<String, Object> toMap() {
         HashMap<String, Object> result = new HashMap<>();
-        result.put("Name", this.Title);
+        result.put("Title", this.Title);
         result.put("About",this.About);
         result.put("Prize",this.Prize);
         result.put("Days",this.Days);
@@ -57,8 +57,13 @@ public class SubscriptionPlan {
 
     /*Getter And Setters*/
     public String getID() { return ID; }
-
     public void setID(String ID) { this.ID = ID; }
+
+    public String getGeneratedID(){
+        ID= Days +"DaysPlanIn"+ Prize;
+        return ID;
+    }
+
     public String getTitle() {
         return Title;
     }

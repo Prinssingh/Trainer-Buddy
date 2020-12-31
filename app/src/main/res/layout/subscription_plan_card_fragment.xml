@@ -14,7 +14,8 @@
         app:cardBackgroundColor="@color/colorPrimary">
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:background="@color/colorPrimary">
             <TextView
                 android:id="@+id/PlanTitle"
                 android:layout_width="wrap_content"
@@ -26,6 +27,7 @@
                 android:layout_marginLeft="20dp"
                 android:textSize="15sp"
                 android:textColor="@color/white_color"/>
+
             <LinearLayout
                 android:id="@+id/rupee"
                 android:layout_width="wrap_content"
@@ -86,6 +88,7 @@
                 android:layout_below="@+id/rupee"/>
 
             <TextView
+                android:id="@+id/About"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/line"
@@ -94,15 +97,6 @@
                 android:layout_marginLeft="20dp"
                 android:text="Diwali offer Cheapest Deal of the Year"/>
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentBottom="true"
-                android:layout_marginEnd="0dp"
-                android:layout_marginBottom="0dp"
-                android:scaleType="fitXY"
-                android:src="@drawable/shape_cardview_plan" />
 
         </RelativeLayout>
 

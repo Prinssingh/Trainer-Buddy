@@ -4,31 +4,33 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.io.ByteArrayOutputStream;
-
 import gym.exercise.workout.trainerbuddy.DataBaseHandler.DataBaseHandler;
 import gym.exercise.workout.trainerbuddy.DataBaseHandler.LocalDataBaseHandler;
+import gym.exercise.workout.trainerbuddy.Entities.ImportantFunctions;
+import gym.exercise.workout.trainerbuddy.Entities.SubscriptionPlan;
 
 public class SplashScreen extends AppCompatActivity {
+   ImportantFunctions impFun;
+    //TODO
     SharedPreferences sp;
     DataBaseHandler db;
-    //TODO
     LocalDataBaseHandler LDB;
     @SuppressLint("CommitPrefEdits")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.slpash_screen);
+
         sp =this.getSharedPreferences("TrainerBuddyPref", Context.MODE_PRIVATE);
        // sp.edit().clear().commit();
+
+        impFun=new ImportantFunctions(this);
         db= new DataBaseHandler(this);
         LDB= new LocalDataBaseHandler(this);
         init();
@@ -51,16 +53,23 @@ public class SplashScreen extends AppCompatActivity {
     }
 
     public void init(){
-       String UID= sp.getString("User_UID",null);
+       String UID= impFun.getSharedPrefUID();
+        String UserType= impFun.getSharedPrefUserType();
        if (UID!=null){
-           db.getTrainer(UID);// it sets LOCAL DATA BASE internally
+           if(UserType.equals("Trainer")) {
+               try {
+                   db.getTrainer(UID);// it sets LOCAL DATA BASE internally
+                   db.getTrainerSubscriptionPlan();
+                    //todo testing
+                   db.setTrainersOfferingPlans(UID,new SubscriptionPlan("One Month Plan","Testing Plan Saving Global DB",323,30));
+               }catch (Exception e){
+                   Log.d("Trying To save LDB", "init: Error"+e);
+               }
+           }
+           //TODO load Trainee and NewUserData Accordingly
+//           else if(UserType.equals("Trainee")){}
+//           else if(UserType.equals("NewUser")){}
 
-           Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.default_profile);
-           ByteArrayOutputStream stream = new ByteArrayOutputStream();
-           bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
-           byte[] bitMapData = stream.toByteArray();
-           Log.d("TAG", "init: "+bitMapData);
-           LDB.setTrainerPhotoLDB(bitMapData,UID);
        }
 
     }

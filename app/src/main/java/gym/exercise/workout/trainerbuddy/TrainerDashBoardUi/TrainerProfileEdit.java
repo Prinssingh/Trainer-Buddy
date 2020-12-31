@@ -157,6 +157,9 @@ public class TrainerProfileEdit extends Fragment implements View.OnClickListener
     public Trainer getInputdata(){
         Trainer self= new Trainer();
         self.setUID(impFun.getSharedPrefUID());
+        self.setEmail(impFun.getSharedPrefEmail());
+        //todo save password or fetch password from UI
+        self.setPassword("123456");
         self.setName(nameEdit.getText().toString());
         self.setMobile(mobileEdit.getText().toString());
         self.setAlternateMobile(alternateEdit.getText().toString());

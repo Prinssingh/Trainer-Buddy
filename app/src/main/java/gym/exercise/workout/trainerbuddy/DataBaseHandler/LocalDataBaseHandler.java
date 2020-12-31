@@ -145,6 +145,7 @@ public class LocalDataBaseHandler extends SQLiteOpenHelper {
         values.put(ABOUT,trainer.getAbout());
 
         db.insert(TRAINER_TABLE_NAME, null, values);
+        Log.d("LDB SET TRAINER", "setTrainerLDB: "+values);
 
     }
 
@@ -269,7 +270,7 @@ public class LocalDataBaseHandler extends SQLiteOpenHelper {
         db.insert(SUBSCRIPTION_PLAN_TABLE_NAME, null, values);
     }
 
-    public ArrayList<SubscriptionPlan> getTrainerSubscriptionPlanLDB(){
+    public ArrayList<SubscriptionPlan> getTrainerSubscriptionPlansLDB(){
 
         ArrayList<SubscriptionPlan> subscriptionPlans =new ArrayList<SubscriptionPlan>();
 
@@ -296,16 +297,28 @@ public class LocalDataBaseHandler extends SQLiteOpenHelper {
             }
         }
 
-
         return subscriptionPlans;
 
     }
 
-    public void ClearTables(){
+    public int getTrainerSubscriptionPlansCountLDB(){
         SQLiteDatabase db = this.getReadableDatabase();
+        String selectQuery = "SELECT  * FROM " + SUBSCRIPTION_PLAN_TABLE_NAME;
 
-        String deleteSubscriptions = "DELETE FROM " + SUBSCRIPTION_PLAN_TABLE_NAME;
+        Log.e("LOG", selectQuery);
 
-        @SuppressLint("Recycle") Cursor c = db.rawQuery(deleteSubscriptions, null);
+        @SuppressLint("Recycle") Cursor c = db.rawQuery(selectQuery, null);
+        return c.getCount();
+    };
+
+    public void ClearTrainerSubscriptionPlansLDB(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(SUBSCRIPTION_PLAN_TABLE_NAME, null, null);
+//        String deleteSubscriptions = "DELETE FROM " + SUBSCRIPTION_PLAN_TABLE_NAME;
+//
+//
+//        @SuppressLint("Recycle") Cursor c = db.rawQuery(deleteSubscriptions, null);
+
+
     }
 }
