@@ -21,7 +21,8 @@
         android:theme="@style/AppTheme"
         android:windowSoftInputMode="stateHidden|adjustResize"
         tools:targetApi="q">
-        <activity android:name=".TrainerProfileActivity"></activity>
+        <activity android:name=".TrainerOfferingPlans"></activity>
+        <activity android:name=".TrainerProfileActivity" />
         <activity android:name=".editTrainerProfile" />
         <activity android:name=".TrainerNotificationsActivity" />
         <activity
