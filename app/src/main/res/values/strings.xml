@@ -2,7 +2,7 @@
     <string name="app_name">Trainer Buddy</string>
     <string name="title_home">Home</string>
     <!-- TODO: Remove or change this placeholder text -->
-    <string name="profile">Profile</string>
+    <string name="Plans">Plans</string>
     <string name="new_trainee">Add</string>
     <string name="trainee_list">List</string>
     <string name="earnings">Earnings</string>

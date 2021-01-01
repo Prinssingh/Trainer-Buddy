@@ -1,20 +1,29 @@
 package gym.exercise.workout.trainerbuddy.TrainerDashBoardUi;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import gym.exercise.workout.trainerbuddy.DataBaseHandler.DataBaseHandler;
+import gym.exercise.workout.trainerbuddy.Entities.ImportantFunctions;
+import gym.exercise.workout.trainerbuddy.Entities.SubscriptionPlan;
 import gym.exercise.workout.trainerbuddy.R;
 
 public class OfferingPlanAdd extends Fragment {
 
+    ImportantFunctions impFun;
+    DataBaseHandler DB;
 
-
+    EditText Title,About,Prize ,Days;
     public static OfferingPlanAdd newInstance() {
         return new OfferingPlanAdd();
     }
@@ -23,12 +32,71 @@ public class OfferingPlanAdd extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        View Root= inflater.inflate(R.layout.offering_plan_add, container, false);
+        View Root= inflater.inflate(R.layout.trainer_offering_plan_add, container, false);
 
+        impFun =new ImportantFunctions(requireContext());
+        DB = new DataBaseHandler(requireContext());
 
+        Title=Root.findViewById(R.id.offeringPlanAddTitle);
+        About=Root.findViewById(R.id.offeringPlanAddAbout);
+        Prize=Root.findViewById(R.id.offeringPlanAddPrize);
+        Days=Root.findViewById(R.id.offeringPlanAddDays);
 
+        Button AddPlan = Root.findViewById(R.id.offeringPlanAddButton);
+        AddPlan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AddTrainersNewOfferingPlan();
+            }
+        });
         return Root;
     }
 
+    private  void clearAllEnteries(){
+        Title.setText("");
+        About.setText("");
+        Prize.setText("");
+        Days.setText("");
+    }
+
+    private boolean isValidInput(){
+
+        // todo Validation Code
+
+        return true;
+    }
+
+    private SubscriptionPlan getInputPlan(){
+        SubscriptionPlan plan =new SubscriptionPlan();
+
+        plan.setTitle(Title.getText().toString());
+        plan.setAbout(About.getText().toString());
+        plan.setDays(Integer.parseInt(Days.getText().toString()));
+        plan.setPrize(Integer.parseInt(Prize.getText().toString()));
+
+        return plan;
+    }
+
+    private  void AddTrainersNewOfferingPlan(){
+        if (isValidInput()){
+            if(impFun.isConnectedToInternet()){
+                SubscriptionPlan mplan =getInputPlan();
+                String UID = impFun.getSharedPrefUID();
+                try{
+                    DB.setTrainersOfferingPlan(UID,mplan); // it Internally sets LDB;
+                    Toast.makeText(requireContext(), "Plan Saved Success!!", Toast.LENGTH_SHORT).show();
+                    // TODO Clear All Enteries!!
+                    clearAllEnteries();
+                }
+                catch (Exception e){
+                    Log.d("DB", "AddTrainersNewOfferingPlan: Error"+e);
+                }
+            }
+            else{
+                Toast.makeText(requireContext(), "No internet connection", Toast.LENGTH_LONG).show();
+            }
+
+        }
+    }
 
 }

@@ -37,8 +37,8 @@ public class Home extends Fragment {
         View Root=inflater.inflate(R.layout.trainer_home, container, false);
 
         LDB =new LocalDataBaseHandler(requireContext());
-        NUM_PAGES=LDB.getTrainerSubscriptionPlansCountLDB();
-        Plans=LDB.getTrainerSubscriptionPlansLDB();
+        NUM_PAGES=LDB.getTrainerSubscriptionGlobalPlansCountLDB();
+        Plans=LDB.getTrainerSubscriptionGlobalPlansLDB();
 
         SubscriptionPlanPager =Root.findViewById(R.id.TrainerPlansPager);
         pagerAdapter= new SubscriptionPlanSlidePagerAdapter(getActivity());

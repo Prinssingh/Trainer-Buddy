@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/offering_plan_add"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".TrainerDashBoardUi.OfferingPlanAdd">
+
+    <TextView
+        android:id="@+id/message"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="OfferingPlanAdd"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.537"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.079" />
+
+    <EditText
+        android:id="@+id/offeringPlanEditTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:ems="10"
+        android:hint="Title"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="@+id/message"
+        app:layout_constraintHorizontal_bias="0.462"
+        app:layout_constraintStart_toStartOf="@+id/message"
+        app:layout_constraintTop_toBottomOf="@+id/message" />
+
+    <EditText
+        android:id="@+id/offeringPlanEditAbout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:ems="10"
+        android:hint="About"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="@+id/offeringPlanEditTitle"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/offeringPlanEditTitle"
+        app:layout_constraintTop_toBottomOf="@+id/offeringPlanEditTitle" />
+
+    <EditText
+        android:id="@+id/offeringPlanEditPrize"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:ems="10"
+        android:hint="Prize"
+        android:inputType="numberSigned"
+        app:layout_constraintEnd_toEndOf="@+id/offeringPlanEditAbout"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/offeringPlanEditAbout"
+        app:layout_constraintTop_toBottomOf="@+id/offeringPlanEditAbout" />
+
+    <EditText
+        android:id="@+id/offeringPlanEditDays"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:ems="10"
+        android:hint="Days"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="@+id/offeringPlanEditPrize"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/offeringPlanEditPrize"
+        app:layout_constraintTop_toBottomOf="@+id/offeringPlanEditPrize" />
+
+    <Button
+        android:id="@+id/offeringPlanUpdateButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="update"
+        app:layout_constraintEnd_toEndOf="@+id/offeringPlanEditDays"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="@+id/offeringPlanEditDays"
+        app:layout_constraintTop_toBottomOf="@+id/offeringPlanEditDays" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -13,7 +13,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import gym.exercise.workout.trainerbuddy.DataBaseHandler.DataBaseHandler;
 import gym.exercise.workout.trainerbuddy.DataBaseHandler.LocalDataBaseHandler;
 import gym.exercise.workout.trainerbuddy.Entities.ImportantFunctions;
-import gym.exercise.workout.trainerbuddy.Entities.SubscriptionPlan;
 
 public class SplashScreen extends AppCompatActivity {
    ImportantFunctions impFun;
@@ -59,9 +58,9 @@ public class SplashScreen extends AppCompatActivity {
            if(UserType.equals("Trainer")) {
                try {
                    db.getTrainer(UID);// it sets LOCAL DATA BASE internally
-                   db.getTrainerSubscriptionPlan();
+                   db.getTrainerSubscriptionGlobalPlans();
                     //todo testing
-                   db.setTrainersOfferingPlans(UID,new SubscriptionPlan("One Month Plan","Testing Plan Saving Global DB",323,30));
+
                }catch (Exception e){
                    Log.d("Trying To save LDB", "init: Error"+e);
                }

@@ -18,9 +18,7 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 
@@ -33,7 +31,6 @@ public class DataBaseHandler {
     DatabaseReference Root;
     private  Context  context;
     private LocalDataBaseHandler LDB;
-    private final List<SubscriptionPlan> offeringPlan= new ArrayList<SubscriptionPlan>();
 
 
     public  DataBaseHandler(Context context){
@@ -69,8 +66,24 @@ public class DataBaseHandler {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 //todo Remove Log
-                Log.d("Testing Global DB", "onDataChange: "+snapshot.getKey()+" Values "+snapshot.getValue());
+                Log.d("Testing Global DB", "onDataChange: "+snapshot.getValue(Trainer.class));
                 LDB.setTrainerLDB(Objects.requireNonNull(snapshot.getValue(Trainer.class)));
+                // Setting Trainer ->UID Offering Plans
+                try{
+                    LDB.ClearTrainerOfferingPlanLDB();
+                    for (DataSnapshot TrainerPlansSnapshot: snapshot.child("OfferingPlans").getChildren()){
+                        //todo Remove log And do Some Exception Handling
+
+                        Log.d("Key", "value:"+TrainerPlansSnapshot.getValue());
+
+                        SubscriptionPlan plan =TrainerPlansSnapshot.getValue(SubscriptionPlan.class);
+                        assert plan != null;
+                        plan.setID(TrainerPlansSnapshot.getKey());
+                        LDB.setTrainerOfferingPlanLDB(plan);
+                    }
+
+                }catch (Exception e){
+                    Log.d("TAG", "Errop: "+e);}
             }
 
             @Override
@@ -82,7 +95,7 @@ public class DataBaseHandler {
 
     }
 
-    public void getTrainerSubscriptionPlan(){
+    public void getTrainerSubscriptionGlobalPlans(){
 
         DatabaseReference myRef = Root.child("TrainerSubscriptionPlans/");
         myRef.orderByChild("Prize").addListenerForSingleValueEvent(new ValueEventListener() {
@@ -95,8 +108,7 @@ public class DataBaseHandler {
                     SubscriptionPlan plan =singleSnapshot.getValue(SubscriptionPlan.class);
                     assert plan != null;
                     plan.setID(singleSnapshot.getKey());
-                    LDB.setTrainerSubscriptionPlansLDB(plan);
-                    offeringPlan.add(plan);
+                    LDB.setTrainerSubscriptionGlobalPlansLDB(plan);
                     Log.d("DB CLASS", "singleSnapshot"+singleSnapshot+" value"+singleSnapshot.getValue(SubscriptionPlan.class));
                 }
 
@@ -111,20 +123,48 @@ public class DataBaseHandler {
 
     }
 
-    public void setTrainersOfferingPlans(String UID,SubscriptionPlan mPlan){
+    public void setTrainersOfferingPlan(String UID, SubscriptionPlan mPlan){
         Map<String, Object> childUpdates = new HashMap<>();
-        childUpdates.put("/Trainers/" +UID +"/OfferingPlans/"+mPlan.getGeneratedID(), mPlan.toMap());
+        String Key =  (!mPlan.getID().isEmpty())? mPlan.getID() :mPlan.getGeneratedID();
+        childUpdates.put("/Trainers/" +UID +"/OfferingPlans/"+Key, mPlan.toMap());
         Root.updateChildren(childUpdates, new DatabaseReference.CompletionListener() {
             @Override
             public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
                 if (error==null){
                    //TODO SAVING LDB
+                    LDB.setTrainerOfferingPlanLDB(mPlan);
                 }
                 else {throw error.toException(); }
             }
         });
 
 
+    }
+
+    public  void getTrainersOfferingPlans(String UID){
+        DatabaseReference trainerRef=database.getReference("/Trainers/"+UID+"/").child("OfferingPlans");
+        trainerRef.addListenerForSingleValueEvent(new ValueEventListener(){
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshots) {
+               // todo save local data
+                LDB.ClearTrainerOfferingPlanLDB();
+                for (DataSnapshot snapshot: snapshots.getChildren()){
+                    //todo Remove log And do Some Exception Handling
+
+                    Log.d("Key", "value:"+snapshot.getValue());
+
+                    SubscriptionPlan plan =snapshot.getValue(SubscriptionPlan.class);
+                    assert plan != null;
+                    plan.setID(snapshot.getKey());
+                    LDB.setTrainerOfferingPlanLDB(plan);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Log.d("OfferingPlans", "onCancelled: "+error);
+            }
+        });
     }
 
 
@@ -153,14 +193,7 @@ public class DataBaseHandler {
         });
     }
 
-
-
-
-
-
-
     // Photo saving and retriving
-
     public void getProfilePhoto(String UID,String UserType){
         FirebaseStorage storage = FirebaseStorage.getInstance();
         StorageReference imageRef = storage.getReference().child(UserType+"/"+UID+".png");

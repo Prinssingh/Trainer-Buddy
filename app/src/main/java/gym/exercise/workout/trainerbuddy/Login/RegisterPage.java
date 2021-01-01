@@ -233,6 +233,7 @@ public class RegisterPage extends Fragment implements View.OnClickListener {
                                     editor.putString("User_Email",email).commit();
                                     editor.putString("User_UID",user.getUid()).commit();
                                     editor.putString("User_Password",password).commit();
+                                    //todo show message
                                     Toast.makeText(getContext(),"Register Success!!",Toast.LENGTH_LONG).show();
 
                                     Trainer trainer =new Trainer();
