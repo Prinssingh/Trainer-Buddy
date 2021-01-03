@@ -49,8 +49,15 @@ public class TrainerDashBoard extends AppCompatActivity implements View.OnClickL
         // Bottom Navigation Control
         navigation = (BottomNavigationView) findViewById(R.id.BottomNav);
         if (savedInstanceState == null) {
-            navigation.setSelectedItemId(R.id.Trainee_Home); // change to whichever id should be default
-            ChangeFragment(Home.newInstance());
+            String where = getIntent().getStringExtra("GotoDefaultPage");
+            if (where == null) {
+                navigation.setSelectedItemId(R.id.Trainee_Home); // change to whichever id should be default
+                ChangeFragment(Home.newInstance());
+            }
+            else{
+                navigation.setSelectedItemId(R.id.Trainer_Plans); // change to whichever id should be default
+                ChangeFragment(OfferingPlans.newInstance());
+            }
         }
         navigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @SuppressLint("NonConstantResourceId")

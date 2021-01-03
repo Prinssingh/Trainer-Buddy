@@ -42,6 +42,7 @@ public class OfferingPlans extends Fragment {
             public void onClick(View view) {
                 Intent intent = new Intent(getContext(), TrainerOfferingPlans.class);
                 startActivity(intent);
+                requireActivity().finish();
             }
         });
 

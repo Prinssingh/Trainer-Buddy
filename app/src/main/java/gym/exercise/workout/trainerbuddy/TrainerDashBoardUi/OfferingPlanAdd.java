@@ -47,6 +47,7 @@ public class OfferingPlanAdd extends Fragment {
         AddPlan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Toast.makeText(requireContext(), "Saving Plan...", Toast.LENGTH_SHORT).show();
                 AddTrainersNewOfferingPlan();
             }
         });
@@ -88,7 +89,7 @@ public class OfferingPlanAdd extends Fragment {
                     Toast.makeText(requireContext(), "Plan Saved Success!!", Toast.LENGTH_SHORT).show();
                     // TODO Clear All Enteries!!
                     clearAllEnteries();
-                }
+                    requireActivity().finish();}
                 catch (Exception e){
                     Log.d("DB", "AddTrainersNewOfferingPlan: Error"+e);
                 }

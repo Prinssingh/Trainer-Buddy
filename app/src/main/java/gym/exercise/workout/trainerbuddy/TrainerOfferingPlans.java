@@ -1,5 +1,6 @@
 package gym.exercise.workout.trainerbuddy;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
@@ -56,4 +57,14 @@ public class TrainerOfferingPlans extends AppCompatActivity {
         fragmentTransaction.commit();
 
     }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Intent intent =new Intent(TrainerOfferingPlans.this,TrainerDashBoard.class);
+        intent.putExtra("GotoDefaultPage","PlansPage");
+        startActivity(intent);
+    }
+
+
 }

@@ -354,6 +354,22 @@ public class LocalDataBaseHandler extends SQLiteOpenHelper {
         db.insert(TRAINER_OFFERING_SUBSCRIPTION_PLAN_TABLE_NAME, null, values);
 
     }
+    public void UpdateTrainerOfferingPlanLDB( SubscriptionPlan subscriptionPlan){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(PLAN_ID,subscriptionPlan.getID());
+        values.put(TITLE,subscriptionPlan.getTitle());
+        values.put(ABOUT,subscriptionPlan.getAbout());
+        values.put(DAYS,subscriptionPlan.getDays());
+        values.put(PRIZE,subscriptionPlan.getPrize());
+
+        if(subscriptionPlan.getStartingDate()!=null)
+        { values.put(STARTING_DATE,subscriptionPlan.getStartingDate());
+            values.put(EXPIRY_DATE,subscriptionPlan.getExpiryDate());
+        }
+        db.update(TRAINER_OFFERING_SUBSCRIPTION_PLAN_TABLE_NAME, values, PLAN_ID+" = ?", new String[]{subscriptionPlan.getID()});
+    }
+
     public ArrayList<SubscriptionPlan> getTrainerOfferingPlanLDB(){
 
         ArrayList<SubscriptionPlan> subscriptionPlans =new ArrayList<SubscriptionPlan>();

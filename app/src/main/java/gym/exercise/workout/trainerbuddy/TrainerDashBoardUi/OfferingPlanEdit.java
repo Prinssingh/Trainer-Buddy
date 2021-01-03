@@ -99,7 +99,7 @@ public class OfferingPlanEdit extends Fragment {
                 String UID = impFun.getSharedPrefUID();
                 try{
                     // TODO Update Global and Local Data!!
-                    //DB.setTrainersOfferingPlan(UID,mplan); // it Internally sets LDB;
+                    DB.UpdateTrainersOfferingPlan(UID,mplan);
                     Toast.makeText(requireContext(), "Plan Update Success!!", Toast.LENGTH_SHORT).show();
                     clearAllEnteries();
                     //Todo finish the activity and restart dashbaord activity
