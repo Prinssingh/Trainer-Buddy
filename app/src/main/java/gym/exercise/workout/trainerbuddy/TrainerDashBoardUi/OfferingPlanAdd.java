@@ -2,6 +2,7 @@ package gym.exercise.workout.trainerbuddy.TrainerDashBoardUi;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -61,13 +62,6 @@ public class OfferingPlanAdd extends Fragment {
         Days.setText("");
     }
 
-    private boolean isValidInput(){
-
-        // todo Validation Code
-
-        return true;
-    }
-
     private SubscriptionPlan getInputPlan(){
         SubscriptionPlan plan =new SubscriptionPlan();
 
@@ -99,6 +93,45 @@ public class OfferingPlanAdd extends Fragment {
             }
 
         }
+    }
+
+    public boolean isValidInput(){
+        boolean valid=true;
+        if(Title.getText().toString().isEmpty()){
+            Title.setError("Your can't left Title field empty");
+            Title.requestFocus();
+            valid=false;
+        }
+        else if( About.getText().toString().isEmpty()){
+            About.setError("You can't About field empty!!");
+            About.requestFocus();
+            valid=false;
+        }
+        else if(Prize.getText().toString().isEmpty()){
+            Prize.setError("Your can't left Prize field empty");
+            Prize.requestFocus();
+            valid=false;
+        }
+        else if(Days.getText().toString().isEmpty()){
+            Days.setError("Your can't left Days field empty");
+            Days.requestFocus();
+            valid=false;
+        }
+        return valid;
+    }
+
+    public void setAllDisable(){
+        Title.setEnabled(false);
+        About.setEnabled(false);
+        Prize.setEnabled(false);
+        Days.setEnabled(false);
+    }
+
+    public void setAllEnable(){
+        Title.setEnabled(true);
+        About.setEnabled(true);
+        Prize.setEnabled(true);
+        Days.setEnabled(true);
     }
 
 }

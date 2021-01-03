@@ -85,13 +85,6 @@ public class OfferingPlanEdit extends Fragment {
     }
 
 
-    private boolean isValidInput(){
-
-        // todo Validation Code
-
-        return true;
-    }
-
     private  void UpdateTrainersOfferingPlan(){
         if (isValidInput()){
             if(impFun.isConnectedToInternet()){
@@ -114,6 +107,45 @@ public class OfferingPlanEdit extends Fragment {
             }
 
         }
+    }
+
+    public boolean isValidInput(){
+        boolean valid=true;
+        if(Title.getText().toString().isEmpty()){
+            Title.setError("Your can't left Title field empty");
+            Title.requestFocus();
+            valid=false;
+        }
+        else if( About.getText().toString().isEmpty()){
+            About.setError("You can't About field empty!!");
+            About.requestFocus();
+            valid=false;
+        }
+        else if(Prize.getText().toString().isEmpty()){
+            Prize.setError("Your can't left Prize field empty");
+            Prize.requestFocus();
+            valid=false;
+        }
+        else if(Days.getText().toString().isEmpty()){
+            Days.setError("Your can't left Days field empty");
+            Days.requestFocus();
+            valid=false;
+        }
+        return valid;
+    }
+
+    public void setAllDisable(){
+        Title.setEnabled(false);
+        About.setEnabled(false);
+        Prize.setEnabled(false);
+        Days.setEnabled(false);
+    }
+
+    public void setAllEnable(){
+        Title.setEnabled(true);
+        About.setEnabled(true);
+        Prize.setEnabled(true);
+        Days.setEnabled(true);
     }
 
 }
