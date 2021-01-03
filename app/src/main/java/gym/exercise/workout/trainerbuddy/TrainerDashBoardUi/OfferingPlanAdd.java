@@ -71,6 +71,7 @@ public class OfferingPlanAdd extends Fragment {
     private SubscriptionPlan getInputPlan(){
         SubscriptionPlan plan =new SubscriptionPlan();
 
+
         plan.setTitle(Title.getText().toString());
         plan.setAbout(About.getText().toString());
         plan.setDays(Integer.parseInt(Days.getText().toString()));
