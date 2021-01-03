@@ -394,4 +394,28 @@ public class LocalDataBaseHandler extends SQLiteOpenHelper {
         return c.getCount();
     };
 
+    public SubscriptionPlan  getTrainerOfferedPlanByID(String PlanID){
+        SQLiteDatabase db = this.getReadableDatabase();
+        SubscriptionPlan sPlan = new SubscriptionPlan();
+        String selectQuery = "SELECT  * FROM " + TRAINER_OFFERING_SUBSCRIPTION_PLAN_TABLE_NAME+" WHERE "+PLAN_ID +"= \""+PlanID+"\"";
+
+        Log.e("LOGPrinsHere", selectQuery);
+
+        @SuppressLint("Recycle") Cursor c = db.rawQuery(selectQuery, null);
+
+        if (c != null) {
+            c.moveToFirst();
+            sPlan.setID(c.getString(c.getColumnIndex(PLAN_ID)));
+            sPlan.setTitle(c.getString(c.getColumnIndex(TITLE)));
+            sPlan.setAbout(c.getString(c.getColumnIndex(ABOUT)));
+            sPlan.setPrize(c.getInt(c.getColumnIndex(PRIZE)));
+            sPlan.setDays(c.getInt(c.getColumnIndex(DAYS)));
+            sPlan.setStartingDate(c.getString(c.getColumnIndex(STARTING_DATE)));
+            sPlan.setExpiryDate(c.getString(c.getColumnIndex(EXPIRY_DATE)));
+
+        }
+
+
+        return sPlan;
+    }
 }

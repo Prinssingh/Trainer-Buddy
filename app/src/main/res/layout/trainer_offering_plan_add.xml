@@ -122,7 +122,7 @@
                 android:id="@+id/offeringPlanAddButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="update"
+                android:text="ADD"
                 android:layout_centerHorizontal="true"
                 android:layout_below="@+id/days1"
                 android:textStyle="bold"
