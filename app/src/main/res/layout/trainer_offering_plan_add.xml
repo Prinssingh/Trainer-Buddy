@@ -1,85 +1,141 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/offering_plan_add"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/grey_color"
     tools:context=".TrainerDashBoardUi.OfferingPlanAdd">
 
-    <TextView
-        android:id="@+id/message"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="OfferingPlanAdd"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.537"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.079" />
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="420dp"
+        app:cardCornerRadius="10dp"
+        android:layout_margin="20dp">
 
-    <EditText
-        android:id="@+id/offeringPlanAddTitle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="Title"
-        app:layout_constraintEnd_toEndOf="@+id/message"
-        app:layout_constraintHorizontal_bias="0.462"
-        app:layout_constraintStart_toStartOf="@+id/message"
-        app:layout_constraintTop_toBottomOf="@+id/message" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-    <EditText
-        android:id="@+id/offeringPlanAddAbout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="About"
-        app:layout_constraintEnd_toEndOf="@+id/offeringPlanAddTitle"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/offeringPlanAddTitle"
-        app:layout_constraintTop_toBottomOf="@+id/offeringPlanAddTitle" />
+            <TextView
+                android:id="@+id/message"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Add Your plan"
+                android:textStyle="bold"
+                android:textSize="25dp"
+                android:textColor="@color/grey_color"
+                android:layout_marginTop="20dp"
+                android:layout_centerHorizontal="true"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.537"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.079" />
 
-    <EditText
-        android:id="@+id/offeringPlanAddPrize"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:ems="10"
-        android:hint="Prize"
-        android:inputType="numberSigned"
-        app:layout_constraintEnd_toEndOf="@+id/offeringPlanAddAbout"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/offeringPlanAddAbout"
-        app:layout_constraintTop_toBottomOf="@+id/offeringPlanAddAbout" />
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:id="@+id/title1"
+                android:layout_below="@+id/message"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:hint="Title"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
 
-    <EditText
-        android:id="@+id/offeringPlanAddDays"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:ems="10"
-        android:hint="Days"
-        android:inputType="number"
-        app:layout_constraintEnd_toEndOf="@+id/offeringPlanAddPrize"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/offeringPlanAddPrize"
-        app:layout_constraintTop_toBottomOf="@+id/offeringPlanAddPrize" />
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:id="@+id/offeringPlanAddTitle"
+                    android:textColor="@color/grey_color"
+                    android:layout_height="wrap_content"
+                    />
 
-    <Button
-        android:id="@+id/offeringPlanAddButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:text="Add"
-        app:layout_constraintEnd_toEndOf="@+id/offeringPlanAddDays"
-        app:layout_constraintHorizontal_bias="0.504"
-        app:layout_constraintStart_toStartOf="@+id/offeringPlanAddDays"
-        app:layout_constraintTop_toBottomOf="@+id/offeringPlanAddDays" />
+            </com.google.android.material.textfield.TextInputLayout>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:id="@+id/about1"
+                android:layout_below="@+id/title1"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_height="wrap_content"
+                android:hint="About"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:id="@+id/offeringPlanAddAbout"
+                    android:textColor="@color/grey_color"
+                    android:layout_height="wrap_content"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:id="@+id/prize1"
+                android:layout_below="@+id/about1"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_height="wrap_content"
+                android:hint="prize"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:id="@+id/offeringPlanAddPrize"
+                    android:textColor="@color/grey_color"
+                    android:layout_height="wrap_content"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:layout_width="match_parent"
+                android:id="@+id/days1"
+                android:layout_below="@+id/prize1"
+                android:layout_marginBottom="10dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_height="wrap_content"
+                android:hint="Days"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:layout_width="match_parent"
+                    android:id="@+id/offeringPlanAddDays"
+                    android:textColor="@color/grey_color"
+                    android:layout_height="wrap_content"
+                    />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+
+            <Button
+                android:id="@+id/offeringPlanAddButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="update"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@+id/days1"
+                android:textStyle="bold"
+                android:layout_gravity="center_horizontal"
+                app:layout_constraintEnd_toEndOf="@+id/days"
+                app:layout_constraintHorizontal_bias="0.504"
+                app:layout_constraintStart_toStartOf="@+id/days"
+                app:layout_constraintTop_toBottomOf="@+id/days" />
+
+        </RelativeLayout>
+
+
+    </androidx.cardview.widget.CardView>
+
+
+</RelativeLayout>

@@ -414,6 +414,7 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
                             android:layout_toRightOf="@id/heightImageView"
                             android:orientation="horizontal">
 
@@ -424,7 +425,7 @@
                                 android:layout_weight="1"
                                 android:ems="10"
                                 android:inputType="numberDecimal"
-                                android:textColor="@color/grey_color" />
+                                android:textColor="@color/white_color" />
 
                             <RadioGroup
                                 android:id="@+id/weightRadioGroup"
@@ -474,6 +475,7 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
                             android:layout_toRightOf="@id/weightImageView"
                             android:orientation="horizontal">
 
@@ -484,7 +486,7 @@
                                 android:layout_weight="1"
                                 android:ems="10"
                                 android:inputType="numberDecimal"
-                                android:textColor="@color/grey_color" />
+                                android:textColor="@color/white_color" />
 
                             <RadioGroup
                                 android:id="@+id/heightRadioGroup"
@@ -521,19 +523,19 @@
                     <RelativeLayout style="@style/profileDetailsLayout">
 
                         <ImageView
-                            android:id="@+id/heightImageView"
+                            android:id="@+id/foodImageView"
                             style="@style/profileDetailsImage"
                             android:src="@drawable/height" />
 
                         <TextView
                             style="@style/profileDetailsTextMain"
-                            android:layout_toRightOf="@id/heightImageView"
+                            android:layout_toRightOf="@id/foodImageView"
                             android:text="Food" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_toRightOf="@id/heightImageView"
+                            android:layout_toRightOf="@id/foodImageView"
                             android:orientation="horizontal">
 
                             <RadioGroup
