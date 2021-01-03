@@ -113,25 +113,22 @@
 
                     <RelativeLayout style="@style/profileDetailsLayout">
                         <ImageView
-                            android:id="@+id/genderImageView"
-                            android:src="@drawable/name"
+                            android:id="@+id/emailImageView"
+                            android:src="@drawable/mail"
                             style="@style/profileDetailsImage" />
 
                         <TextView
-                            android:id="@+id/genderTextView"
-                            android:text="Gender"
-                            android:layout_toEndOf="@id/genderImageView"
+                            android:text="Email"
+                            android:layout_toRightOf="@id/emailImageView"
                             style="@style/profileDetailsTextMain" />
 
                         <TextView
-                            android:id="@+id/trainerGender"
-                            android:text="Male"
-                            android:layout_toEndOf="@id/genderImageView"
+                            android:id="@+id/trainerEmail"
+                            android:layout_toRightOf="@id/emailImageView"
                             style="@style/profileDetailsMiniText" />
 
                     </RelativeLayout>
 
-                    <!--                   <View style="@style/proifleDetailsView" />-->
                     <RelativeLayout style="@style/profileDetailsLayout">
                         <ImageView
                             android:id="@+id/mobileImageView"
@@ -170,25 +167,30 @@
 
                     </RelativeLayout>
 
-                    <!--                   <View style="@style/proifleDetailsView" />-->
                     <RelativeLayout style="@style/profileDetailsLayout">
                         <ImageView
-                            android:id="@+id/emailImageView"
-                            android:src="@drawable/mail"
+                            android:id="@+id/genderImageView"
+                            android:src="@drawable/name"
                             style="@style/profileDetailsImage" />
 
                         <TextView
-                            android:text="Email"
-                            android:layout_toRightOf="@id/emailImageView"
+                            android:id="@+id/genderTextView"
+                            android:text="Gender"
+                            android:layout_toEndOf="@id/genderImageView"
                             style="@style/profileDetailsTextMain" />
 
                         <TextView
-                            android:id="@+id/trainerEmail"
-                            android:text="developer@appsnipp.com"
-                            android:layout_toRightOf="@id/emailImageView"
+                            android:id="@+id/trainerGender"
+                            android:text="Male"
+                            android:layout_toEndOf="@id/genderImageView"
                             style="@style/profileDetailsMiniText" />
 
                     </RelativeLayout>
+
+                    <!--                   <View style="@style/proifleDetailsView" />-->
+
+                    <!--                   <View style="@style/proifleDetailsView" />-->
+
 
 
 
@@ -206,7 +208,7 @@
 
                         <TextView
                             android:id="@+id/trainerAbout"
-                            android:text="ab kya he batau apne baare me bs itna jaan lo ki tumhre bs ki baat ni h janna kyuki janne ke liye bhi to kuchh hona chahhiye jisse jaan sako aur wo hai ni ... bs bahut chutiyaap hogyi"
+                            android:text=""
                             android:layout_toEndOf="@id/aboutUs"
                             android:layout_marginTop="20dp"
                             style="@style/profileDetailsMiniText" />

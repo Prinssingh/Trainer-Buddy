@@ -111,14 +111,6 @@
                 app:cardBackgroundColor="@color/grey_color"
                 app:cardCornerRadius="15dp">
 
-                <!--               <ImageView-->
-                <!--                   android:layout_width="match_parent"-->
-                <!--                   android:layout_height="match_parent"-->
-                <!--                   android:scaleType="fitXY"-->
-                <!--                   android:background="@color/grey_color"-->
-                <!--                   android:src="@drawable/shape_cardview" />-->
-
-
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -145,33 +137,34 @@
                             android:layout_marginTop="15dp"
                             android:layout_toEndOf="@id/nameImageView"
                             android:hint="NAME"
-                            android:text="" />
+                            android:text=""
+                            android:textColor="@color/white_color" />
 
                     </RelativeLayout>
 
                     <RelativeLayout style="@style/profileDetailsLayout">
 
                         <ImageView
-                            android:id="@+id/genderImageView"
+                            android:id="@+id/emailImageView"
                             style="@style/profileDetailsImage"
-                            android:src="@drawable/name" />
+                            android:src="@drawable/mail" />
 
                         <TextView
-                            android:id="@+id/genderTextView"
                             style="@style/profileDetailsTextMain"
-                            android:layout_toEndOf="@id/genderImageView"
-                            android:text="Gender" />
+                            android:layout_toRightOf="@id/emailImageView"
+                            android:text="Email" />
 
                         <EditText
-                            android:id="@+id/genderEdit"
+                            android:id="@+id/emailEdit"
                             style="@style/profileDetailsMiniText"
+                            android:layout_width="match_parent"
                             android:layout_marginTop="15dp"
-                            android:layout_toEndOf="@id/genderImageView"
-                            android:text="" />
+                            android:layout_toRightOf="@id/emailImageView"
+                            android:text=""
+                            android:textColor="@color/white_color" />
 
                     </RelativeLayout>
 
-                    <!--                   <View style="@style/proifleDetailsView" />-->
                     <RelativeLayout style="@style/profileDetailsLayout">
 
                         <ImageView
@@ -187,9 +180,11 @@
                         <EditText
                             android:id="@+id/mobileEdit"
                             style="@style/profileDetailsMiniText"
+                            android:layout_width="match_parent"
                             android:layout_marginTop="15dp"
                             android:layout_toRightOf="@id/mobileImageView"
-                            android:text="" />
+                            android:text=""
+                            android:textColor="@color/white_color" />
 
                     </RelativeLayout>
 
@@ -208,33 +203,74 @@
                         <EditText
                             android:id="@+id/alternateEdit"
                             style="@style/profileDetailsMiniText"
+                            android:layout_width="match_parent"
                             android:layout_marginTop="15dp"
                             android:layout_toRightOf="@id/alternateMobileImageView"
-                            android:text="" />
+                            android:text=""
+                            android:textColor="@color/white_color" />
+
+                    </RelativeLayout>
+
+                    <RelativeLayout style="@style/profileDetailsLayout">
+
+                        <ImageView
+                            android:id="@+id/genderImageView"
+                            style="@style/profileDetailsImage"
+                            android:src="@drawable/name" />
+
+                        <TextView
+                            android:id="@+id/genderTextView"
+                            style="@style/profileDetailsTextMain"
+                            android:layout_toEndOf="@id/genderImageView"
+                            android:text="Gender" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="20dp"
+                            android:layout_toRightOf="@id/genderImageView"
+                            android:orientation="horizontal">
+
+                            <RadioGroup
+                                android:id="@+id/genderRadioGroup"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="horizontal">
+
+                                <RadioButton
+                                    android:id="@+id/male"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:checked="true"
+                                    android:text="Male"
+                                    android:textColor="@color/white_color" />
+
+                                <RadioButton
+                                    android:id="@+id/female"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="Female"
+                                    android:textColor="@color/white_color" />
+
+                                <RadioButton
+                                    android:id="@+id/other"
+
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:text="Other"
+                                    android:textColor="@color/white_color" />
+                            </RadioGroup>
+
+                        </LinearLayout>
 
                     </RelativeLayout>
 
                     <!--                   <View style="@style/proifleDetailsView" />-->
-                    <RelativeLayout style="@style/profileDetailsLayout">
 
-                        <ImageView
-                            android:id="@+id/emailImageView"
-                            style="@style/profileDetailsImage"
-                            android:src="@drawable/mail" />
-
-                        <TextView
-                            style="@style/profileDetailsTextMain"
-                            android:layout_toRightOf="@id/emailImageView"
-                            android:text="Email" />
-
-                        <EditText
-                            android:id="@+id/emailEdit"
-                            style="@style/profileDetailsMiniText"
-                            android:layout_marginTop="15dp"
-                            android:layout_toRightOf="@id/emailImageView"
-                            android:text="" />
-
-                    </RelativeLayout>
+                    <!--                   <View style="@style/proifleDetailsView" />-->
 
 
                     <RelativeLayout style="@style/profileDetailsLayout">
@@ -253,9 +289,11 @@
                         <EditText
                             android:id="@+id/aboutEdit"
                             style="@style/profileDetailsMiniText"
+                            android:layout_width="match_parent"
                             android:layout_marginTop="20dp"
                             android:layout_toEndOf="@id/aboutUs"
-                            android:text="" />
+                            android:text=""
+                            android:textColor="@color/white_color" />
 
                     </RelativeLayout>
 
@@ -274,9 +312,11 @@
                         <EditText
                             android:id="@+id/gymNameEdit"
                             style="@style/profileDetailsMiniText"
+                            android:layout_width="match_parent"
                             android:layout_marginTop="15dp"
                             android:layout_toRightOf="@id/gymNameImageView"
-                            android:text="" />
+                            android:text=""
+                            android:textColor="@color/white_color" />
 
                     </RelativeLayout>
 
@@ -296,9 +336,11 @@
                         <EditText
                             android:id="@+id/addressEdit"
                             style="@style/profileDetailsMiniText"
+                            android:layout_width="match_parent"
                             android:layout_marginTop="15dp"
                             android:layout_toRightOf="@id/addressImageView"
-                            android:text="" />
+                            android:text=""
+                            android:textColor="@color/white_color" />
 
                     </RelativeLayout>
 
@@ -316,12 +358,19 @@
                             android:layout_toRightOf="@id/dobImageView"
                             android:text="D.O.B" />
 
-                        <EditText
-                            android:id="@+id/dobEdit"
+                        <TextView
+                            android:id="@+id/dobEdit1"
                             style="@style/profileDetailsMiniText"
-                            android:layout_marginTop="15dp"
+                            android:layout_width="match_parent"
+                            android:layout_marginTop="20dp"
                             android:layout_toRightOf="@id/dobImageView"
-                            android:text="" />
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:focusableInTouchMode="true"
+                            android:hint=" click me "
+                            android:text=""
+                            android:textColor="@color/white_color"
+                            android:textSize="20sp" />
 
                     </RelativeLayout>
 
@@ -338,12 +387,14 @@
                             android:layout_toRightOf="@id/ageImageView"
                             android:text="Age" />
 
-                        <EditText
+                        <TextView
                             android:id="@+id/ageEdit"
                             style="@style/profileDetailsMiniText"
+                            android:layout_width="match_parent"
                             android:layout_marginTop="15dp"
                             android:layout_toRightOf="@id/ageImageView"
-                            android:text="" />
+                            android:text=""
+                            android:textColor="@color/white_color" />
 
                     </RelativeLayout>
 
@@ -360,12 +411,49 @@
                             android:layout_toRightOf="@id/heightImageView"
                             android:text="Height" />
 
-                        <EditText
-                            android:id="@+id/heightEdit"
-                            style="@style/profileDetailsMiniText"
-                            android:layout_marginTop="15dp"
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
                             android:layout_toRightOf="@id/heightImageView"
-                            android:text="" />
+                            android:orientation="horizontal">
+
+                            <EditText
+                                android:id="@+id/heightEdit"
+                                android:layout_width="200dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:ems="10"
+                                android:inputType="numberDecimal"
+                                android:textColor="@color/grey_color" />
+
+                            <RadioGroup
+                                android:id="@+id/weightRadioGroup"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginLeft="10dp"
+                                android:layout_weight="1"
+                                android:orientation="horizontal">
+
+                                <RadioButton
+                                    android:id="@+id/inKg"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:checked="true"
+                                    android:text="In KG"
+                                    android:textColor="@color/white_color" />
+
+                                <RadioButton
+                                    android:id="@+id/inLbs"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentBottom="true"
+                                    android:layout_weight="1"
+                                    android:text="In lbs"
+                                    android:textColor="@color/white_color" />
+                            </RadioGroup>
+
+                        </LinearLayout>
 
                     </RelativeLayout>
 
@@ -383,12 +471,49 @@
                             android:layout_toRightOf="@id/weightImageView"
                             android:text="Weight" />
 
-                        <EditText
-                            android:id="@+id/weightEdit"
-                            style="@style/profileDetailsMiniText"
-                            android:layout_marginTop="15dp"
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
                             android:layout_toRightOf="@id/weightImageView"
-                            android:text="" />
+                            android:orientation="horizontal">
+
+                            <EditText
+                                android:id="@+id/weightEdit"
+                                android:layout_width="200dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:ems="10"
+                                android:inputType="numberDecimal"
+                                android:textColor="@color/grey_color" />
+
+                            <RadioGroup
+                                android:id="@+id/heightRadioGroup"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginLeft="10dp"
+                                android:layout_weight="1"
+                                android:orientation="horizontal">
+
+                                <RadioButton
+                                    android:id="@+id/inInches"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:checked="true"
+                                    android:text="In KG"
+                                    android:textColor="@color/white_color" />
+
+                                <RadioButton
+                                    android:id="@+id/inFeet"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentBottom="true"
+                                    android:layout_weight="1"
+                                    android:text="In lbs"
+                                    android:textColor="@color/white_color" />
+                            </RadioGroup>
+
+                        </LinearLayout>
 
                     </RelativeLayout>
 
@@ -396,21 +521,50 @@
                     <RelativeLayout style="@style/profileDetailsLayout">
 
                         <ImageView
-                            android:id="@+id/foodImageView"
+                            android:id="@+id/heightImageView"
                             style="@style/profileDetailsImage"
-                            android:src="@drawable/food" />
+                            android:src="@drawable/height" />
 
                         <TextView
                             style="@style/profileDetailsTextMain"
-                            android:layout_toRightOf="@id/foodImageView"
+                            android:layout_toRightOf="@id/heightImageView"
                             android:text="Food" />
 
-                        <EditText
-                            android:id="@+id/foodEdit"
-                            style="@style/profileDetailsMiniText"
-                            android:layout_marginTop="15dp"
-                            android:layout_toRightOf="@id/foodImageView"
-                            android:text="" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_toRightOf="@id/heightImageView"
+                            android:orientation="horizontal">
+
+                            <RadioGroup
+                                android:id="@+id/foodRadioGroup"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginLeft="10dp"
+                                android:layout_marginTop="15dp"
+                                android:layout_weight="1"
+                                android:orientation="horizontal">
+
+                                <RadioButton
+                                    android:id="@+id/vegetarian"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:checked="true"
+                                    android:text="veg"
+                                    android:textColor="@color/white_color" />
+
+                                <RadioButton
+                                    android:id="@+id/nonvegetarian"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentBottom="true"
+                                    android:layout_weight="1"
+                                    android:text="non veg"
+                                    android:textColor="@color/white_color" />
+                            </RadioGroup>
+
+                        </LinearLayout>
 
                     </RelativeLayout>
 

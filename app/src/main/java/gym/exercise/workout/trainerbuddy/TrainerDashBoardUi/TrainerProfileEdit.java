@@ -2,6 +2,7 @@ package gym.exercise.workout.trainerbuddy.TrainerDashBoardUi;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
+import android.app.DatePickerDialog;
 import android.content.ContentResolver;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -20,8 +21,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -45,6 +48,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Calendar;
 
 import gym.exercise.workout.trainerbuddy.DataBaseHandler.DataBaseHandler;
 import gym.exercise.workout.trainerbuddy.DataBaseHandler.LocalDataBaseHandler;
@@ -68,14 +72,18 @@ public class TrainerProfileEdit extends Fragment implements View.OnClickListener
     Button update;
     CardView EditProfileImage;
     ImageView PHOTO;
-    EditText nameEdit, mobileEdit, alternateEdit, addressEdit, gymNameEdit, ageEdit, weightEdit, heightEdit, aboutEdit, dobEdit, foodEdit;
+    EditText nameEdit, mobileEdit, alternateEdit, addressEdit, gymNameEdit, dobEdit, weightEdit, heightEdit, aboutEdit, foodEdit;
+
+    TextView dobEdit1,ageEdit;
+    String gender,food,weight,height;
+
+    DatePickerDialog picker;
 
     LocalDataBaseHandler LDB;
     public static TrainerProfileEdit newInstance(Trainer trainer) {
 //        self =trainer;
         return  new TrainerProfileEdit();
     }
-
 
 
     @Override
@@ -107,7 +115,7 @@ public class TrainerProfileEdit extends Fragment implements View.OnClickListener
         weightEdit =Root.findViewById(R.id.weightEdit);
         heightEdit = Root.findViewById(R.id.heightEdit);
         aboutEdit = Root.findViewById(R.id.aboutEdit);
-        dobEdit =Root.findViewById(R.id.dobEdit);
+        dobEdit1 =Root.findViewById(R.id.dobEdit1);
         foodEdit = Root.findViewById(R.id.foodEdit);
 
         update = Root.findViewById(R.id.update);
@@ -151,6 +159,25 @@ public class TrainerProfileEdit extends Fragment implements View.OnClickListener
             case R.id.update:
                 UpdateTrainerProfile();
                 break;
+            case R.id.dobEdit1:
+            {
+                Log.d("Update Profile", "UpdateTrainerProfile: Done");
+                final Calendar cldr = Calendar.getInstance();
+                int day = cldr.get(Calendar.DAY_OF_MONTH);
+                int month = cldr.get(Calendar.MONTH);
+                int year = cldr.get(Calendar.YEAR);
+                // date picker dialog
+                picker = new DatePickerDialog(getContext(),
+                        new DatePickerDialog.OnDateSetListener() {
+                            @SuppressLint("SetTextI18n")
+                            @Override
+                            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                                dobEdit.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
+                            }
+                        }, year, month, day);
+                picker.show();
+            }
+            break;
         }
     }
 
@@ -536,6 +563,66 @@ public class TrainerProfileEdit extends Fragment implements View.OnClickListener
 
 
     }
+
+//    public void setAllDisable(){
+//        nameEdit.setEnabled(false);
+////        maleE.setEnabled(false);
+////        female.setEnabled(false);
+////        other.setEnabled(false);
+////        ageSpinner.setEnabled(false);
+//        mobileEdit.setEnabled(false);
+//        email.setEnabled(false);
+//        weight.setEnabled(false);
+//        inKg.setEnabled(false);
+//        inLbs.setEnabled(false);
+//        height.setEnabled(false);
+//        inInches.setEnabled(false);
+//        inMeter.setEnabled(false);
+//        student.setEnabled(false);
+//        officeJob.setEnabled(false);
+//        travellingJob.setEnabled(false);
+//        physicalJob.setEnabled(false);
+//        labourJob.setEnabled(false);
+//        gain.setEnabled(false);
+//        loss.setEnabled(false);
+//        maintain.setEnabled(false);
+//        musselsGain.setEnabled(false);
+//        musselsMaintain.setEnabled(false);
+//        vegetarian.setEnabled(false);
+//        nonVegetarian.setEnabled(false);
+//        subscriptionFee.setEnabled(false);
+//        etDate.setEnabled(false);
+//    }
+//
+//    public void setAllEnable(){
+//        name.setEnabled(true);
+//        male.setEnabled(true);
+//        female.setEnabled(true);
+//        other.setEnabled(true);
+//        ageSpinner.setEnabled(true);
+//        mobile.setEnabled(true);
+//        email.setEnabled(true);
+//        weight.setEnabled(true);
+//        inKg.setEnabled(true);
+//        inLbs.setEnabled(true);
+//        height.setEnabled(true);
+//        inInches.setEnabled(true);
+//        inMeter.setEnabled(true);
+//        student.setEnabled(true);
+//        officeJob.setEnabled(true);
+//        travellingJob.setEnabled(true);
+//        physicalJob.setEnabled(true);
+//        labourJob.setEnabled(true);
+//        gain.setEnabled(true);
+//        loss.setEnabled(true);
+//        maintain.setEnabled(true);
+//        musselsGain.setEnabled(true);
+//        musselsMaintain.setEnabled(true);
+//        vegetarian.setEnabled(true);
+//        nonVegetarian.setEnabled(true);
+//        subscriptionFee.setEnabled(true);
+//        etDate.setEnabled(true);
+//    }
 
 
 }
