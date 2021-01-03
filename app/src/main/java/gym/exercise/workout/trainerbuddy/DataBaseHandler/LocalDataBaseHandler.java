@@ -28,6 +28,7 @@ public class LocalDataBaseHandler extends SQLiteOpenHelper {
     public static final String TRAINER_TABLE_NAME = "trainer";
     public static final String TRAINEE_TABLE_NAME = "trainee";
     public static final String SUBSCRIPTION_PLAN_TABLE_NAME = "subscriptionplans";
+    public static final String TRAINER_OFFERING_SUBSCRIPTION_PLAN_TABLE_NAME = "offeringplans";
 
     //Common Columns
     public static final String COLUMN_ID = "id";
@@ -90,6 +91,11 @@ public class LocalDataBaseHandler extends SQLiteOpenHelper {
             DAYS +" INTEGER NOT NULL,"+ PRIZE +" INTEGER NOT NULL,"+
             STARTING_DATE +" VARCHAR,"+EXPIRY_DATE+" VARCHAR" +");";
 
+    public static final String CREATE_TRAINER_OFFERING_PLAN_TABLE = "CREATE TABLE " + TRAINER_OFFERING_SUBSCRIPTION_PLAN_TABLE_NAME + "(" +
+            COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"+ PLAN_ID+" VARCHAR ,"+
+            TITLE + " VARCHAR NOT NULL," + ABOUT +" VARCHAR ,"+
+            DAYS +" INTEGER NOT NULL,"+ PRIZE +" INTEGER NOT NULL,"+
+            STARTING_DATE +" VARCHAR,"+EXPIRY_DATE+" VARCHAR" +");";
 
 
 
@@ -108,6 +114,7 @@ public class LocalDataBaseHandler extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(CREATE_TRAINER_TABLE);
         sqLiteDatabase.execSQL(CREATE_TRAINEE_TABLE);
         sqLiteDatabase.execSQL(CREATE_SUBSCRIPTION_PLAN_TABLE);
+        sqLiteDatabase.execSQL(CREATE_TRAINER_OFFERING_PLAN_TABLE);
 
     }
 
@@ -117,11 +124,13 @@ public class LocalDataBaseHandler extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TRAINER_TABLE_NAME);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TRAINEE_TABLE_NAME);
         sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + SUBSCRIPTION_PLAN_TABLE_NAME);
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS " + TRAINER_OFFERING_SUBSCRIPTION_PLAN_TABLE_NAME);
 
         //Creating New Tables
         onCreate(sqLiteDatabase);
     }
 
+    //Trainer Operations
     public void setTrainerLDB(Trainer trainer){
         SQLiteDatabase db = this.getWritableDatabase();
         db.execSQL("delete from "+ TRAINER_TABLE_NAME);
@@ -182,11 +191,10 @@ public class LocalDataBaseHandler extends SQLiteOpenHelper {
         trainer.setAbout(c.getString(c.getColumnIndex(ABOUT)));
 
 
-
         return trainer;
     }
-
-     public void setTrainerPhotoLDB(byte[] img,String UID){
+ //todo test photo saving Trainer
+    public void setTrainerPhotoLDB(byte[] img,String UID){
          SQLiteDatabase db = this.getWritableDatabase();
          ContentValues values = new ContentValues();
          values.put(PHOTO,img);
@@ -194,6 +202,15 @@ public class LocalDataBaseHandler extends SQLiteOpenHelper {
          String whereArgs[] = {"1"};
          db.update(TRAINER_TABLE_NAME, values,whereClause,whereArgs);
      }
+    public byte[] getTrainerPhotoLDB(){
+        SQLiteDatabase db = this.getReadableDatabase();
+        String selectQuery = "SELECT  * FROM " + TRAINER_TABLE_NAME;
+        @SuppressLint("Recycle") Cursor c = db.rawQuery(selectQuery, null);
+        if (c != null)
+            c.moveToFirst();
+
+        return c.getBlob(c.getColumnIndex(PHOTO));
+    }
 
     public void setTraineeLDB(Trainee trainee){
         SQLiteDatabase db = this.getWritableDatabase();
@@ -254,7 +271,9 @@ public class LocalDataBaseHandler extends SQLiteOpenHelper {
         return trainees;
     }
 
-    public void setTrainerSubscriptionPlansLDB(SubscriptionPlan subscriptionPlan){
+
+    // Trainer Global offered  Plans
+    public void setTrainerSubscriptionGlobalPlansLDB(SubscriptionPlan subscriptionPlan){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
         values.put(PLAN_ID,subscriptionPlan.getID());
@@ -269,8 +288,7 @@ public class LocalDataBaseHandler extends SQLiteOpenHelper {
 
         db.insert(SUBSCRIPTION_PLAN_TABLE_NAME, null, values);
     }
-
-    public ArrayList<SubscriptionPlan> getTrainerSubscriptionPlansLDB(){
+    public ArrayList<SubscriptionPlan> getTrainerSubscriptionGlobalPlansLDB(){
 
         ArrayList<SubscriptionPlan> subscriptionPlans =new ArrayList<SubscriptionPlan>();
 
@@ -300,8 +318,7 @@ public class LocalDataBaseHandler extends SQLiteOpenHelper {
         return subscriptionPlans;
 
     }
-
-    public int getTrainerSubscriptionPlansCountLDB(){
+    public int getTrainerSubscriptionGlobalPlansCountLDB(){
         SQLiteDatabase db = this.getReadableDatabase();
         String selectQuery = "SELECT  * FROM " + SUBSCRIPTION_PLAN_TABLE_NAME;
 
@@ -310,15 +327,71 @@ public class LocalDataBaseHandler extends SQLiteOpenHelper {
         @SuppressLint("Recycle") Cursor c = db.rawQuery(selectQuery, null);
         return c.getCount();
     };
-
     public void ClearTrainerSubscriptionPlansLDB(){
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(SUBSCRIPTION_PLAN_TABLE_NAME, null, null);
-//        String deleteSubscriptions = "DELETE FROM " + SUBSCRIPTION_PLAN_TABLE_NAME;
-//
-//
-//        @SuppressLint("Recycle") Cursor c = db.rawQuery(deleteSubscriptions, null);
+    }
 
+    // Trainer Offering Plans
+    public void ClearTrainerOfferingPlanLDB(){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TRAINER_OFFERING_SUBSCRIPTION_PLAN_TABLE_NAME, null, null);
+    }
+    public void setTrainerOfferingPlanLDB( SubscriptionPlan subscriptionPlan){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(PLAN_ID,subscriptionPlan.getID());
+        values.put(TITLE,subscriptionPlan.getTitle());
+        values.put(ABOUT,subscriptionPlan.getAbout());
+        values.put(DAYS,subscriptionPlan.getDays());
+        values.put(PRIZE,subscriptionPlan.getPrize());
+
+        if(subscriptionPlan.getStartingDate()!=null)
+        { values.put(STARTING_DATE,subscriptionPlan.getStartingDate());
+            values.put(EXPIRY_DATE,subscriptionPlan.getExpiryDate());
+        }
+
+        db.insert(TRAINER_OFFERING_SUBSCRIPTION_PLAN_TABLE_NAME, null, values);
 
     }
+    public ArrayList<SubscriptionPlan> getTrainerOfferingPlanLDB(){
+
+        ArrayList<SubscriptionPlan> subscriptionPlans =new ArrayList<SubscriptionPlan>();
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        String selectQuery = "SELECT  * FROM " + TRAINER_OFFERING_SUBSCRIPTION_PLAN_TABLE_NAME;
+
+        Log.e("LOG", selectQuery);
+
+        @SuppressLint("Recycle") Cursor c = db.rawQuery(selectQuery, null);
+
+        if (c != null) {
+            c.moveToFirst();
+            for(int i=0;i<c.getCount();i++){
+                SubscriptionPlan sPlan = new SubscriptionPlan();
+                sPlan.setID(c.getString(c.getColumnIndex(PLAN_ID)));
+                sPlan.setTitle(c.getString(c.getColumnIndex(TITLE)));
+                sPlan.setAbout(c.getString(c.getColumnIndex(ABOUT)));
+                sPlan.setPrize(c.getInt(c.getColumnIndex(PRIZE)));
+                sPlan.setDays(c.getInt(c.getColumnIndex(DAYS)));
+                sPlan.setStartingDate(c.getString(c.getColumnIndex(STARTING_DATE)));
+                sPlan.setExpiryDate(c.getString(c.getColumnIndex(EXPIRY_DATE)));
+                subscriptionPlans.add(sPlan);
+                c.moveToNext();
+            }
+        }
+
+        return subscriptionPlans;
+
+    }
+    public int getTrainerOfferingPlanCountLDB(){
+        SQLiteDatabase db = this.getReadableDatabase();
+        String selectQuery = "SELECT  * FROM " + TRAINER_OFFERING_SUBSCRIPTION_PLAN_TABLE_NAME;
+
+        Log.e("LOG", selectQuery);
+
+        @SuppressLint("Recycle") Cursor c = db.rawQuery(selectQuery, null);
+        return c.getCount();
+    };
+
 }

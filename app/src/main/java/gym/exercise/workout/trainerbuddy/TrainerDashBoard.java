@@ -20,7 +20,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import gym.exercise.workout.trainerbuddy.TrainerDashBoardUi.AddNewTrainee;
 import gym.exercise.workout.trainerbuddy.TrainerDashBoardUi.Earnings;
 import gym.exercise.workout.trainerbuddy.TrainerDashBoardUi.Home;
-import gym.exercise.workout.trainerbuddy.TrainerDashBoardUi.Profile;
+import gym.exercise.workout.trainerbuddy.TrainerDashBoardUi.OfferingPlans;
 import gym.exercise.workout.trainerbuddy.TrainerDashBoardUi.TraineeList;
 
 public class TrainerDashBoard extends AppCompatActivity implements View.OnClickListener {
@@ -31,7 +31,7 @@ public class TrainerDashBoard extends AppCompatActivity implements View.OnClickL
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trainer_dash_board);
 
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar = findViewById(R.id.toolbar);
         toolbar.findViewById(R.id.TrainerToolBarProfile).setOnClickListener(this);
         toolbar.findViewById(R.id.TrainerNotification).setOnClickListener(this);
         toolbar.findViewById(R.id.TrainerSettings).setOnClickListener(this);
@@ -66,8 +66,8 @@ public class TrainerDashBoard extends AppCompatActivity implements View.OnClickL
                     case R.id.Trainee_Home:
                         ChangeFragment(Home.newInstance());
                         break;
-                    case R.id.Trainer_Profile:
-                        ChangeFragment(Profile.newInstance());
+                    case R.id.Trainer_Plans:
+                        ChangeFragment(OfferingPlans.newInstance());
                         break;
                     case R.id.Trainer_Earnings:
                         ChangeFragment(Earnings.newInstance());

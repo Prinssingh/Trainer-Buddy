@@ -18,9 +18,9 @@
         android:title="@string/title_home" />
 
     <item
-        android:id="@+id/Trainer_Profile"
-        android:icon="@drawable/profile_white_24"
-        android:title="@string/profile" />
+        android:id="@+id/Trainer_Plans"
+        android:icon="@drawable/plan_add_24"
+        android:title="@string/Plans" />
 
     <item
         android:id="@+id/Trainer_Earnings"
