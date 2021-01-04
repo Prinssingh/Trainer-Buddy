@@ -20,8 +20,9 @@ import gym.exercise.workout.trainerbuddy.TrainerOfferingPlans;
 
 public class OfferingPlans extends Fragment {
 
-    TextView non;
     LocalDataBaseHandler LDB;
+    RecyclerView recyclerView;
+    TextView NoItemIndicator;
 
     public static OfferingPlans newInstance() {
 
@@ -35,9 +36,9 @@ public class OfferingPlans extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View Root=inflater.inflate(R.layout.trainer_offering_plans, container, false);
-
+        recyclerView =Root.findViewById(R.id.TrainersOfferingPlansList);
         LDB= new LocalDataBaseHandler(requireContext());
-        non = Root.findViewById(R.id.NoOfferingPlansToShow);
+        NoItemIndicator= Root.findViewById(R.id.NoOfferingPlansToShow);
         Button AddPlan = Root.findViewById(R.id.AddOfferingPlanButton);
         AddPlan.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,8 +50,8 @@ public class OfferingPlans extends Fragment {
         });
 
       try{
+          NoItemIndicator.setVisibility(View.INVISIBLE);
           SubscriptionPlan[] myListData= LDB.getTrainerOfferingPlanLDB().toArray(new SubscriptionPlan[0]);
-          RecyclerView recyclerView = (RecyclerView)Root.findViewById(R.id.TrainersOfferingPlansList);
           OfferingPlansListAdapter adapter = new OfferingPlansListAdapter(myListData,requireContext());
           recyclerView.setHasFixedSize(true);
           recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
@@ -58,7 +59,7 @@ public class OfferingPlans extends Fragment {
       }
       catch (Exception e) {
           Toast.makeText(requireContext(), "Error" + e, Toast.LENGTH_SHORT).show();
-          non.setVisibility(View.VISIBLE);
+          NoItemIndicator.setVisibility(View.VISIBLE);
       }
 
         return Root;

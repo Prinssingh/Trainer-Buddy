@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,6 +18,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import gym.exercise.workout.trainerbuddy.Entities.ImportantFunctions;
 import gym.exercise.workout.trainerbuddy.TrainerDashBoardUi.AddNewTrainee;
 import gym.exercise.workout.trainerbuddy.TrainerDashBoardUi.Earnings;
 import gym.exercise.workout.trainerbuddy.TrainerDashBoardUi.Home;
@@ -26,6 +28,7 @@ import gym.exercise.workout.trainerbuddy.TrainerDashBoardUi.TraineeList;
 public class TrainerDashBoard extends AppCompatActivity implements View.OnClickListener {
     Toolbar toolbar;
     BottomNavigationView navigation;
+    ImportantFunctions impFun;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,9 +38,10 @@ public class TrainerDashBoard extends AppCompatActivity implements View.OnClickL
         toolbar.findViewById(R.id.TrainerToolBarProfile).setOnClickListener(this);
         toolbar.findViewById(R.id.TrainerNotification).setOnClickListener(this);
         toolbar.findViewById(R.id.TrainerSettings).setOnClickListener(this);
+        impFun =new ImportantFunctions(this);
 
-
-        //TextView mTitle = (TextView) toolbar.findViewById(R.id.toolbar_title);
+        TextView mTitle = (TextView) toolbar.findViewById(R.id.toolbar_title);
+        mTitle.setText(impFun.getSharedPrefName());
 
 
         setSupportActionBar(toolbar);
@@ -147,5 +151,9 @@ public class TrainerDashBoard extends AppCompatActivity implements View.OnClickL
                 break;
         }
 
+    }
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
     }
 }
