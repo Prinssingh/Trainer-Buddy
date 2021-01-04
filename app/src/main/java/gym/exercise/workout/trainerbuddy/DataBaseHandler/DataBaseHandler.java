@@ -125,7 +125,7 @@ public class DataBaseHandler {
 
     public void setTrainersOfferingPlan(String UID, SubscriptionPlan mPlan){
         Map<String, Object> childUpdates = new HashMap<>();
-        String Key =  (!mPlan.getID().isEmpty())? mPlan.getID() :mPlan.getGeneratedID();
+        String Key =  mPlan.getGeneratedID();
         childUpdates.put("/Trainers/" +UID +"/OfferingPlans/"+Key, mPlan.toMap());
         Root.updateChildren(childUpdates, new DatabaseReference.CompletionListener() {
             @Override
@@ -133,6 +133,23 @@ public class DataBaseHandler {
                 if (error==null){
                    //TODO SAVING LDB
                     LDB.setTrainerOfferingPlanLDB(mPlan);
+                }
+                else {throw error.toException(); }
+            }
+        });
+
+
+    }
+
+    public void UpdateTrainersOfferingPlan(String UID, SubscriptionPlan mPlan){
+        Map<String, Object> childUpdates = new HashMap<>();
+        String Key =  mPlan.getID();
+        childUpdates.put("/Trainers/" +UID +"/OfferingPlans/"+Key, mPlan.toMap());
+        Root.updateChildren(childUpdates, new DatabaseReference.CompletionListener() {
+            @Override
+            public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
+                if (error==null){
+                    LDB.UpdateTrainerOfferingPlanLDB(mPlan);
                 }
                 else {throw error.toException(); }
             }

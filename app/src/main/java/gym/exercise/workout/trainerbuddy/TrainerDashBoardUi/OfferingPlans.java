@@ -20,6 +20,7 @@ import gym.exercise.workout.trainerbuddy.TrainerOfferingPlans;
 
 public class OfferingPlans extends Fragment {
 
+    TextView non;
     LocalDataBaseHandler LDB;
 
     public static OfferingPlans newInstance() {
@@ -36,6 +37,7 @@ public class OfferingPlans extends Fragment {
         View Root=inflater.inflate(R.layout.trainer_offering_plans, container, false);
 
         LDB= new LocalDataBaseHandler(requireContext());
+        non = Root.findViewById(R.id.NoOfferingPlansToShow);
         Button AddPlan = Root.findViewById(R.id.AddOfferingPlanButton);
         AddPlan.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,7 +58,6 @@ public class OfferingPlans extends Fragment {
       }
       catch (Exception e) {
           Toast.makeText(requireContext(), "Error" + e, Toast.LENGTH_SHORT).show();
-          TextView non = Root.findViewById(R.id.NoOfferingPlansToShow);
           non.setVisibility(View.VISIBLE);
       }
 
