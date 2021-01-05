@@ -1,9 +1,7 @@
 package gym.exercise.workout.trainerbuddy.Login;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.LayoutInflater;
@@ -42,9 +40,9 @@ public class LoginPage extends Fragment implements View.OnClickListener {
     TextView forgetPassword,Register1;
     ImageView Register2;
     private final FirebaseAuth mAuth=FirebaseAuth.getInstance();
+
     ImportantFunctions impFun;
-    SharedPreferences sp;
-    SharedPreferences.Editor editor;
+
 
 
 
@@ -59,9 +57,7 @@ public class LoginPage extends Fragment implements View.OnClickListener {
                              @Nullable Bundle savedInstanceState) {
 
         View Root =inflater.inflate(R.layout.login_page, container, false);
-        impFun= new ImportantFunctions(getContext());
-        sp=requireContext().getSharedPreferences("TrainerBuddyPref", Context.MODE_PRIVATE);
-        editor=sp.edit();
+        impFun= new ImportantFunctions(requireContext());
 
         Register1=Root.findViewById(R.id.Register1);
         Register1.setOnClickListener(this);
@@ -123,9 +119,12 @@ public class LoginPage extends Fragment implements View.OnClickListener {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                            editor.putString("User_UID",user.getUid()).commit();
-                            editor.putString("User_Email",EmailId).commit();
-                            editor.putString("User_Password",password).commit();
+                            assert user != null;
+                            impFun.setSharedPrefUID(user.getUid());
+                            impFun.setSharedPrefEmail(EmailId);
+                            impFun.setSharedPrefName(user.getDisplayName());
+                            impFun.setSharedPrefPassword(password);
+
                             checkIfEmailVerified();
 
                         } else {
@@ -163,7 +162,7 @@ public class LoginPage extends Fragment implements View.OnClickListener {
         assert user != null;
         if (user.isEmailVerified())
         {
-            editor.putBoolean("Login",true).commit();
+            impFun.setSharedPrefLogin(true);
             Toast.makeText(requireContext(), "Successfully logged in", Toast.LENGTH_SHORT).show();
             // Goto DashBoard
             Intent homeintent = new Intent(requireActivity(), DashBoard.class);

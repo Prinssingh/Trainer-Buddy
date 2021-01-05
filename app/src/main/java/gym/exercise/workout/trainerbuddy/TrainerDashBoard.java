@@ -40,7 +40,7 @@ public class TrainerDashBoard extends AppCompatActivity implements View.OnClickL
         toolbar.findViewById(R.id.TrainerSettings).setOnClickListener(this);
         impFun =new ImportantFunctions(this);
 
-        TextView mTitle = (TextView) toolbar.findViewById(R.id.toolbar_title);
+        TextView mTitle = (TextView) toolbar.findViewById(R.id.TrainerToolBarUserName);
         mTitle.setText(impFun.getSharedPrefName());
 
 
@@ -152,8 +152,11 @@ public class TrainerDashBoard extends AppCompatActivity implements View.OnClickL
         }
 
     }
+
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+
     }
 }

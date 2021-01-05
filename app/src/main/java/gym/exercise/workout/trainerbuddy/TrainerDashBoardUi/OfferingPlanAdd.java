@@ -1,8 +1,8 @@
 package gym.exercise.workout.trainerbuddy.TrainerDashBoardUi;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +19,9 @@ import gym.exercise.workout.trainerbuddy.DataBaseHandler.DataBaseHandler;
 import gym.exercise.workout.trainerbuddy.Entities.ImportantFunctions;
 import gym.exercise.workout.trainerbuddy.Entities.SubscriptionPlan;
 import gym.exercise.workout.trainerbuddy.R;
+
+import static android.app.Activity.RESULT_CANCELED;
+import static android.app.Activity.RESULT_OK;
 
 public class OfferingPlanAdd extends Fragment {
 
@@ -80,13 +83,25 @@ public class OfferingPlanAdd extends Fragment {
                 SubscriptionPlan mplan =getInputPlan();
                 String UID = impFun.getSharedPrefUID();
                 try{
+                    Log.d("AddingPlan", "AddTrainersNewOfferingPlan: Plan ID"+mplan.getGeneratedID());
                     DB.setTrainersOfferingPlan(UID,mplan); // it Internally sets LDB;
                     Toast.makeText(requireContext(), "Plan Saved Success!!", Toast.LENGTH_SHORT).show();
-                    // TODO Clear All Enteries!!
+                    //Clear All Eateries
                     clearAllEnteries();
-                    requireActivity().finish();}
+
+                    //SET DATA AND RESULT CODE
+
+                    Intent returnIntent = new Intent();
+                    returnIntent.putExtra("PlanID",mplan.getGeneratedID());
+                    returnIntent.putExtra("Plan",mplan);
+                    requireActivity().setResult(RESULT_OK,returnIntent);
+                    requireActivity().finish();
+                }
                 catch (Exception e){
                     Log.d("DB", "AddTrainersNewOfferingPlan: Error"+e);
+                    Intent returnIntent = new Intent();
+                    requireActivity().setResult(RESULT_CANCELED,returnIntent);
+                    requireActivity().finish();
                 }
             }
             else{

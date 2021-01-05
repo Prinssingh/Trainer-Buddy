@@ -1,8 +1,6 @@
 package gym.exercise.workout.trainerbuddy.Login;
 
 import android.annotation.SuppressLint;
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.util.Patterns;
@@ -43,8 +41,6 @@ public class RegisterPage extends Fragment implements View.OnClickListener {
     TextView login;
     Button register;
     EditText Name,Email,Password,Mobile,confirmPass;
-    SharedPreferences sp;
-    SharedPreferences.Editor editor;
     ViewGroup progressView;
     protected boolean isProgressShowing = false;
     private FirebaseAuth mAuth;
@@ -67,8 +63,7 @@ public class RegisterPage extends Fragment implements View.OnClickListener {
                              @Nullable Bundle savedInstanceState) {
         View Root =inflater.inflate(R.layout.register_page, container, false);
 
-        sp=requireContext().getSharedPreferences("TrainerBuddyPref", Context.MODE_PRIVATE);
-        editor=sp.edit();
+
         mAuth =FirebaseAuth.getInstance();
         impFun= new ImportantFunctions(getContext());
 
@@ -192,10 +187,11 @@ public class RegisterPage extends Fragment implements View.OnClickListener {
             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
             if(user!= null){
 
-                editor.putBoolean("Register",true).commit();
-                editor.putString("User_Name",user.getDisplayName()).commit();
-                editor.putString("User_Email",user.getEmail()).commit();
-                editor.putString("User_UID",user.getUid()).commit();
+                impFun.setSharedPrefUID(user.getUid());
+                impFun.setSharedPrefEmail(user.getEmail());
+                impFun.setSharedPrefName(user.getDisplayName());
+                impFun.setSharedPrefRegister(true);
+
 
                 ChangeFragment(LoginPage.newInstance());
             }
@@ -217,6 +213,7 @@ public class RegisterPage extends Fragment implements View.OnClickListener {
                                             .setDisplayName(Name.getText().toString())
                                             .build();
 
+                                    assert user != null;
                                     user.updateProfile(profileUpdates)
                                             .addOnCompleteListener(new OnCompleteListener<Void>() {
                                                 @Override
@@ -227,12 +224,11 @@ public class RegisterPage extends Fragment implements View.OnClickListener {
                                                 }
                                             });
                                     //Setup Data
-                                    assert user != null;
-
-                                    editor.putBoolean("Register",true).commit();
-                                    editor.putString("User_Email",email).commit();
-                                    editor.putString("User_UID",user.getUid()).commit();
-                                    editor.putString("User_Password",password).commit();
+                                    impFun.setSharedPrefRegister(true);
+                                    impFun.setSharedPrefUID(user.getUid());
+                                    impFun.setSharedPrefEmail(email);
+                                    impFun.setSharedPrefName(user.getDisplayName());
+                                    impFun.setSharedPrefPassword(password);
                                     //todo show message
                                     Toast.makeText(getContext(),"Register Success!!",Toast.LENGTH_LONG).show();
 

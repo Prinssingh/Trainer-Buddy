@@ -2,10 +2,11 @@ package gym.exercise.workout.trainerbuddy.Entities;
 
 import com.google.firebase.database.Exclude;
 
+import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Map;
 
-public class SubscriptionPlan {
+public class SubscriptionPlan  implements Serializable {
 
 
     private String ID;
