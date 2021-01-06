@@ -18,6 +18,7 @@ public class Trainee {
     private String Mobile;
     private Bitmap Photo;
     private String Password;
+    private String DOB;
     private int Weight;
     private int Height;
     private int Age;
@@ -32,6 +33,10 @@ public class Trainee {
     private String WeightPref;
     private String MusclePref;
     private String TrainerUID;
+    private String WeightUnitPref;
+    private String HeightUnitPref;
+
+
 
     //Constructors
     public Trainee(){}
@@ -45,6 +50,7 @@ public class Trainee {
         result.put("Name", this.Name);
         result.put("Email", this.Email);
         result.put("Mobile", this.Mobile);
+        result.put("DOB", this.DOB);
         result.put("Password",this.Password);
         result.put("Weight",this.Weight);
         result.put("Height",this.Height);
@@ -60,6 +66,8 @@ public class Trainee {
         result.put("MusclePref",this.MusclePref);
         result.put("MySubscriptionPlan",MySubscriptionPlan.toMap());
         result.put("TrainerUID",this.TrainerUID);
+        result.put("WeightUnitPref",this.WeightUnitPref);
+        result.put("HeightUnitPref",this.HeightUnitPref);
 
         return result;
     }
@@ -119,6 +127,7 @@ public class Trainee {
     public void setOccupation(String occupation) { Occupation = occupation; }
 
     public SubscriptionPlan getMySubscriptionPlan() { return MySubscriptionPlan;}
+
     public void setMySubscriptionPlan(SubscriptionPlan mySubscriptionPlan) { this.MySubscriptionPlan = mySubscriptionPlan; }
 
     public String getFoodPref() { return FoodPref;}
@@ -136,6 +145,18 @@ public class Trainee {
     public String getTrainerUID() { return TrainerUID; }
 
     public void setTrainerUID(String trainerUID) { TrainerUID = trainerUID; }
+
+    public String getDOB() { return DOB; }
+
+    public void setDOB(String DOB) { this.DOB = DOB; }
+
+    public String getWeightUnitPref() { return WeightUnitPref; }
+
+    public void setWeightUnitPref(String weightUnitPref) { WeightUnitPref = weightUnitPref; }
+
+    public String getHeightUnitPref() { return HeightUnitPref; }
+
+    public void setHeightUnitPref(String heightUnitPref) { HeightUnitPref = heightUnitPref; }
 
 
 

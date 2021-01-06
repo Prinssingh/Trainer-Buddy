@@ -1,6 +1,7 @@
 package gym.exercise.workout.trainerbuddy.TrainerDashBoardUi;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -65,7 +66,7 @@ public class Home extends Fragment {
         @Override
         public Fragment createFragment(int position) {
             // TODO pass SubscriptionPlan for different plans
-
+            Log.d("TAG HERE", "createFragment: Position+ "+position);
             return new SubscriptionPlanCardFragment(Plans.get(position));
         }
 

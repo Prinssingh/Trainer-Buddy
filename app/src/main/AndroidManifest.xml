@@ -23,7 +23,6 @@
         tools:targetApi="q">
         <activity android:name=".TrainerOfferingPlans"></activity>
         <activity android:name=".TrainerProfileActivity" />
-        <activity android:name=".editTrainerProfile" />
         <activity android:name=".TrainerNotificationsActivity" />
         <activity
             android:name=".TrainerSettingsActivity"
@@ -58,6 +57,9 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/provider_paths" />
         </provider>
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
     </application>
 
 </manifest>

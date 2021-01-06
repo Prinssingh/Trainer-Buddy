@@ -99,5 +99,11 @@ public class SubscriptionPlan {
         return this;
     }
 
+    public int getDaysLeft(){
+
+
+        return 5;
+    }
+
 
 }

@@ -25,7 +25,7 @@ public class TrainerProfileShow extends Fragment {
 
     ImageView profilePic;
     CardView editProfile;
-    TextView name, mobile, alternate, adddress, gymName, age, weight, height, about, dob, food;
+    TextView name,mail, mobile, alternate, address,gender, gymName, age, weight, height, about, dob, food;
 
     public static TrainerProfileShow newInstance() {
         return new TrainerProfileShow();
@@ -41,12 +41,14 @@ public class TrainerProfileShow extends Fragment {
         View Root= inflater.inflate(R.layout.trainer_profile_show, container, false);
         name = Root.findViewById(R.id.trainerName);
         name.setText(self.getName());
+        mail = Root.findViewById(R.id.trainerEmail);
+        mail.setText(self.getEmail());
         mobile = Root.findViewById(R.id.trainerMobile);
         mobile.setText(self.getMobile());
         alternate = Root.findViewById(R.id.trainerAlternate);
         alternate.setText(self.getAlternateMobile());
-        adddress = Root.findViewById(R.id.trainerAddress);
-        adddress.setText(self.getGymAddress());
+        address = Root.findViewById(R.id.trainerAddress);
+        address.setText(self.getGymAddress());
         gymName = Root.findViewById(R.id.trainerGymName);
         gymName.setText(self.getGymName());
         age = Root.findViewById(R.id.trainerAge);
@@ -56,10 +58,13 @@ public class TrainerProfileShow extends Fragment {
         height = Root.findViewById(R.id.trainerHeight);
         height.setText(String.valueOf(self.getHeight()));
         about = Root.findViewById(R.id.trainerAbout);
-        //TODO
+        about.setText(self.getAbout());
         dob = Root.findViewById(R.id.trainerDOB);
+        dob.setText(self.getDOB());
         food = Root.findViewById(R.id.trainerFood);
         food.setText(self.getFoodPref());
+        gender = Root.findViewById(R.id.gender);
+        gender.setText(self.getGender());
 
         profilePic = Root.findViewById(R.id.profilePic);
 
@@ -71,6 +76,7 @@ public class TrainerProfileShow extends Fragment {
         editProfile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Log.d("HERE", "onClick: EDIT ");
                 ChangeFragment();
             }
         });
@@ -78,13 +84,50 @@ public class TrainerProfileShow extends Fragment {
         return Root;
     }
 
-    public void  ChangeFragment(){
+    public void setAllDisable(){
+        name.setEnabled(false);
+        age.setEnabled(false);
+        mobile.setEnabled(false);
+        alternate.setEnabled(false);
+        mail.setEnabled(false);
+        weight.setEnabled(false);
+        address.setEnabled(false);
+        gymName.setEnabled(false);
+        height.setEnabled(false);
+        dob.setEnabled(false);
+        about.setEnabled(false);
+        gender.setEnabled(false);
+        food.setEnabled(false);
 
+    }
+
+    public void setAllEnable(){
+        name.setEnabled(true);
+        age.setEnabled(true);
+        mobile.setEnabled(true);
+        alternate.setEnabled(true);
+        mail.setEnabled(true);
+        weight.setEnabled(true);
+        address.setEnabled(true);
+        gymName.setEnabled(true);
+        height.setEnabled(true);
+        dob.setEnabled(true);
+        about.setEnabled(true);
+        gender.setEnabled(true);
+        food.setEnabled(true);
+    }
+
+    public void  ChangeFragment(){
+        Log.d("HERE1", "onClick: EDITChangeFragment1 ");
         FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+        Log.d("HERE2", "onClick: EDITChangeFragment12");
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        Log.d("HERE3", "onClick: EDITChangeFragment1 8");
         fragmentTransaction.replace(R.id.TrainerProfileContainer, TrainerProfileEdit.newInstance(self));
-       // fragmentTransaction.addToBackStack(null);
+        Log.d("HERE41", "onClick: EDITChangeFragment1 sdfsf");
+        fragmentTransaction.addToBackStack(null);
         fragmentTransaction.commit();
+        Log.d("HERE41", "onClick: EDITChangeFragment1 sdfsf");
     }
 
 }

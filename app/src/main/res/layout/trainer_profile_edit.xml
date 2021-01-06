@@ -46,7 +46,7 @@
                         android:layout_marginTop="20dp"
                         android:clickable="true"
                         android:focusable="true"
-                        app:cardCornerRadius="120dp"
+                        app:cardCornerRadius="60dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent">
@@ -108,7 +108,7 @@
                 android:layout_marginTop="5dp"
                 android:layout_marginRight="15dp"
                 android:layout_marginBottom="30dp"
-                app:cardBackgroundColor="@color/grey_color"
+                app:cardBackgroundColor="@color/toolbar_profile_bg"
                 app:cardCornerRadius="15dp">
 
                 <LinearLayout
@@ -122,23 +122,26 @@
                         <ImageView
                             android:id="@+id/nameImageView"
                             style="@style/profileDetailsImage"
+                            android:layout_centerInParent="true"
                             android:src="@drawable/name" />
 
-                        <TextView
-                            android:id="@+id/nameTextView"
-                            style="@style/profileDetailsTextMain"
-                            android:layout_toEndOf="@id/nameImageView"
-                            android:text="Name" />
-
-                        <EditText
-                            android:id="@+id/nameEdit"
-                            style="@style/profileDetailsMiniText"
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                             android:layout_width="match_parent"
-                            android:layout_marginTop="15dp"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_marginLeft="10dp"
                             android:layout_toEndOf="@id/nameImageView"
-                            android:hint="NAME"
-                            android:text=""
-                            android:textColor="@color/white_color" />
+                            android:hint="Name">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/nameEdit"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:inputType="text"
+                                android:textColor="@color/grey_color" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
 
                     </RelativeLayout>
 
@@ -147,21 +150,26 @@
                         <ImageView
                             android:id="@+id/emailImageView"
                             style="@style/profileDetailsImage"
+                            android:layout_centerInParent="true"
                             android:src="@drawable/mail" />
 
-                        <TextView
-                            style="@style/profileDetailsTextMain"
-                            android:layout_toRightOf="@id/emailImageView"
-                            android:text="Email" />
-
-                        <EditText
-                            android:id="@+id/emailEdit"
-                            style="@style/profileDetailsMiniText"
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                             android:layout_width="match_parent"
-                            android:layout_marginTop="15dp"
-                            android:layout_toRightOf="@id/emailImageView"
-                            android:text=""
-                            android:textColor="@color/white_color" />
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_marginLeft="10dp"
+                            android:layout_toEndOf="@id/emailImageView"
+                            android:hint="Mail">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/emailEdit"
+                                android:layout_width="match_parent"
+                                android:inputType="textWebEmailAddress"
+                                android:layout_height="47dp"
+                                android:textColor="@color/grey_color" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
 
                     </RelativeLayout>
 
@@ -172,19 +180,23 @@
                             style="@style/profileDetailsImage"
                             android:src="@drawable/phone" />
 
-                        <TextView
-                            style="@style/profileDetailsTextMain"
-                            android:layout_toRightOf="@id/mobileImageView"
-                            android:text="Mobile" />
-
-                        <EditText
-                            android:id="@+id/mobileEdit"
-                            style="@style/profileDetailsMiniText"
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                             android:layout_width="match_parent"
-                            android:layout_marginTop="15dp"
-                            android:layout_toRightOf="@id/mobileImageView"
-                            android:text=""
-                            android:textColor="@color/white_color" />
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_marginLeft="10dp"
+                            android:layout_toEndOf="@id/mobileImageView"
+                            android:hint="Mobile">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/mobileEdit"
+                                android:layout_width="match_parent"
+                                android:layout_height="47dp"
+                                android:inputType="number"
+                                android:textColor="@color/grey_color" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
 
                     </RelativeLayout>
 
@@ -195,19 +207,23 @@
                             style="@style/profileDetailsImage"
                             android:src="@drawable/phone" />
 
-                        <TextView
-                            style="@style/profileDetailsTextMain"
-                            android:layout_toRightOf="@id/alternateMobileImageView"
-                            android:text="Alternate Mobile" />
-
-                        <EditText
-                            android:id="@+id/alternateEdit"
-                            style="@style/profileDetailsMiniText"
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                             android:layout_width="match_parent"
-                            android:layout_marginTop="15dp"
-                            android:layout_toRightOf="@id/alternateMobileImageView"
-                            android:text=""
-                            android:textColor="@color/white_color" />
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_marginLeft="10dp"
+                            android:layout_toEndOf="@id/alternateMobileImageView"
+                            android:hint="Alternate Mobile">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/alternateEdit"
+                                android:layout_width="match_parent"
+                                android:layout_height="47dp"
+                                android:inputType="number"
+                                android:textColor="@color/grey_color" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
 
                     </RelativeLayout>
 
@@ -227,6 +243,7 @@
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
                             android:layout_marginTop="20dp"
                             android:layout_toRightOf="@id/genderImageView"
                             android:orientation="horizontal">
@@ -238,40 +255,34 @@
                                 android:orientation="horizontal">
 
                                 <RadioButton
-                                    android:id="@+id/male"
+                                    android:id="@+id/maleEdit"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
                                     android:checked="true"
                                     android:text="Male"
-                                    android:textColor="@color/white_color" />
+                                    android:textColor="@color/grey_color" />
 
                                 <RadioButton
-                                    android:id="@+id/female"
+                                    android:id="@+id/femaleEdit"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
                                     android:text="Female"
-                                    android:textColor="@color/white_color" />
+                                    android:textColor="@color/grey_color" />
 
                                 <RadioButton
-                                    android:id="@+id/other"
-
+                                    android:id="@+id/otherEdit"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
                                     android:text="Other"
-                                    android:textColor="@color/white_color" />
+                                    android:textColor="@color/grey_color" />
                             </RadioGroup>
 
                         </LinearLayout>
 
                     </RelativeLayout>
-
-                    <!--                   <View style="@style/proifleDetailsView" />-->
-
-                    <!--                   <View style="@style/proifleDetailsView" />-->
-
 
                     <RelativeLayout style="@style/profileDetailsLayout">
 
@@ -280,20 +291,23 @@
                             style="@style/profileDetailsImage"
                             android:src="@drawable/name" />
 
-                        <TextView
-                            android:id="@+id/aboutText"
-                            style="@style/profileDetailsTextMain"
-                            android:layout_toRightOf="@id/aboutUs"
-                            android:text="About Us" />
-
-                        <EditText
-                            android:id="@+id/aboutEdit"
-                            style="@style/profileDetailsMiniText"
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                             android:layout_width="match_parent"
-                            android:layout_marginTop="20dp"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_marginLeft="10dp"
                             android:layout_toEndOf="@id/aboutUs"
-                            android:text=""
-                            android:textColor="@color/white_color" />
+                            android:hint="About">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/aboutEdit"
+                                android:layout_width="match_parent"
+                                android:layout_height="47dp"
+                                android:inputType="text"
+                                android:textColor="@color/grey_color" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
 
                     </RelativeLayout>
 
@@ -304,19 +318,23 @@
                             style="@style/profileDetailsImage"
                             android:src="@drawable/address" />
 
-                        <TextView
-                            style="@style/profileDetailsTextMain"
-                            android:layout_toRightOf="@id/gymNameImageView"
-                            android:text="Gym Name" />
-
-                        <EditText
-                            android:id="@+id/gymNameEdit"
-                            style="@style/profileDetailsMiniText"
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                             android:layout_width="match_parent"
-                            android:layout_marginTop="15dp"
-                            android:layout_toRightOf="@id/gymNameImageView"
-                            android:text=""
-                            android:textColor="@color/white_color" />
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_marginLeft="10dp"
+                            android:layout_toEndOf="@id/gymNameImageView"
+                            android:hint="Gym Name">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/gymNameEdit"
+                                android:layout_width="match_parent"
+                                android:layout_height="47dp"
+                                android:inputType="text"
+                                android:textColor="@color/grey_color" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
 
                     </RelativeLayout>
 
@@ -328,19 +346,23 @@
                             style="@style/profileDetailsImage"
                             android:src="@drawable/address" />
 
-                        <TextView
-                            style="@style/profileDetailsTextMain"
-                            android:layout_toRightOf="@id/addressImageView"
-                            android:text="Address" />
-
-                        <EditText
-                            android:id="@+id/addressEdit"
-                            style="@style/profileDetailsMiniText"
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                             android:layout_width="match_parent"
-                            android:layout_marginTop="15dp"
-                            android:layout_toRightOf="@id/addressImageView"
-                            android:text=""
-                            android:textColor="@color/white_color" />
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_marginLeft="10dp"
+                            android:layout_toEndOf="@id/addressImageView"
+                            android:hint="Gym Address">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/addressEdit"
+                                android:layout_width="match_parent"
+                                android:layout_height="47dp"
+                                android:inputType="text"
+                                android:textColor="@color/grey_color" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
 
                     </RelativeLayout>
 
@@ -353,24 +375,23 @@
                             style="@style/profileDetailsImage"
                             android:src="@drawable/dob" />
 
-                        <TextView
-                            style="@style/profileDetailsTextMain"
-                            android:layout_toRightOf="@id/dobImageView"
-                            android:text="D.O.B" />
-
-                        <TextView
-                            android:id="@+id/dobEdit1"
-                            style="@style/profileDetailsMiniText"
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                             android:layout_width="match_parent"
-                            android:layout_marginTop="20dp"
-                            android:layout_toRightOf="@id/dobImageView"
-                            android:clickable="true"
-                            android:focusable="true"
-                            android:focusableInTouchMode="true"
-                            android:hint=" click me "
-                            android:text=""
-                            android:textColor="@color/white_color"
-                            android:textSize="20sp" />
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_marginLeft="10dp"
+                            android:layout_toEndOf="@id/dobImageView"
+                            android:hint="DOB">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/dobEdit"
+                                android:layout_width="match_parent"
+                                android:layout_height="47dp"
+                                android:inputType="date"
+                                android:textColor="@color/grey_color" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
 
                     </RelativeLayout>
 
@@ -382,137 +403,86 @@
                             style="@style/profileDetailsImage"
                             android:src="@drawable/age" />
 
-                        <TextView
-                            style="@style/profileDetailsTextMain"
-                            android:layout_toRightOf="@id/ageImageView"
-                            android:text="Age" />
-
-                        <TextView
-                            android:id="@+id/ageEdit"
-                            style="@style/profileDetailsMiniText"
+                        <com.google.android.material.textfield.TextInputLayout
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                             android:layout_width="match_parent"
-                            android:layout_marginTop="15dp"
-                            android:layout_toRightOf="@id/ageImageView"
-                            android:text=""
-                            android:textColor="@color/white_color" />
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_marginLeft="10dp"
+                            android:layout_toEndOf="@id/ageImageView"
+                            android:hint="Age">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/ageEdit"
+                                android:layout_width="match_parent"
+                                android:layout_height="47dp"
+                                android:inputType="number"
+                                android:textColor="@color/grey_color" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
 
                     </RelativeLayout>
 
-                    <!--                   <View style="@style/proifleDetailsView" />-->
                     <RelativeLayout style="@style/profileDetailsLayout">
 
                         <ImageView
                             android:id="@+id/heightImageView"
                             style="@style/profileDetailsImage"
-                            android:src="@drawable/height" />
-
-                        <TextView
-                            style="@style/profileDetailsTextMain"
-                            android:layout_toRightOf="@id/heightImageView"
-                            android:text="Height" />
-
-                        <LinearLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="20dp"
-                            android:layout_toRightOf="@id/heightImageView"
-                            android:orientation="horizontal">
-
-                            <EditText
-                                android:id="@+id/heightEdit"
-                                android:layout_width="200dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:ems="10"
-                                android:inputType="numberDecimal"
-                                android:textColor="@color/white_color" />
-
-                            <RadioGroup
-                                android:id="@+id/weightRadioGroup"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:layout_marginLeft="10dp"
-                                android:layout_weight="1"
-                                android:orientation="horizontal">
-
-                                <RadioButton
-                                    android:id="@+id/inKg"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_weight="1"
-                                    android:checked="true"
-                                    android:text="In KG"
-                                    android:textColor="@color/white_color" />
-
-                                <RadioButton
-                                    android:id="@+id/inLbs"
-                                    android:layout_width="wrap_content"
-                                    android:layout_height="wrap_content"
-                                    android:layout_alignParentBottom="true"
-                                    android:layout_weight="1"
-                                    android:text="In lbs"
-                                    android:textColor="@color/white_color" />
-                            </RadioGroup>
-
-                        </LinearLayout>
-
-                    </RelativeLayout>
-
-                    <!--                   <View style="@style/proifleDetailsView" />-->
-
-                    <RelativeLayout style="@style/profileDetailsLayout">
-
-                        <ImageView
-                            android:id="@+id/weightImageView"
-                            style="@style/profileDetailsImage"
+                            android:layout_centerInParent="true"
                             android:src="@drawable/weight" />
 
-                        <TextView
-                            style="@style/profileDetailsTextMain"
-                            android:layout_toRightOf="@id/weightImageView"
-                            android:text="Weight" />
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/height"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_marginLeft="10dp"
+                            android:layout_toRightOf="@id/heightImageView"
+                            android:hint="Height">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/heightEdit"
+                                android:layout_width="match_parent"
+                                android:layout_height="47dp"
+                                android:inputType="number"
+                                android:textColor="@color/grey_color" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
                             android:layout_marginTop="20dp"
-                            android:layout_toRightOf="@id/weightImageView"
+                            android:layout_toRightOf="@id/height"
                             android:orientation="horizontal">
-
-                            <EditText
-                                android:id="@+id/weightEdit"
-                                android:layout_width="200dp"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1"
-                                android:ems="10"
-                                android:inputType="numberDecimal"
-                                android:textColor="@color/white_color" />
 
                             <RadioGroup
                                 android:id="@+id/heightRadioGroup"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
                                 android:layout_marginLeft="10dp"
-                                android:layout_weight="1"
                                 android:orientation="horizontal">
 
                                 <RadioButton
-                                    android:id="@+id/inInches"
+                                    android:id="@+id/inFeetEdit"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
                                     android:checked="true"
-                                    android:text="In KG"
-                                    android:textColor="@color/white_color" />
+                                    android:text="In Feet"
+                                    android:textColor="@color/grey_color" />
 
                                 <RadioButton
-                                    android:id="@+id/inFeet"
+                                    android:id="@+id/inCmEdit"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_alignParentBottom="true"
                                     android:layout_weight="1"
-                                    android:text="In lbs"
-                                    android:textColor="@color/white_color" />
+                                    android:text="In Cm"
+                                    android:textColor="@color/grey_color" />
+
                             </RadioGroup>
 
                         </LinearLayout>
@@ -520,21 +490,93 @@
                     </RelativeLayout>
 
                     <!--                   <View style="@style/proifleDetailsView" />-->
+
+                    <!--                   <View style="@style/proifleDetailsView" />-->
+                    <RelativeLayout style="@style/profileDetailsLayout">
+
+                        <ImageView
+                            android:id="@+id/weightImageView"
+                            style="@style/profileDetailsImage"
+                            android:layout_centerInParent="true"
+                            android:src="@drawable/weight" />
+
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:id="@+id/weight"
+                            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                            android:layout_width="100dp"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_marginLeft="10dp"
+                            android:layout_toRightOf="@id/weightImageView"
+                            android:hint="Weight">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/weightEdit"
+                                android:layout_width="match_parent"
+                                android:layout_height="47dp"
+                                android:inputType="number"
+                                android:textColor="@color/grey_color" />
+
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_marginTop="20dp"
+                            android:layout_toRightOf="@id/weight"
+                            android:orientation="horizontal">
+
+                            <RadioGroup
+                                android:id="@+id/wightRadioGroup"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginLeft="10dp"
+                                android:orientation="horizontal">
+
+                                <RadioButton
+                                    android:id="@+id/inKgEdit"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:checked="true"
+                                    android:text="In KG"
+                                    android:textColor="@color/grey_color" />
+
+                                <RadioButton
+                                    android:id="@+id/inLbsEdit"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_alignParentBottom="true"
+                                    android:layout_weight="1"
+                                    android:text="In lbs"
+                                    android:textColor="@color/grey_color" />
+
+
+                            </RadioGroup>
+
+                        </LinearLayout>
+
+                    </RelativeLayout>
+
                     <RelativeLayout style="@style/profileDetailsLayout">
 
                         <ImageView
                             android:id="@+id/foodImageView"
                             style="@style/profileDetailsImage"
-                            android:src="@drawable/height" />
+                            android:src="@drawable/food" />
 
                         <TextView
+                            android:id="@+id/foodTextView"
                             style="@style/profileDetailsTextMain"
-                            android:layout_toRightOf="@id/foodImageView"
+                            android:layout_toEndOf="@id/foodImageView"
                             android:text="Food" />
 
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginTop="20dp"
                             android:layout_toRightOf="@id/foodImageView"
                             android:orientation="horizontal">
 
@@ -542,28 +584,25 @@
                                 android:id="@+id/foodRadioGroup"
                                 android:layout_width="match_parent"
                                 android:layout_height="match_parent"
-                                android:layout_marginLeft="10dp"
-                                android:layout_marginTop="15dp"
-                                android:layout_weight="1"
                                 android:orientation="horizontal">
 
                                 <RadioButton
-                                    android:id="@+id/vegetarian"
+                                    android:id="@+id/vegetarianEdit"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
                                     android:checked="true"
-                                    android:text="veg"
-                                    android:textColor="@color/white_color" />
+                                    android:text="Veg"
+                                    android:textColor="@color/grey_color" />
 
                                 <RadioButton
-                                    android:id="@+id/nonvegetarian"
+                                    android:id="@+id/nonvegetarianEdit"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
-                                    android:layout_alignParentBottom="true"
                                     android:layout_weight="1"
-                                    android:text="non veg"
-                                    android:textColor="@color/white_color" />
+                                    android:text="Non veg"
+                                    android:textColor="@color/grey_color" />
+
                             </RadioGroup>
 
                         </LinearLayout>

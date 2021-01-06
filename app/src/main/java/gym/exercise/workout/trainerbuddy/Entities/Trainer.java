@@ -18,6 +18,7 @@ public class Trainer  {
     private String Name;
     private String Email;
     private String Mobile;
+    private String DOB;
     private Bitmap Photo;
     private String PhotoPath;
     private String Password;
@@ -32,16 +33,22 @@ public class Trainer  {
     private String GymAddress;
     private String DeviceID;
     private String Occupation;
-    private List<SubscriptionPlan> offeringPlan= new ArrayList<SubscriptionPlan>();;
+    private List<SubscriptionPlan> offeringPlan= new ArrayList<SubscriptionPlan>();
     private String FoodPref;
     private String WeightPref;
     private String MusclePref;
+    private String WeightUnitPref;
+    private String HeightUnitPref;
+
+
+    //todo get unit pref
 
     private SubscriptionPlan subscriptionPlan;
 
 
     //Constructors
     public Trainer(){}
+
 
 
 
@@ -53,6 +60,7 @@ public class Trainer  {
         result.put("Name", this.Name);
         result.put("Email", this.Email);
         result.put("Mobile", this.Mobile);
+        result.put("DOB", this.DOB);
         result.put("Password",this.Password);
         result.put("Weight",this.Weight);
         result.put("Height",this.Height);
@@ -67,6 +75,8 @@ public class Trainer  {
         result.put("WeightPref",this.WeightPref);
         result.put("MusclePref",this.MusclePref);
         result.put("OfferingPlans",toMapSubscriptionPlans());
+        result.put("WeightUnitPref",this.WeightUnitPref);
+        result.put("HeightUnitPref",this.HeightUnitPref);
         return result;
     }
 
@@ -114,6 +124,9 @@ public class Trainer  {
     public void  setAge(int Age){this.Age=Age;}
     public int getAge(){return this.Age;}
 
+    public String getDOB() { return DOB; }
+    public void setDOB(String DOB) { this.DOB = DOB; }
+
     public void setGender(String Gende){this.Gender=Gende;}
     public String getGender(){return this.Gender;}
 
@@ -158,9 +171,15 @@ public class Trainer  {
         return subscriptionPlan;
     }
 
-    public void setSubscriptionPlan(SubscriptionPlan subscriptionPlan) {
-        this.subscriptionPlan = subscriptionPlan;
-    } 
+    public void setSubscriptionPlan(SubscriptionPlan subscriptionPlan) { this.subscriptionPlan = subscriptionPlan; }
+
+    public String getWeightUnitPref() { return WeightUnitPref; }
+
+    public void setWeightUnitPref(String weightUnitPref) { WeightUnitPref = weightUnitPref; }
+
+    public String getHeightUnitPref() { return HeightUnitPref; }
+
+    public void setHeightUnitPref(String heightUnitPref) { HeightUnitPref = heightUnitPref; }
 
 
 

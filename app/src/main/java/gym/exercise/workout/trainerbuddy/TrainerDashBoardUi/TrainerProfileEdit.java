@@ -17,6 +17,7 @@ import android.provider.MediaStore;
 import android.provider.OpenableColumns;
 import android.provider.Settings;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +25,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -36,6 +38,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnPausedListener;
 import com.google.firebase.storage.OnProgressListener;
@@ -48,7 +51,10 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 import gym.exercise.workout.trainerbuddy.DataBaseHandler.DataBaseHandler;
 import gym.exercise.workout.trainerbuddy.DataBaseHandler.LocalDataBaseHandler;
@@ -72,19 +78,29 @@ public class TrainerProfileEdit extends Fragment implements View.OnClickListener
     Button update;
     CardView EditProfileImage;
     ImageView PHOTO;
-    EditText nameEdit, mobileEdit, alternateEdit, addressEdit, gymNameEdit, dobEdit, weightEdit, heightEdit, aboutEdit, foodEdit;
 
-    TextView dobEdit1,ageEdit;
-    String gender,food,weight,height;
+    TextInputEditText nameEdit,emailEdit, mobileEdit, alternateEdit, aboutEdit, gymNameEdit, addressEdit, dobEdit,ageEdit, weightEdit, heightEdit, foodEdit;
+
+    RadioButton maleEdit,femaleEdit,otherEdit,inKgEdit,inLbsEdit,inFeetEdit,inCmEdit,vegetarianEdit,nonvegetarianEdit;
+
+    String gender,food,weightUnitPref,heightUnitPref;
 
     DatePickerDialog picker;
 
-    LocalDataBaseHandler LDB;
-    public static TrainerProfileEdit newInstance(Trainer trainer) {
-//        self =trainer;
-        return  new TrainerProfileEdit();
+    public TrainerProfileEdit(Trainer self) {
+        this.self = self;
     }
 
+    LocalDataBaseHandler LDB;
+    public static TrainerProfileEdit newInstance(Trainer trainer) {
+        return  new TrainerProfileEdit(trainer);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        Log.d("EDITPAGE","Onstart Workinh");
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -94,7 +110,7 @@ public class TrainerProfileEdit extends Fragment implements View.OnClickListener
         mcontext =requireContext();
         LDB =new LocalDataBaseHandler(mcontext);
         impFun =new ImportantFunctions(mcontext,getLayoutInflater());
-        self=LDB.getTrainerLDB();
+        //self=LDB.getTrainerLDB();
 
         //Photo Section
         EditProfileImage=Root.findViewById(R.id.TrainerProfileImage);
@@ -102,11 +118,9 @@ public class TrainerProfileEdit extends Fragment implements View.OnClickListener
         PHOTO=Root.findViewById(R.id.TrainerProfilePIC);mStorageRef = FirebaseStorage.getInstance().getReference();
 
 
-
-
-
         // Entities Section
         nameEdit = Root.findViewById(R.id.nameEdit);
+        emailEdit = Root.findViewById(R.id.emailEdit);
         mobileEdit = Root.findViewById(R.id.mobileEdit);
         alternateEdit = Root.findViewById(R.id.alternateEdit);
         addressEdit = Root.findViewById(R.id.addressEdit);
@@ -115,38 +129,79 @@ public class TrainerProfileEdit extends Fragment implements View.OnClickListener
         weightEdit =Root.findViewById(R.id.weightEdit);
         heightEdit = Root.findViewById(R.id.heightEdit);
         aboutEdit = Root.findViewById(R.id.aboutEdit);
-        dobEdit1 =Root.findViewById(R.id.dobEdit1);
-        foodEdit = Root.findViewById(R.id.foodEdit);
+        dobEdit =Root.findViewById(R.id.dobEdit);
 
+        maleEdit = Root.findViewById(R.id.maleEdit);
+        femaleEdit = Root.findViewById(R.id.femaleEdit);
+        otherEdit = Root.findViewById(R.id.otherEdit);
+        inKgEdit = Root.findViewById(R.id.inKgEdit);
+        inLbsEdit = Root.findViewById(R.id.inLbsEdit);
+        inFeetEdit = Root.findViewById(R.id.inFeetEdit);
+        inCmEdit = Root.findViewById(R.id.inCmEdit);
+        vegetarianEdit = Root.findViewById(R.id.vegetarianEdit);
+        nonvegetarianEdit = Root.findViewById(R.id.nonvegetarianEdit);
         update = Root.findViewById(R.id.update);
-        update.setOnClickListener(this);
 
+        update.setOnClickListener(this);
+        dobEdit.setOnClickListener(this);
+        maleEdit.setOnClickListener(this);
+        femaleEdit.setOnClickListener(this);
+        otherEdit.setOnClickListener(this);
+        inKgEdit.setOnClickListener(this);
+        inFeetEdit.setOnClickListener(this);
+        inLbsEdit.setOnClickListener(this);
+        inCmEdit.setOnClickListener(this);
+        vegetarianEdit.setOnClickListener(this);
+        nonvegetarianEdit.setOnClickListener(this);
 
         nameEdit.setText(self.getName());
+
+        Log.d(TAG, "onCreateView: gender"+self.getGender());
+        gender=self.getGender();
+        if(gender!=null && gender.equals("other"))
+            otherEdit.setActivated(true);
+
+        else if(gender!=null && gender.equals("female"))
+            femaleEdit.setActivated(true);
+        else
+            maleEdit.setActivated(true);
+
         mobileEdit.setText(self.getMobile());
+        alternateEdit.setText(self.getAlternateMobile());
+        emailEdit.setText(self.getEmail());
         alternateEdit.setText(self.getAlternateMobile());
         addressEdit.setText(self.getGymAddress());
         gymNameEdit.setText(self.getGymName());
+        aboutEdit.setText(self.getAbout());
         ageEdit.setText(String.valueOf(self.getAge()));
         weightEdit.setText(String.valueOf(self.getWeight()));
         heightEdit.setText(String.valueOf(self.getHeight()));
-        aboutEdit.setText(self.getAbout());
-        //dobEdit.setText(self.getName());
-        //foodEdit.setText(self.getName());
+        dobEdit.setText(self.getDOB());
+
+        gender=self.getGender();
+        if(gender!=null && gender.equals("Female")) {
+            femaleEdit.setActivated(true);
+        }
+        else if(gender!=null && gender.equals("Other")){
+            otherEdit.setActivated(true);
+        }
+        else
+            maleEdit.setActivated(true);
+
+
+
+        ageEdit.setText(String.valueOf(self.getAge()));
+        // todo Unit Preference
+        self.setWeightUnitPref(weightUnitPref);
+        self.setHeightUnitPref(heightUnitPref);
+
+        food=self.getFoodPref();
+        if(food!=null && food.equals("NonVegetarian"))
+            nonvegetarianEdit.setActivated(true);
+        else
+            vegetarianEdit.setActivated(true);
 
         return Root;
-    }
-
-
-
-    public void  ChangeFragment(){
-
-        FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.TrainerProfileContainer,  TrainerProfileShow.newInstance());
-       // fragmentTransaction.addToBackStack(null);
-        fragmentTransaction.commit();
-
     }
 
     @SuppressLint("NonConstantResourceId")
@@ -159,7 +214,7 @@ public class TrainerProfileEdit extends Fragment implements View.OnClickListener
             case R.id.update:
                 UpdateTrainerProfile();
                 break;
-            case R.id.dobEdit1:
+            case R.id.dobEdit:
             {
                 Log.d("Update Profile", "UpdateTrainerProfile: Done");
                 final Calendar cldr = Calendar.getInstance();
@@ -173,11 +228,39 @@ public class TrainerProfileEdit extends Fragment implements View.OnClickListener
                             @Override
                             public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                                 dobEdit.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
+                                ageEdit.setText(getAge(year,monthOfYear,dayOfMonth));
                             }
                         }, year, month, day);
                 picker.show();
             }
             break;
+            case R.id.maleEdit:
+                gender="Male";
+                break;
+            case R.id.femaleEdit:
+                gender="Female";
+                break;
+            case R.id.otherEdit:
+                gender="Other";
+                break;
+            case R.id.vegetarianEdit:
+                food="Vegetarian";
+                break;
+            case R.id.nonvegetarianEdit:
+                food="NonVegetarian";
+                break;
+            case R.id.inKgEdit:
+                weightUnitPref="Kg";
+                break;
+            case R.id.inLbsEdit:
+                weightUnitPref="Lbs";
+                break;
+            case R.id.inCmEdit:
+                heightUnitPref="Cm";
+                break;
+            case R.id.inFeetEdit:
+                heightUnitPref="Feet";
+                break;
         }
     }
 
@@ -197,6 +280,10 @@ public class TrainerProfileEdit extends Fragment implements View.OnClickListener
         self.setHeight(Integer.parseInt(heightEdit.getText().toString()));
         self.setWeight(Integer.parseInt(weightEdit.getText().toString()));
         self.setAbout(aboutEdit.getText().toString());
+        self.setDOB(dobEdit.getText().toString());
+
+        self.setGender(gender);
+        self.setFoodPref(food);
 
         //TODO  Add [UI also] rest of items as Entity->Trainer Have
 
@@ -564,65 +651,149 @@ public class TrainerProfileEdit extends Fragment implements View.OnClickListener
 
     }
 
-//    public void setAllDisable(){
-//        nameEdit.setEnabled(false);
-////        maleE.setEnabled(false);
-////        female.setEnabled(false);
-////        other.setEnabled(false);
-////        ageSpinner.setEnabled(false);
-//        mobileEdit.setEnabled(false);
-//        email.setEnabled(false);
-//        weight.setEnabled(false);
-//        inKg.setEnabled(false);
-//        inLbs.setEnabled(false);
-//        height.setEnabled(false);
-//        inInches.setEnabled(false);
-//        inMeter.setEnabled(false);
-//        student.setEnabled(false);
-//        officeJob.setEnabled(false);
-//        travellingJob.setEnabled(false);
-//        physicalJob.setEnabled(false);
-//        labourJob.setEnabled(false);
-//        gain.setEnabled(false);
-//        loss.setEnabled(false);
-//        maintain.setEnabled(false);
-//        musselsGain.setEnabled(false);
-//        musselsMaintain.setEnabled(false);
-//        vegetarian.setEnabled(false);
-//        nonVegetarian.setEnabled(false);
-//        subscriptionFee.setEnabled(false);
-//        etDate.setEnabled(false);
-//    }
+//    public boolean isValidInput(){
+//        boolean valid=true;
+//        if(nameEdit.getText().toString().isEmpty()){
+//            nameEdit.setError("Your can't left name field empty");
+//            nameEdit.requestFocus();
+//            valid=false;
+//        }
+//        else if(aboutEdit.getText().toString().isEmpty()){
+//            aboutEdit.setError("Your can't left name field empty");
+//            aboutEdit.requestFocus();
+//            valid=false;
+//        }
+//        else if(gymNameEdit.getText().toString().isEmpty()){
+//            gymNameEdit.setError("Your can't left name field empty");
+//            gymNameEdit.requestFocus();
+//            valid=false;
+//        }
+//        else if(addressEdit.getText().toString().isEmpty()){
+//            addressEdit.setError("Your can't left name field empty");
+//            addressEdit.requestFocus();
+//            valid=false;
+//        }
+//        else if( emailEdit.getText().toString().isEmpty()){
+//            emailEdit.setError("You can't left email field empty!!");
+//            emailEdit.requestFocus();
+//            valid=false;
+//        }
+//        else if(mobileEdit.getText().toString().isEmpty()){
+//            mobileEdit.setError("Your can't left mobile field empty");
+//            mobileEdit.requestFocus();
+//            valid=false;
+//        }
+//        else if(alternateEdit.getText().toString().isEmpty()){
+//            alternateEdit.setError("Your can't left alternate mobile field empty");
+//            alternateEdit.requestFocus();
+//            valid=false;
+//        }
 //
-//    public void setAllEnable(){
-//        name.setEnabled(true);
-//        male.setEnabled(true);
-//        female.setEnabled(true);
-//        other.setEnabled(true);
-//        ageSpinner.setEnabled(true);
-//        mobile.setEnabled(true);
-//        email.setEnabled(true);
-//        weight.setEnabled(true);
-//        inKg.setEnabled(true);
-//        inLbs.setEnabled(true);
-//        height.setEnabled(true);
-//        inInches.setEnabled(true);
-//        inMeter.setEnabled(true);
-//        student.setEnabled(true);
-//        officeJob.setEnabled(true);
-//        travellingJob.setEnabled(true);
-//        physicalJob.setEnabled(true);
-//        labourJob.setEnabled(true);
-//        gain.setEnabled(true);
-//        loss.setEnabled(true);
-//        maintain.setEnabled(true);
-//        musselsGain.setEnabled(true);
-//        musselsMaintain.setEnabled(true);
-//        vegetarian.setEnabled(true);
-//        nonVegetarian.setEnabled(true);
-//        subscriptionFee.setEnabled(true);
-//        etDate.setEnabled(true);
+//
+//
+//        else if (!nameEdit.getText().toString().matches("^[A-Z a-z]+$")){
+//            nameEdit.setError("Enter Character's and space only !!");
+//            nameEdit.requestFocus();
+//            valid=false;
+//        }
+//        else if (!aboutEdit.getText().toString().matches("^[A-Z a-z]+$")){
+//            aboutEdit.setError("Enter Character's and space only !!");
+//            aboutEdit.requestFocus();
+//            valid=false;
+//        }
+//        else if (!gymNameEdit.getText().toString().matches("^[A-Z a-z]+$")){
+//            gymNameEdit.setError("Enter Character's and space only !!");
+//            gymNameEdit.requestFocus();
+//            valid=false;
+//        }
+//        else if (!addressEdit.getText().toString().matches("^[A-Z a-z]+$")){
+//            addressEdit.setError("Enter Character's and space only !!");
+//            addressEdit.requestFocus();
+//            valid=false;
+//        }
+//
+//        else if (!Patterns.EMAIL_ADDRESS.matcher(emailEdit.getText().toString()).matches()){
+//            emailEdit.setError("Please Fill Correct email address!!");
+//            emailEdit.requestFocus();
+//            valid=false;
+//        }
+//        else if(!mobileEdit.getText().toString().matches("^(\\+?\\d{1,4}[\\s-])?(?!0+\\s+,?$)\\d{10}\\s*,?$")){
+//            mobileEdit.setError("Wrong mobile number formatting");
+//            mobileEdit.requestFocus();
+//            valid=false;
+//        }
+//        else if(!alternateEdit.getText().toString().matches("^(\\+?\\d{1,4}[\\s-])?(?!0+\\s+,?$)\\d{10}\\s*,?$")){
+//            alternateEdit.setError("Wrong alternate mobile number formatting");
+//            alternateEdit.requestFocus();
+//            valid=false;
+//        }
+//
+//        return valid;
 //    }
+
+    public void setAllDisable(){
+        nameEdit.setEnabled(false);
+        maleEdit.setEnabled(false);
+        femaleEdit.setEnabled(false);
+        otherEdit.setEnabled(false);
+        ageEdit.setEnabled(false);
+        mobileEdit.setEnabled(false);
+        alternateEdit.setEnabled(false);
+        emailEdit.setEnabled(false);
+        weightEdit.setEnabled(false);
+        inKgEdit.setEnabled(false);
+        inLbsEdit.setEnabled(false);
+        heightEdit.setEnabled(false);
+        inFeetEdit.setEnabled(false);
+        inCmEdit.setEnabled(false);
+        gymNameEdit.setEnabled(false);
+        addressEdit.setEnabled(false);
+        dobEdit.setEnabled(false);
+        aboutEdit.setEnabled(false);
+        vegetarianEdit.setEnabled(false);
+        nonvegetarianEdit.setEnabled(false);
+    }
+
+    public void setAllEnable(){
+        nameEdit.setEnabled(true);
+        maleEdit.setEnabled(true);
+        femaleEdit.setEnabled(true);
+        otherEdit.setEnabled(true);
+        ageEdit.setEnabled(true);
+        mobileEdit.setEnabled(true);
+        alternateEdit.setEnabled(true);
+        emailEdit.setEnabled(true);
+        weightEdit.setEnabled(true);
+        inKgEdit.setEnabled(true);
+        inLbsEdit.setEnabled(true);
+        heightEdit.setEnabled(true);
+        inFeetEdit.setEnabled(true);
+        inCmEdit.setEnabled(true);
+        gymNameEdit.setEnabled(true);
+        addressEdit.setEnabled(true);
+        dobEdit.setEnabled(true);
+        aboutEdit.setEnabled(true);
+        vegetarianEdit.setEnabled(true);
+        nonvegetarianEdit.setEnabled(true);
+    }
+
+    private String getAge(int year, int month, int day){
+        Calendar dob = Calendar.getInstance();
+        Calendar today = Calendar.getInstance();
+
+        dob.set(year, month, day);
+
+        int age = today.get(Calendar.YEAR) - dob.get(Calendar.YEAR);
+
+        if (today.get(Calendar.DAY_OF_YEAR) < dob.get(Calendar.DAY_OF_YEAR)){
+            age--;
+        }
+
+        Integer ageInt = new Integer(age);
+        String ageS = ageInt.toString();
+
+        return ageS;
+    }
 
 
 }
