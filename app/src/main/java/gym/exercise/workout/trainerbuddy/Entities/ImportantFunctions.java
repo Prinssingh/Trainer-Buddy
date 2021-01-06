@@ -143,6 +143,29 @@ public class ImportantFunctions {
         editor.putString("User_Type",Type).commit();
     }
 
+    public String getSharedPrefPassword(){
+        return sp.getString("User_Password",null);
+    }
+    public void setSharedPrefPassword(String Type){
+        editor.putString("User_Password",Type).commit();
+    }
+
+
+    public boolean isSharedPrefLogin(){
+        return sp.getBoolean("Login",false);
+    }
+    public void setSharedPrefLogin(boolean Type){
+        editor.putBoolean("Login",Type).commit();
+    }
+
+
+    public boolean isSharedPrefRegister(){
+        return sp.getBoolean("Register",false);
+    }
+    public void setSharedPrefRegister(boolean Type){
+        editor.putBoolean("Register",Type).commit();
+    }
+
 
 
 

@@ -1,5 +1,6 @@
 package gym.exercise.workout.trainerbuddy.TrainerDashBoardUi;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -20,18 +21,24 @@ import gym.exercise.workout.trainerbuddy.Entities.ImportantFunctions;
 import gym.exercise.workout.trainerbuddy.Entities.SubscriptionPlan;
 import gym.exercise.workout.trainerbuddy.R;
 
+import static android.app.Activity.RESULT_CANCELED;
+import static android.app.Activity.RESULT_OK;
+
 public class OfferingPlanEdit extends Fragment {
-    private  String PlanId;
+    private final String PlanId;
+    private final int Position;
     TextInputEditText Title,About,Prize ,Days;
     ImportantFunctions impFun;
     DataBaseHandler DB;
     LocalDataBaseHandler LDB;
-    public OfferingPlanEdit(String planId) {
+
+    public OfferingPlanEdit(String planId, int position) {
         PlanId = planId;
+        Position =position;
     }
 
-    public static OfferingPlanEdit newInstance(String PlanId) {
-        return new OfferingPlanEdit(PlanId);
+    public static OfferingPlanEdit newInstance(String PlanId,int Position) {
+        return new OfferingPlanEdit(PlanId,Position);
     }
 
     @Nullable
@@ -96,10 +103,20 @@ public class OfferingPlanEdit extends Fragment {
                     Toast.makeText(requireContext(), "Plan Update Success!!", Toast.LENGTH_SHORT).show();
                     clearAllEnteries();
                     //Todo finish the activity and restart dashbaord activity
+                    Intent returnIntent = new Intent();
+                    returnIntent.putExtra("Position",Position);
+                    Log.e("TAG", ""+Position);
+                    returnIntent.putExtra("Plan",mplan);
+                    requireActivity().setResult(RESULT_OK,returnIntent);
                     requireActivity().finish();
                 }
                 catch (Exception e){
                     Log.d("DB", "AddTrainersNewOfferingPlan: Error"+e);
+                    Intent returnIntent = new Intent();
+                    //returnIntent.putExtra("result",result);
+                    requireActivity().setResult(RESULT_CANCELED,returnIntent);
+                    requireActivity().finish();
+
                 }
             }
             else{

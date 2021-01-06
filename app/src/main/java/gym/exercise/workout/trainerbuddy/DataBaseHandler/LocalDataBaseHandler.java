@@ -339,6 +339,7 @@ public class LocalDataBaseHandler extends SQLiteOpenHelper {
     public void ClearTrainerSubscriptionPlansLDB() {
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(SUBSCRIPTION_PLAN_TABLE_NAME, null, null);
+        Log.e("LOG", "ClearTrainerSubscriptionPlansLDB");
     }
 
     // Trainer Offering Plans
