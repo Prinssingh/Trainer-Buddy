@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "372773506162",
+    "project_id": "sumo-e-commerce",
+    "storage_bucket": "sumo-e-commerce.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:372773506162:android:58cb18b01d9e5fbd59c6eb",
+        "android_client_info": {
+          "package_name": "com.example.sumoe_commerce"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "372773506162-l1t4006dp1822fc9emom5nurajtbuv6f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCDKiRNaRE4_5a1j496un-2lMFxYjydbiM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "372773506162-l1t4006dp1822fc9emom5nurajtbuv6f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1035178836987",
+    "project_id": "sumo-quizzer",
+    "storage_bucket": "sumo-quizzer.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1035178836987:android:2b9483c51b0eb0688b015e",
+        "android_client_info": {
+          "package_name": "com.example.sumoquizzer"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1035178836987-5g0l90stcnsf7vdmpd1t7mjf6j9t2nai.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDojYua5J3nxjDVkCRNYZDIh33RQrYqtUQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1035178836987-5g0l90stcnsf7vdmpd1t7mjf6j9t2nai.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
