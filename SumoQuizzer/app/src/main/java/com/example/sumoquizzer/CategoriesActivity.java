@@ -35,6 +35,12 @@ public class CategoriesActivity extends AppCompatActivity {
 
         Toolbar toolbar = findViewById(R.id.toolBar);
 
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Categories");
+
+        //Set BackButton in action bar
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         recyclerView = findViewById(R.id.rv);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setOrientation(RecyclerView.VERTICAL);
@@ -60,9 +66,7 @@ public class CategoriesActivity extends AppCompatActivity {
             }
         });
 
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Categories");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
 
     }
 

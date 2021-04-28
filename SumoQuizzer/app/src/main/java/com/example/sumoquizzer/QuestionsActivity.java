@@ -47,6 +47,7 @@ public class QuestionsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_questions);
+
         Toolbar toolbar = findViewById(R.id.toolbar1);
         setSupportActionBar(toolbar);
 
@@ -61,9 +62,8 @@ public class QuestionsActivity extends AppCompatActivity {
         setNo = getIntent().getIntExtra("setNo",1);
 
 
-
-
         list = new ArrayList<>();
+
         myRef.child("SETS").child(category).child("questions").orderByChild("setNo").equalTo(setNo).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -118,7 +118,8 @@ public class QuestionsActivity extends AppCompatActivity {
     }
 
     private void playAnim(View view, int value,final String data){
-        view.animate().alpha(value).scaleX(value).scaleY(value).setDuration(500).setStartDelay(100).setInterpolator(new DecelerateInterpolator()).setListener(new Animator.AnimatorListener() {
+        view.animate().alpha(value).scaleX(value).scaleY(value).setDuration(500).setStartDelay(100).
+                setInterpolator(new DecelerateInterpolator()).setListener(new Animator.AnimatorListener() {
             @Override
             public void onAnimationStart(Animator animation) {
                 if(value == 0 && count<4 ){

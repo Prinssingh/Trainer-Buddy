@@ -62,6 +62,7 @@ public class dataWithImg extends AppCompatActivity {
                             mExampleAdapter = new ExampleAdapter(dataWithImg.this, mExampleList);
                             mRecyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
                             mRecyclerView.setAdapter(mExampleAdapter);
+
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }

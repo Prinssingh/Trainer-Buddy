@@ -10,6 +10,12 @@ public class CategoryModel {
         //for firebase
     }
 
+    public CategoryModel(String url, int sets, String name) {
+        this.url = url;
+        this.sets = sets;
+        this.name = name;
+    }
+
     public int getSets() {
         return sets;
     }
@@ -34,11 +40,7 @@ public class CategoryModel {
         this.name = name;
     }
 
-    public CategoryModel(String url, int sets, String name) {
-        this.url = url;
-        this.sets = sets;
-        this.name = name;
-    }
+
 
 
 }
