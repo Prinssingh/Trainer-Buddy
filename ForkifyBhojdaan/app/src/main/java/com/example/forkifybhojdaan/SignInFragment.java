@@ -1,5 +1,7 @@
 package com.example.forkifybhojdaan;
 
+import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -12,17 +14,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
 
 public class SignInFragment extends Fragment {
 
-    public TextView dontHaveAnAccount;
+    public TextView dontHaveAnAccount,forgetPassword;
     public FrameLayout parentFrameLayout;
 
-    private TextInputEditText userName,password;
-    private TextView forgetPassword,dontHavaAnAccount;
+    public ProgressBar progressBar;
+
+    private TextInputEditText userNameSignIn,passwordSignIn;
     private Button btnSignIn;
 
     public SignInFragment() {
@@ -35,6 +40,12 @@ public class SignInFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_sign_in, container, false);
         parentFrameLayout = getActivity().findViewById(R.id.registerFrameLayout);
         dontHaveAnAccount = view.findViewById(R.id.dontHaveAnAccount);
+
+        forgetPassword = view.findViewById(R.id.forgetPassword);
+        userNameSignIn = view.findViewById(R.id.userNameSignIn);
+        passwordSignIn = view.findViewById(R.id.passwordSignIn);
+        btnSignIn = view.findViewById(R.id.btnSignIn);
+        progressBar = view.findViewById(R.id.progressBarSignIn);
         return view;
     }
 
@@ -48,6 +59,25 @@ public class SignInFragment extends Fragment {
                 setFragment(new SignUpFragment());
             }
         });
+
+        btnSignIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String userId = userNameSignIn.getText().toString();
+                String password = passwordSignIn.getText().toString();
+            }
+        });
+
+
+
+
+
+        forgetPassword.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setFragment(new ResetPasswordFragment());
+            }
+        });
     }
 
     private void setFragment(Fragment fragment) {
@@ -56,4 +86,15 @@ public class SignInFragment extends Fragment {
         fragmentTransaction.replace(parentFrameLayout.getId(), fragment);
         fragmentTransaction.commit();
     }
+
+    public void setEnabled(){
+        userNameSignIn.setEnabled(true);
+        passwordSignIn.setEnabled(true);
+    }
+
+    public void setDisabled(){
+        userNameSignIn.setEnabled(false);
+        passwordSignIn.setEnabled(false);
+    }
+
 }

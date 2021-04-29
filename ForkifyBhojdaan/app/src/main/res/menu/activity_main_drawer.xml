@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/dashboardDrawer"
+            android:icon="@drawable/dashboard"
+            android:title="DashBoard" />
+        <item
+            android:id="@+id/cartDrawer"
+            android:icon="@drawable/add_to_cart"
+            android:title="My Cart" />
+        <item
+            android:id="@+id/helpDrawer"
+            android:icon="@drawable/help"
+            android:title="Help" />
+        <item
+            android:id="@+id/contactDrawer"
+            android:icon="@drawable/contact_support"
+            android:title="Contact Support" />
+        <item
+            android:id="@+id/logoutDrawer"
+            android:icon="@drawable/logout"
+            android:title="Logout" />
+    </group>
+</menu>

@@ -7,16 +7,18 @@
     android:background="@color/background"
     tools:context=".SignInFragment">
 
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:orientation="vertical"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
 
         <ImageView
             android:id="@+id/imageView"
-            android:layout_weight="1"
             android:layout_width="match_parent"
             android:layout_height="180dp"
+            android:layout_weight="1"
             android:src="@drawable/forkify_bhojdaan_logo"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -25,10 +27,18 @@
         <RelativeLayout
             android:id="@+id/getEmailPassword"
             android:layout_width="match_parent"
-            android:layout_weight="1"
             android:layout_height="wrap_content"
+            android:layout_weight="1"
             app:layout_constraintTop_toBottomOf="@+id/imageView"
             tools:layout_editor_absoluteX="20dp">
+
+            <ProgressBar
+                android:id="@+id/progressBarSignIn"
+                style="?android:attr/progressBarStyle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:visibility="gone" />
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/usernameInput"
@@ -38,7 +48,7 @@
                 android:hint="     Email ID">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/userName"
+                    android:id="@+id/userNameSignIn"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
@@ -58,7 +68,7 @@
                 app:passwordToggleEnabled="true">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/password"
+                    android:id="@+id/passwordSignIn"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
@@ -74,15 +84,16 @@
                 android:layout_below="@id/passwordInput"
                 android:layout_alignParentEnd="true"
                 android:layout_marginEnd="10dp"
-                android:text="Forget Password ?"/>
+                android:text="Forget Password ?" />
 
 
         </RelativeLayout>
 
+
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_weight="1"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
 
             <Button
                 android:id="@+id/btnSignIn"
@@ -136,8 +147,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/orLayout"
-                android:layout_marginBottom="10dp"
                 android:layout_centerHorizontal="true"
+                android:layout_marginBottom="10dp"
                 android:text="Dont have an account? Signup!"
                 android:textStyle="bold" />
 
