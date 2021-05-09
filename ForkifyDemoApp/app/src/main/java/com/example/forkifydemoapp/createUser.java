@@ -22,6 +22,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.UnsupportedEncodingException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class createUser extends AppCompatActivity {
 
@@ -83,9 +85,8 @@ public class createUser extends AppCompatActivity {
                        Log.d("shubham", String.valueOf(error));
                     }
                 });
-        requstQueue.add(jsonobj);
 
-    }
+    };
 
     void ClearData(){
         first_name.setText("");
