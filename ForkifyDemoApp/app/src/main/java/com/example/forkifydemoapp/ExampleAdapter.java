@@ -45,7 +45,6 @@ public class ExampleAdapter extends RecyclerView.Adapter<ExampleAdapter.ExampleV
 
     }
 
-
     public class ExampleViewHolder extends RecyclerView.ViewHolder{
 
         public ImageView imageView;
