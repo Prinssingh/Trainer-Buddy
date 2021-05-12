@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">FindCurrentLocation</string>
+    <string name="map_api_key">AIzaSyBiE6ZSvADJKGkuPqzEjNGGHwKUBmRepjw</string>
+</resources>
